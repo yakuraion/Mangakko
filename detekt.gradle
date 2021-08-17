@@ -1,0 +1,48 @@
+apply plugin: "io.gitlab.arturbosch.detekt"
+
+def detektVersion = "1.16.0"
+
+detekt {
+    toolVersion = detektVersion
+    parallel = true
+    config = files("$project.rootDir/config/detekt.yml")
+    reports {
+        html {
+            enabled = true
+            destination = file("build/reports/detekt.html")
+        }
+    }
+}
+
+dependencies {
+    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion"
+}
+
+def detektTask = project.tasks.findByName('detekt')
+detektTask.jvmTarget = "1.8"
+
+// Open HTML report if detekt fails
+def openHtmlReportTask = project.task('openDetektHtmlReportInBrowser') {
+    onlyIf { detektTask.state.failure != null }
+    doLast {
+        def htmlReport = detektTask.reports.html.destination
+        if (htmlReport != null) {
+            exec {
+                commandLine getOpenCommand(htmlReport)
+            }
+        }
+    }
+}
+
+detektTask.finalizedBy openHtmlReportTask
+
+static def getOpenCommand(Object file) {
+    def currentOs = org.gradle.internal.os.OperatingSystem.current()
+    if (currentOs.macOsX) {
+        return ['open', file]
+    } else if (currentOs.linux) {
+        return ['xdg-open', file]
+    } else if (currentOs.windows) {
+        return ['cmd', '/c', 'start', file]
+    }
+}

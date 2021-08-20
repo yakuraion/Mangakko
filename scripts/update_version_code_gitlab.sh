@@ -14,5 +14,6 @@ read versionCode <<< $(awk -F= '$1 == "versionCode" { print $2 }' version.proper
 
 git add version.properties
 git commit -m "v$versionName ($versionCode) [build-tc] [skip ci]"
-git remote add origin_ci git@git.coral.club:mobile/coral-health-android.git
+# Need to set up {REPO_PATH}
+git remote add origin_ci REPO_PATH
 git push origin_ci "${CI_COMMIT_BRANCH}"

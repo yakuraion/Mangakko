@@ -21,10 +21,6 @@ allprojects {
         maven {
             url = uri("https://jitpack.io")
         }
-        maven {
-            url = uri("https://coral.jfrog.io/artifactory/general")
-        }
-        mavenLocal()
     }
 }
 

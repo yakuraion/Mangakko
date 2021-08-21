@@ -2,6 +2,7 @@ package net.yakuraion.mangakko.di
 
 import dagger.BindsInstance
 import dagger.Component
+import net.yakuraion.mangakko.BuildConfig
 import net.yakuraion.mangakko.core_di.configuration.Configuration
 import net.yakuraion.mangakko.core_di.configuration.ConfigurationProvider
 import javax.inject.Singleton
@@ -28,7 +29,7 @@ interface ConfigurationComponent : ConfigurationProvider {
         }
 
         private fun getConfiguration(): Configuration {
-            return Configuration()
+            return Configuration(BuildConfig.SERVER_URL)
         }
     }
 }

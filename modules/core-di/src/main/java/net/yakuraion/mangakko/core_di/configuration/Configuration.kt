@@ -1,3 +1,3 @@
 package net.yakuraion.mangakko.core_di.configuration
 
-class Configuration
+class Configuration(val serverUrl: String)

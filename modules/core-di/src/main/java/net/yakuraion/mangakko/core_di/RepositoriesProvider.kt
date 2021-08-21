@@ -1,3 +1,8 @@
 package net.yakuraion.mangakko.core_di
 
-interface RepositoriesProvider
+import net.yakuraion.mangakko.core_repositories.GenresRepository
+
+interface RepositoriesProvider {
+
+    fun provideGenresRepository(): GenresRepository
+}

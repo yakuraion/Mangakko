@@ -3,6 +3,8 @@ package net.yakuraion.mangakko.di
 import dagger.Binds
 import dagger.Module
 import net.yakuraion.mangakko.MainFeature
+import net.yakuraion.mangakko.genres.GenresFeature
+import net.yakuraion.mangakko.genres_impl.GenresFeatureImpl
 import net.yakuraion.mangakko.main_impl.MainFeatureImpl
 
 @Module
@@ -10,4 +12,7 @@ interface FeaturesModule {
 
     @Binds
     fun bindsMain(impl: MainFeatureImpl): MainFeature
+
+    @Binds
+    fun bindsGenres(impl: GenresFeatureImpl): GenresFeature
 }

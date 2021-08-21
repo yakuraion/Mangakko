@@ -15,4 +15,5 @@ dependencies {
     implementation(project(":modules:core-persistence"))
 
     implementation(project(":modules:features:main"))
+    implementation(project(":modules:features:genres"))
 }

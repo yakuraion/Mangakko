@@ -16,6 +16,8 @@ android {
         applicationId = "net.yakuraion.mangakko"
         versionCode = versionProperties.getProperty("versionCode").toInt()
         versionName = versionProperties.getProperty("versionName")
+
+        buildConfigField("String", "SERVER_URL", "\"https://graphql.anilist.co/\"")
     }
 
     packagingOptions {
@@ -74,4 +76,5 @@ dependencies {
     implementation(project(":modules:core-persistence-impl"))
 
     implementation(project(":modules:features:main-impl"))
+    implementation(project(":modules:features:genres-impl"))
 }

@@ -14,6 +14,8 @@ include(":modules:core-network-impl")
 
 include(":modules:features:main")
 include(":modules:features:main-impl")
+include(":modules:features:genres")
+include(":modules:features:genres-impl")
 
 exec { commandLine("git", "init") }
 exec { commandLine("git", "config", "core.hooksPath", ".githooks") }

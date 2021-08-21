@@ -11,4 +11,6 @@ dependencies {
     addCommon()
     api(project(":modules:features:main"))
     implementation(project(":modules:core-feature"))
+
+    implementation(project(":modules:features:genres"))
 }

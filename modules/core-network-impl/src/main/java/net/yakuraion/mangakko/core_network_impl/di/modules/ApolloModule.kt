@@ -12,9 +12,8 @@ class ApolloModule {
     @Provides
     @Singleton
     fun provideApolloClient(configuration: Configuration): ApolloClient {
-        TODO("serverUrl empty")
         return ApolloClient.builder()
-            .serverUrl("")
+            .serverUrl(configuration.serverUrl)
             .build()
     }
 }

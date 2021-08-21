@@ -3,6 +3,7 @@
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
 const val kotlinVersion = "1.4.32"
+const val apolloVersion = "2.5.9"
 
 object AndroidSdk {
 
@@ -116,6 +117,10 @@ object Libraries {
 
     const val leakCanary = "com.squareup.leakcanary:leakcanary-android:${Versions.leakCanary}"
 
+    const val apollo = "com.apollographql.apollo:apollo-runtime:$apolloVersion"
+    const val apolloCoroutinesSupport = "com.apollographql.apollo:apollo-coroutines-support:$apolloVersion"
+    const val apolloAndroidSupport = "com.apollographql.apollo:apollo-android-support:$apolloVersion"
+
     fun DependencyHandler.addCommon() {
         implementation(kotlin)
         implementation(coroutines)
@@ -153,6 +158,12 @@ object Libraries {
         api(fastadapterSwipe)
         api(fastadapterUtils)
         api(fastadapterUI)
+    }
+
+    fun DependencyHandler.implementationApollo() {
+        implementation(apollo)
+        implementation(apolloCoroutinesSupport)
+        implementation(apolloAndroidSupport)
     }
 
     private fun DependencyHandler.api(dep: Any) {

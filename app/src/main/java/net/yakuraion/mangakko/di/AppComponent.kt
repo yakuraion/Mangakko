@@ -18,7 +18,10 @@ interface AppComponent : AppProvider {
 
     companion object {
 
-        fun create(repositoriesProvider: RepositoriesProvider, dispatchersProvider: DispatchersProvider): AppComponent {
+        fun create(
+            repositoriesProvider: RepositoriesProvider,
+            dispatchersProvider: DispatchersProvider
+        ): AppComponent {
             return DaggerAppComponent.builder()
                 .repositoriesProvider(repositoriesProvider)
                 .dispatchersProvider(dispatchersProvider)

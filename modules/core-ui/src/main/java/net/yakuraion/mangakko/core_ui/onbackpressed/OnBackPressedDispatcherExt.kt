@@ -9,8 +9,8 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 /**
  * Create and add a new [OnBackPressedCallback] that calls [onBackPressed] in
- * [OnBackPressedCallback.handleOnBackPressed]. If [OnBackPressedCallback] return false than call next callback in the chain
- * inside [OnBackPressedDispatcher]
+ * [OnBackPressedCallback.handleOnBackPressed]. If [OnBackPressedCallback] return false
+ * than call next callback in the chain inside [OnBackPressedDispatcher]
  *
  * If an [owner] is specified, the callback will only be added when the Lifecycle is
  * [androidx.lifecycle.Lifecycle.State.STARTED].
@@ -41,7 +41,8 @@ fun OnBackPressedDispatcher.addCallbackForHideBottomSheetBehavior(
     hideState: Int = BottomSheetBehavior.STATE_COLLAPSED
 ): OnBackPressedCallback {
     return addCallback(activity, owner, enabled) {
-        if (bottomSheetBehavior.state in setOf(BottomSheetBehavior.STATE_EXPANDED, BottomSheetBehavior.STATE_SETTLING)) {
+        val visibleStates = setOf(BottomSheetBehavior.STATE_EXPANDED, BottomSheetBehavior.STATE_SETTLING)
+        if (bottomSheetBehavior.state in visibleStates) {
             bottomSheetBehavior.state = hideState
             true
         } else {

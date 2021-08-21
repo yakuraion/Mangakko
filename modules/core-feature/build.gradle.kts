@@ -11,6 +11,7 @@ dependencies {
 
     api(project(":modules:core-ui"))
     api(project(":modules:core-di"))
+    api(project(":modules:core-repositories"))
 
     api(Libraries.viewModelKtx)
     api(Libraries.viewModelSavedState)

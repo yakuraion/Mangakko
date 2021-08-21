@@ -13,7 +13,8 @@ var Fragment.statusBarColor: Int
 
 var Fragment.isLightStatusBar: Boolean
     @RequiresApi(Build.VERSION_CODES.M)
-    get() = requireActivity().window.decorView.systemUiVisibility and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR != 0
+    get() = requireActivity().window.decorView.systemUiVisibility and
+            View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR != 0
     @RequiresApi(Build.VERSION_CODES.M)
     set(value) {
         val view = requireActivity().window.decorView

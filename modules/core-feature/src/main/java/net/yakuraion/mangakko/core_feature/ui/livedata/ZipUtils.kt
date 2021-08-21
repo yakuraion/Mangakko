@@ -42,7 +42,11 @@ fun <A, B, C, D> combineLatestLiveData(
     val zippedObject: MutableMap<LiveData<*>, Any?> = mutableMapOf()
 
     fun tryEmitNewValue() {
-        if (zippedObject.containsKey(liveData1) && zippedObject.containsKey(liveData2) && zippedObject.containsKey(liveData3)) {
+        if (
+            zippedObject.containsKey(liveData1) &&
+            zippedObject.containsKey(liveData2) &&
+            zippedObject.containsKey(liveData3)
+        ) {
             val valueA = zippedObject[liveData1] as A
             val valueB = zippedObject[liveData2] as B
             val valueC = zippedObject[liveData3] as C

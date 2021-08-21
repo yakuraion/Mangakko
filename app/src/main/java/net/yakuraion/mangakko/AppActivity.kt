@@ -10,14 +10,14 @@ import javax.inject.Inject
 class AppActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var mainFeatureApi: MainFeatureApi
+    lateinit var mainFeature: MainFeature
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injectDependencies()
         setContentView(R.layout.activity_app)
         if (savedInstanceState == null) {
-            setInitFragment(mainFeatureApi.getMainFragment())
+            setInitFragment(mainFeature.getMainFragment())
         }
     }
 

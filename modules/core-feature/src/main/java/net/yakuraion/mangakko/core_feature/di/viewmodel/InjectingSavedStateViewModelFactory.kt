@@ -12,6 +12,7 @@ import kotlin.reflect.KClass
 
 @Reusable
 class InjectingSavedStateViewModelFactory @Inject constructor(
+    @Suppress("MaxLineLength")
     private val assistedFactoryProviders: Map<Class<out ViewModel>, @JvmSuppressWildcards AssistedFactoryProvider>
 ) {
 
@@ -24,7 +25,11 @@ class InjectingSavedStateViewModelFactory @Inject constructor(
         val factory = object : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
 
             @Suppress("UNCHECKED_CAST")
-            override fun <T : ViewModel?> create(key: String, modelClass: Class<T>, handle: SavedStateHandle): T {
+            override fun <T : ViewModel?> create(
+                key: String,
+                modelClass: Class<T>,
+                handle: SavedStateHandle
+            ): T {
                 assistedFactoryProviders[modelClass]?.get()?.let { factory ->
                     try {
                         return factory.create(handle) as T

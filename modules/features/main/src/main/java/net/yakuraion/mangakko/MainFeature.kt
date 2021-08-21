@@ -2,7 +2,7 @@ package net.yakuraion.mangakko
 
 import androidx.fragment.app.Fragment
 
-interface MainFeatureApi {
+interface MainFeature {
 
     fun getMainFragment(): Fragment
 }

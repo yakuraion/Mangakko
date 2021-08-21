@@ -130,7 +130,14 @@ fun RecyclerView.setItemMargins(vertical: Int, horizontal: Int) {
     addItemDecoration(itemDecoration)
 }
 
-fun RecyclerView.setItemMargins(vertical: Int, horizontal: Int, left: Int, top: Int, right: Int, bottom: Int) {
+fun RecyclerView.setItemMargins(
+    vertical: Int,
+    horizontal: Int,
+    left: Int,
+    top: Int,
+    right: Int,
+    bottom: Int
+) {
     val itemDecoration = MarginItemDecoration(
         vertical = vertical,
         horizontal = horizontal,

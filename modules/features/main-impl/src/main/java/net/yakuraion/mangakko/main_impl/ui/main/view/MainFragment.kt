@@ -20,6 +20,8 @@ class MainFragment : BaseFragment<MainViewModel>(MainViewModel::class, R.layout.
 
     companion object {
 
-        fun createFragment() = MainFragment()
+        fun createFragment(): MainFragment {
+            return MainFragment()
+        }
     }
 }

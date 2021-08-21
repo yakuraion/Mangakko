@@ -40,7 +40,11 @@ class MangakkoApplication : Application(), AppProviderHolder {
             configurationComponent
         )
         val dispatchersComponent = DispatchersComponent.create()
-        val repositoriesComponent = RepositoriesComponent.create(networkComponent, persistenceComponent, configurationComponent)
+        val repositoriesComponent = RepositoriesComponent.create(
+            networkComponent,
+            persistenceComponent,
+            configurationComponent
+        )
         appProvider = AppComponent.create(repositoriesComponent, dispatchersComponent)
     }
 }

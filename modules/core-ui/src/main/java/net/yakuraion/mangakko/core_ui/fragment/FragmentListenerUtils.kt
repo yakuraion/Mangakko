@@ -21,7 +21,9 @@ inline fun <reified T> Fragment.findListenerByParent(): T? {
 inline fun <reified T> Fragment.requireListener(): T {
     return findListenerByTargetFragment()
         ?: findListenerByParent()
-        ?: error("Nor targetFragment, neither parentFragment (or activity) implements listener ${T::class.java.simpleName}")
+        ?: error(
+            "Nor targetFragment, neither parentFragment (or activity) implements ${T::class.java.simpleName}"
+        )
 }
 
 inline fun <reified T> Fragment.getListener(): T? {

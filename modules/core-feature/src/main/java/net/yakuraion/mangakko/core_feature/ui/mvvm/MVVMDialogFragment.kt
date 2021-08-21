@@ -24,7 +24,11 @@ abstract class MVVMDialogFragment<VM : ViewModel>(
         viewModel = abstractViewModelFactory.create(viewModelClass, this, getDefaultArgs())
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(layoutRes, container, false)
     }
 

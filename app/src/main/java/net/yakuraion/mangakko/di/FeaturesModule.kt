@@ -2,12 +2,12 @@ package net.yakuraion.mangakko.di
 
 import dagger.Binds
 import dagger.Module
-import net.yakuraion.mangakko.MainFeatureApi
-import net.yakuraion.mangakko.main_impl.MainFeatureApiImpl
+import net.yakuraion.mangakko.MainFeature
+import net.yakuraion.mangakko.main_impl.MainFeatureImpl
 
 @Module
 interface FeaturesModule {
 
     @Binds
-    fun bindsMainFeatureApi(impl: MainFeatureApiImpl): MainFeatureApi
+    fun bindsMain(impl: MainFeatureImpl): MainFeature
 }

@@ -105,11 +105,13 @@ object Libraries {
     const val hyperionBuildConfig = "com.willowtreeapps.hyperion:hyperion-build-config:${Versions.hyperion}"
     const val hyperionCrash = "com.willowtreeapps.hyperion:hyperion-crash:${Versions.hyperion}"
     const val hyperionDisk = "com.willowtreeapps.hyperion:hyperion-disk:${Versions.hyperion}"
-    const val hyperionGeigerCounter = "com.willowtreeapps.hyperion:hyperion-geiger-counter:${Versions.hyperion}"
+    const val hyperionGeigerCounter =
+        "com.willowtreeapps.hyperion:hyperion-geiger-counter:${Versions.hyperion}"
     const val hyperionMeasurement = "com.willowtreeapps.hyperion:hyperion-measurement:${Versions.hyperion}"
     const val hyperionPhoenix = "com.willowtreeapps.hyperion:hyperion-phoenix:${Versions.hyperion}"
     const val hyperionRecorder = "com.willowtreeapps.hyperion:hyperion-recorder:${Versions.hyperion}"
-    const val hyperionSharedPreferences = "com.willowtreeapps.hyperion:hyperion-shared-preferences:${Versions.hyperion}"
+    const val hyperionSharedPreferences =
+        "com.willowtreeapps.hyperion:hyperion-shared-preferences:${Versions.hyperion}"
     const val hyperionTimber = "com.willowtreeapps.hyperion:hyperion-timber:${Versions.hyperion}"
 
     const val leakCanary = "com.squareup.leakcanary:leakcanary-android:${Versions.leakCanary}"

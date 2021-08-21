@@ -9,10 +9,10 @@ import net.yakuraion.mangakko.core_feature.di.viewmodel.ViewModelKey
 import net.yakuraion.mangakko.main_impl.ui.main.viewmodel.MainViewModel
 
 @Module
-interface MainViewModelFactoriesModule {
+interface ViewModelFactoriesModule {
 
     @Binds
     @IntoMap
     @ViewModelKey(MainViewModel::class)
-    fun bindsMainViewModelFactory(impl: MainViewModel.Factory): AssistedSavedStateViewModelFactory<out ViewModel>
+    fun bindsMain(impl: MainViewModel.Factory): AssistedSavedStateViewModelFactory<out ViewModel>
 }

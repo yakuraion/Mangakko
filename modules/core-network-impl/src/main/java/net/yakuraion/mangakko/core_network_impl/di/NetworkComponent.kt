@@ -13,7 +13,8 @@ import javax.inject.Singleton
         ConvertersProvider::class,
         ContextProvider::class,
         ConfigurationProvider::class
-    ]
+    ],
+    modules = [NetworkModule::class]
 )
 interface NetworkComponent : NetworkProvider {
 

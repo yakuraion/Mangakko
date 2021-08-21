@@ -14,7 +14,8 @@ var Fragment.navigationBarColor: Int
 
 var Fragment.isLightNavigationBar: Boolean
     @RequiresApi(Build.VERSION_CODES.O_MR1)
-    get() = requireActivity().window.decorView.systemUiVisibility and View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR != 0
+    get() = requireActivity().window.decorView.systemUiVisibility and
+            View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR != 0
     @RequiresApi(Build.VERSION_CODES.O_MR1)
     set(value) {
         val view = requireActivity().window.decorView

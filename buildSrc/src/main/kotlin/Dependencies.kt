@@ -58,6 +58,9 @@ object Libraries {
         const val hyperion = "0.9.33"
 
         const val leakCanary = "2.7"
+
+        const val junit = "4.13.2"
+        const val mockitoKotlin = "3.2.0"
     }
 
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
@@ -116,6 +119,9 @@ object Libraries {
 
     const val leakCanary = "com.squareup.leakcanary:leakcanary-android:${Versions.leakCanary}"
 
+    const val junit = "junit:junit:${Versions.junit}"
+    const val mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:${Versions.mockitoKotlin}"
+
     fun DependencyHandler.addCommon() {
         implementation(kotlin)
         implementation(coroutines)
@@ -127,6 +133,9 @@ object Libraries {
         implementation(timber)
 
         implementation(jodaTime)
+
+        testImplementation(junit)
+        testImplementation(mockitoKotlin)
     }
 
     fun DependencyHandler.addHyperion() {
@@ -169,6 +178,10 @@ object Libraries {
 
     private fun DependencyHandler.releaseImplementation(dep: Any) {
         add("releaseImplementation", dep)
+    }
+
+    private fun DependencyHandler.testImplementation(dep: Any) {
+        add("testImplementation", dep)
     }
 
     private fun DependencyHandler.kapt(dep: Any) {

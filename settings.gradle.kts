@@ -2,6 +2,7 @@ rootProject.name = "Mangakko"
 
 include(":app")
 include(":modules:core-di")
+include(":modules:core-testutils")
 include(":modules:core-entity")
 include(":modules:core-ui")
 include(":modules:core-feature")

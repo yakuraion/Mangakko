@@ -17,7 +17,6 @@ object BuildPlugins {
     object Versions {
 
         const val buildTools = "4.1.3"
-        const val googleServices = "4.3.5"
         const val detekt = "1.16.0"
     }
 
@@ -62,6 +61,8 @@ object Libraries {
 
         const val junit = "4.13.2"
         const val mockitoKotlin = "3.2.0"
+        const val coroutineTest = "1.4.3"
+        const val archTest = "2.1.0"
     }
 
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
@@ -126,6 +127,8 @@ object Libraries {
 
     const val junit = "junit:junit:${Versions.junit}"
     const val mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:${Versions.mockitoKotlin}"
+    const val coroutineTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutineTest}"
+    const val archTest = "androidx.arch.core:core-testing:${Versions.archTest}"
 
     fun DependencyHandler.addCommon() {
         implementation(kotlin)
@@ -141,6 +144,7 @@ object Libraries {
 
         testImplementation(junit)
         testImplementation(mockitoKotlin)
+        testImplementation(coroutineTest)
     }
 
     fun DependencyHandler.addHyperion() {

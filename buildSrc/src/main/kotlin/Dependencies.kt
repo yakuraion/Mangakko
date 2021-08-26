@@ -60,12 +60,13 @@ object Libraries {
 
         const val junit = "4.13.2"
         const val mockitoKotlin = "3.2.0"
-        const val coroutineTest = "1.4.3"
+
         const val archTest = "2.1.0"
     }
 
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+    const val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
 
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
 
@@ -122,12 +123,13 @@ object Libraries {
 
     const val junit = "junit:junit:${Versions.junit}"
     const val mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:${Versions.mockitoKotlin}"
-    const val coroutineTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutineTest}"
     const val archTest = "androidx.arch.core:core-testing:${Versions.archTest}"
 
     fun DependencyHandler.addCommon() {
         implementation(kotlin)
         implementation(coroutines)
+        testImplementation(coroutinesTest)
+
         implementation(coreKtx)
 
         implementation(dagger)
@@ -139,7 +141,6 @@ object Libraries {
 
         testImplementation(junit)
         testImplementation(mockitoKotlin)
-        testImplementation(coroutineTest)
     }
 
     fun DependencyHandler.addHyperion() {

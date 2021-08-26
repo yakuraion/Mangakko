@@ -72,6 +72,7 @@ dependencies {
     implementation(project(":modules:core-repositories-impl"))
     implementation(project(":modules:core-network-impl"))
     implementation(project(":modules:core-persistence-impl"))
+    implementation(project(":modules:core-feature"))
 
     implementation(project(":modules:features:main-impl"))
 }

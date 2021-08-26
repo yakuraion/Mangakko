@@ -8,7 +8,7 @@ plugins {
 
 dependencies {
     addCommon()
-    implementation(Libraries.coroutineTest)
+    implementation(Libraries.coroutinesTest)
     implementation(Libraries.archTest)
 
     implementation(project(":modules:core-di"))

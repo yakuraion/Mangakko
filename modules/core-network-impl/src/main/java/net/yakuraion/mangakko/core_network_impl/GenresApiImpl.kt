@@ -8,6 +8,6 @@ import javax.inject.Inject
 class GenresApiImpl @Inject constructor(private val client: ApolloClient) : GenresApi {
 
     override suspend fun getGenres(): List<String> {
-        return client.query(GetGenreCollectionQuery()).await().data?.GenreCollection!!
+        return client.query(QueryGenreCollectionQuery()).await().data?.GenreCollection!!
     }
 }

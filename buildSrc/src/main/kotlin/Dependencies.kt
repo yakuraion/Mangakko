@@ -47,6 +47,8 @@ object Libraries {
         const val viewPager2 = "1.0.0"
         const val shimmer = "0.5.0"
 
+        const val paging = "2.1.2"
+
         const val fastAdapter = "5.4.1"
 
         const val glide = "4.12.0"
@@ -89,6 +91,8 @@ object Libraries {
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
     const val viewPager2 = "androidx.viewpager2:viewpager2:${Versions.viewPager2}"
     const val shimmer = "com.facebook.shimmer:shimmer:${Versions.shimmer}"
+
+    const val paging = "androidx.paging:paging-runtime:${Versions.paging}"
 
     const val fastAdapter = "com.mikepenz:fastadapter:${Versions.fastAdapter}"
     const val fastadapterExpandable = "com.mikepenz:fastadapter-extensions-expandable:${Versions.fastAdapter}"
@@ -174,10 +178,10 @@ object Libraries {
         api(fastadapterUI)
     }
 
-    fun DependencyHandler.implementationApollo() {
-        implementation(apollo)
-        implementation(apolloCoroutinesSupport)
-        implementation(apolloAndroidSupport)
+    fun DependencyHandler.apiApollo() {
+        api(apollo)
+        api(apolloCoroutinesSupport)
+        api(apolloAndroidSupport)
     }
 
     private fun DependencyHandler.api(dep: Any) {

@@ -1,0 +1,17 @@
+query QueryPageMedia($page: Int!, $perPage: Int!, $genre: String!, $sort: [MediaSort!]!) {
+    Page(page: $page, perPage: $perPage) {
+        pageInfo {
+            total
+            hasNextPage
+        }
+        media(genre: $genre, sort: $sort) {
+            id
+            title {
+                romaji
+            }
+            coverImage {
+                large
+            }
+        }
+    }
+}

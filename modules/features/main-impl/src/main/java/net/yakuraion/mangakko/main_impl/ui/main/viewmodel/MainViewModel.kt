@@ -12,10 +12,10 @@ class MainViewModel @AssistedInject constructor(
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : BaseViewModel() {
 
-    val showGenresFragmentLiveData: SingleLiveEvent<Unit> = SingleLiveEvent()
+    val showPagerFragmentLiveData: SingleLiveEvent<Unit> = SingleLiveEvent()
 
     init {
-        showGenresFragmentLiveData.call()
+        showPagerFragmentLiveData.call()
     }
 
     @AssistedFactory

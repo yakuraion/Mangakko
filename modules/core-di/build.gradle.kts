@@ -15,6 +15,7 @@ dependencies {
     implementation(project(":modules:core-persistence"))
 
     implementation(project(":modules:features:main"))
+    implementation(project(":modules:features:pager"))
     implementation(project(":modules:features:genres"))
     implementation(project(":modules:features:media"))
 }

@@ -7,26 +7,22 @@ import androidx.fragment.app.Fragment
 import net.yakuraion.mangakko.core_feature.di.viewmodel.InjectingSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
 import net.yakuraion.mangakko.core_ui.onbackpressed.setUpOnBackPressedForClearBackStack
-import net.yakuraion.mangakko.genres.GenresFeature
 import net.yakuraion.mangakko.main_impl.di.injector
 import net.yakuraion.mangakko.main_impl.ui.main.viewmodel.MainViewModel
-import net.yakuraion.mangakko.media.MediaFeature
+import net.yakuraion.mangakko.pager.PagerFeature
 import net.yakuraion.mangakko_impl.R
 import javax.inject.Inject
 
 class MainFragment : BaseFragment<MainViewModel>(
     MainViewModel::class,
     R.layout.main_fragment_main
-), GenresFeature.Owner {
+) {
 
     @Inject
     override lateinit var abstractViewModelFactory: InjectingSavedStateViewModelFactory
 
     @Inject
-    lateinit var genresFeature: GenresFeature
-
-    @Inject
-    lateinit var mediaFeature: MediaFeature
+    lateinit var pagerFeature: PagerFeature
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -37,8 +33,8 @@ class MainFragment : BaseFragment<MainViewModel>(
         super.onViewCreated(view, savedInstanceState)
         setUpOnBackPressedForClearBackStack()
         viewModel.apply {
-            showGenresFragmentLiveData.observe(viewLifecycleOwner) {
-                showFragment(genresFeature.getGenresFragment())
+            showPagerFragmentLiveData.observe(viewLifecycleOwner) {
+                showFragment(pagerFeature.getPagerFragment())
             }
         }
     }
@@ -52,11 +48,6 @@ class MainFragment : BaseFragment<MainViewModel>(
                 }
             }
             .commit()
-    }
-
-    override fun onGenreChosen(genre: String) {
-        val fragment = mediaFeature.getMediaFragment(genre)
-        showFragment(fragment, true)
     }
 
     companion object {

@@ -77,6 +77,7 @@ dependencies {
     implementation(project(":modules:core-feature"))
 
     implementation(project(":modules:features:main-impl"))
+    implementation(project(":modules:features:pager-impl"))
     implementation(project(":modules:features:genres-impl"))
     implementation(project(":modules:features:media-impl"))
 }

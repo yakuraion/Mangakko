@@ -9,8 +9,8 @@ plugins {
 
 dependencies {
     addCommon()
-    api(project(":modules:features:main"))
+    api(project(":modules:features:pager"))
     implementation(project(":modules:core-feature"))
 
-    implementation(project(":modules:features:pager"))
+    implementation(project(":modules:features:media"))
 }

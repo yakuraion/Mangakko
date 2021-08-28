@@ -78,4 +78,5 @@ dependencies {
 
     implementation(project(":modules:features:main-impl"))
     implementation(project(":modules:features:genres-impl"))
+    implementation(project(":modules:features:media-impl"))
 }

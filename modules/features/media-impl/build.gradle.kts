@@ -9,9 +9,9 @@ plugins {
 
 dependencies {
     addCommon()
-    api(project(":modules:features:main"))
+    api(project(":modules:features:media"))
     implementation(project(":modules:core-feature"))
 
-    implementation(project(":modules:features:genres"))
-    implementation(project(":modules:features:media"))
+    testImplementation(project(":modules:core-testutils"))
+    testImplementation(Libraries.archTest)
 }

@@ -40,6 +40,9 @@ class PagerFragment : BaseFragment<PagerViewModel>(
         super.onViewCreated(view, savedInstanceState)
         setUpOnBackPressedCallback()
         setUpBottomNavigationView()
+        viewModel.apply {
+            openFirstPageLiveData.observe(viewLifecycleOwner) { openPage(HOME) }
+        }
     }
 
     private fun setUpOnBackPressedCallback() {
@@ -86,7 +89,7 @@ class PagerFragment : BaseFragment<PagerViewModel>(
 
     private fun Page.createFragment(): Fragment {
         return when (this) {
-            HOME -> Fragment()
+            HOME -> mediaFeature.getMediaOverviewFragment()
             ONGOINGS -> Fragment()
             FAVORITES -> Fragment()
             SETTINGS -> Fragment()

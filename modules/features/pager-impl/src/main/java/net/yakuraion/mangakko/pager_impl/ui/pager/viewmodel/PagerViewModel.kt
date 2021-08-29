@@ -1,4 +1,4 @@
-package net.yakuraion.mangakko.pager_impl.pager.viewmodel
+package net.yakuraion.mangakko.pager_impl.ui.pager.viewmodel
 
 import androidx.lifecycle.SavedStateHandle
 import dagger.assisted.Assisted

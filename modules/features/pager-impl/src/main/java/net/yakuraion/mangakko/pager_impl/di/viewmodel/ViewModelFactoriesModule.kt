@@ -6,7 +6,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import net.yakuraion.mangakko.core_feature.di.viewmodel.AssistedSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.di.viewmodel.ViewModelKey
-import net.yakuraion.mangakko.pager_impl.pager.viewmodel.PagerViewModel
+import net.yakuraion.mangakko.pager_impl.ui.pager.viewmodel.PagerViewModel
 
 @Module
 interface ViewModelFactoriesModule {

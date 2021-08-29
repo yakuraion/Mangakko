@@ -3,7 +3,7 @@ package net.yakuraion.mangakko.pager_impl.di
 import dagger.Component
 import net.yakuraion.mangakko.core_di.app_provider.AppProvider
 import net.yakuraion.mangakko.pager_impl.di.viewmodel.ViewModelFactoriesModule
-import net.yakuraion.mangakko.pager_impl.pager.view.PagerFragment
+import net.yakuraion.mangakko.pager_impl.ui.pager.view.PagerFragment
 
 @Component(
     dependencies = [AppProvider::class],

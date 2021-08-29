@@ -2,7 +2,7 @@ package net.yakuraion.mangakko.pager_impl
 
 import androidx.fragment.app.Fragment
 import net.yakuraion.mangakko.pager.PagerFeature
-import net.yakuraion.mangakko.pager_impl.pager.view.PagerFragment
+import net.yakuraion.mangakko.pager_impl.ui.pager.view.PagerFragment
 import javax.inject.Inject
 
 class PagerFeatureImpl @Inject constructor() : PagerFeature {

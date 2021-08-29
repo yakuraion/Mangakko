@@ -3,7 +3,6 @@ package net.yakuraion.mangakko.media_impl.ui.media.view
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.AsyncDifferConfig
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.paged.PagedModelAdapter
@@ -13,10 +12,9 @@ import net.yakuraion.mangakko.core_feature.di.viewmodel.InjectingSavedStateViewM
 import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
 import net.yakuraion.mangakko.media_impl.R
 import net.yakuraion.mangakko.media_impl.di.injector
-import net.yakuraion.mangakko.media_impl.ui.media.view.items.MediaDiffUtilItemCallback
-import net.yakuraion.mangakko.media_impl.ui.media.view.items.MediaItem
+import net.yakuraion.mangakko.media_impl.ui.common.MediaDiffUtilItemCallback
+import net.yakuraion.mangakko.media_impl.ui.common.MediaItem
 import net.yakuraion.mangakko.media_impl.ui.media.viewmodel.MediaViewModel
-import net.yakuraion.mangakko.media_impl.ui.media.viewmodel.MediaViewModel.Companion.ARG_GENRE
 import javax.inject.Inject
 
 @Suppress("EXPERIMENTAL_API_USAGE")
@@ -55,12 +53,8 @@ class MediaFragment : BaseFragment<MediaViewModel>(
 
     companion object {
 
-        fun createFragment(genre: String): MediaFragment {
-            return MediaFragment().apply {
-                arguments = bundleOf(
-                    ARG_GENRE to genre
-                )
-            }
+        fun createFragment(): MediaFragment {
+            return MediaFragment()
         }
     }
 }

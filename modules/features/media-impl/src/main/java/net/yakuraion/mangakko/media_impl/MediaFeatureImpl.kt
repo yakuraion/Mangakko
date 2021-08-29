@@ -8,8 +8,8 @@ import javax.inject.Inject
 
 class MediaFeatureImpl @Inject constructor() : MediaFeature {
 
-    override fun getMediaFragment(genre: String): Fragment {
-        return MediaFragment.createFragment(genre)
+    override fun getMediaFragment(): Fragment {
+        return MediaFragment.createFragment()
     }
 
     override fun getMediaOverviewFragment(): Fragment {

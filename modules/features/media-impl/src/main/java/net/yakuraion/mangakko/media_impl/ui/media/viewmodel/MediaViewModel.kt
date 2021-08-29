@@ -20,10 +20,8 @@ class MediaViewModel @AssistedInject constructor(
     private val dataSourcesFactoriesFactory: DataSourcesFactoriesFactory
 ) : BaseViewModel() {
 
-    private val genre: String = savedStateHandle.get(ARG_GENRE)!!
-
     private val dataSourceFactory: DataSource.Factory<Int, Media> = dataSourcesFactoriesFactory
-        .createMediaDataSourceFactory(this, genre)
+        .createMediaDataSourceFactory(this)
 
     private val config: PagedList.Config = PagedList.Config.Builder()
         .setEnablePlaceholders(true)
@@ -40,8 +38,6 @@ class MediaViewModel @AssistedInject constructor(
     }
 
     companion object {
-
-        const val ARG_GENRE = "GENRE"
 
         private const val PAGE_SIZE = 40
     }

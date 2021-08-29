@@ -1,4 +1,4 @@
-package net.yakuraion.mangakko.media_impl.ui.media.view.items
+package net.yakuraion.mangakko.media_impl.ui.common
 
 import androidx.recyclerview.widget.DiffUtil
 import net.yakuraion.mangakko.core_entity.Media

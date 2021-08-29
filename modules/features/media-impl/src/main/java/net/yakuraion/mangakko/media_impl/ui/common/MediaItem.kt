@@ -1,4 +1,4 @@
-package net.yakuraion.mangakko.media_impl.ui.media.view.items
+package net.yakuraion.mangakko.media_impl.ui.common
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.media_item_media.view.imageView
 import kotlinx.android.synthetic.main.media_item_media.view.titleTextView
 import net.yakuraion.mangakko.core_entity.Media
 import net.yakuraion.mangakko.media_impl.R
-import net.yakuraion.mangakko.media_impl.ui.media.view.items.MediaItem.ViewHolder
+import net.yakuraion.mangakko.media_impl.ui.common.MediaItem.ViewHolder
 
 class MediaItem(model: Media?) : ModelAbstractItem<Media?, ViewHolder>(model) {
 

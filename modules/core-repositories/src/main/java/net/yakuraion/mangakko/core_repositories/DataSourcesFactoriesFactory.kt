@@ -7,7 +7,6 @@ import net.yakuraion.mangakko.core_entity.Media
 interface DataSourcesFactoriesFactory {
 
     fun createMediaDataSourceFactory(
-        coroutineScope: CoroutineScope,
-        genre: String
+        coroutineScope: CoroutineScope
     ): DataSource.Factory<Int, Media>
 }

@@ -6,5 +6,5 @@ import net.yakuraion.mangakko.core_entity.Page
 
 interface MediaRepository {
 
-    suspend fun getPageMedia(page: Int, perPage: Int, genre: String, sortType: MediaSortType): Page<Media>
+    suspend fun getPageMedia(page: Int, perPage: Int, sortTypes: List<MediaSortType>): Page<Media>
 }

@@ -8,4 +8,9 @@
     <string name="pager_menu_favorites">Favorites</string>
     <string name="pager_menu_settings">Settings</string>
 
+    <string name="media_overview_category_more">More</string>
+
+    <string name="media_overview_category_most_popular">Most popular</string>
+    <string name="media_overview_category_most_rated">Most rated</string>
+
 </resources>

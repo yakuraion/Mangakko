@@ -12,12 +12,11 @@ class DataSourcesFactoriesFactoryImpl @Inject constructor(
 ) : DataSourcesFactoriesFactory {
 
     override fun createMediaDataSourceFactory(
-        coroutineScope: CoroutineScope,
-        genre: String
+        coroutineScope: CoroutineScope
     ): DataSource.Factory<Int, Media> {
         return object : DataSource.Factory<Int, Media>() {
             override fun create(): DataSource<Int, Media> {
-                return mediaDataSourceFactory.create(coroutineScope, genre)
+                return mediaDataSourceFactory.create(coroutineScope)
             }
         }
     }

@@ -12,10 +12,9 @@ class MediaApiImpl @Inject constructor(private val client: ApolloClient) : Media
     override suspend fun getMedia(
         page: Int,
         perPage: Int,
-        genre: String,
-        sort: MediaSort
+        sort: List<MediaSort>
     ): QueryPageMediaQuery.Page {
-        val query = QueryPageMediaQuery(page, perPage, genre, listOf(sort))
+        val query = QueryPageMediaQuery(page, perPage, sort)
         return client.query(query).await().data?.Page()!!
     }
 }

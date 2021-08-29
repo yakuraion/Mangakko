@@ -13,14 +13,9 @@ class MediaRepositoryImpl @Inject constructor(
     private val mediaApi: MediaApi
 ) : MediaRepository {
 
-    override suspend fun getPageMedia(
-        page: Int,
-        perPage: Int,
-        genre: String,
-        sortType: MediaSortType
-    ): Page<Media> {
-        val sortTypeApi = MediaSortTypeToMediaSortApiMapper.invoke(sortType)
-        val response = mediaApi.getMedia(page, perPage, genre, sortTypeApi)
+    override suspend fun getPageMedia(page: Int, perPage: Int, sortTypes: List<MediaSortType>): Page<Media> {
+        val sortTypeApiList = sortTypes.map { MediaSortTypeToMediaSortApiMapper.invoke(it) }
+        val response = mediaApi.getMedia(page, perPage, sortTypeApiList)
         return PageMediaApiToPageMediaMapper.invoke(response)
     }
 }

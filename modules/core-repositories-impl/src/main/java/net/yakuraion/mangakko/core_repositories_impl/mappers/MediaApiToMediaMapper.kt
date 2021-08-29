@@ -9,7 +9,7 @@ object MediaApiToMediaMapper {
         return Media(
             id = value.id(),
             title = value.title()?.romaji().orEmpty(),
-            imageUrl = value.coverImage()?.large().orEmpty()
+            imageUrl = value.coverImage()?.extraLarge().orEmpty()
         )
     }
 }

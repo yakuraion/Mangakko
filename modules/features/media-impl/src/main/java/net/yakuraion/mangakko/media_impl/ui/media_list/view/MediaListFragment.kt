@@ -12,6 +12,7 @@ import net.yakuraion.mangakko.core_entity.Media
 import net.yakuraion.mangakko.core_entity.MediaSortType
 import net.yakuraion.mangakko.core_feature.di.viewmodel.InjectingSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
+import net.yakuraion.mangakko.core_ui.fragment.requireListener
 import net.yakuraion.mangakko.media_impl.R
 import net.yakuraion.mangakko.media_impl.di.injector
 import net.yakuraion.mangakko.media_impl.ui.common.MediaDiffUtilItemCallback
@@ -29,16 +30,24 @@ class MediaListFragment : BaseFragment<MediaListViewModel>(
     @Inject
     override lateinit var abstractViewModelFactory: InjectingSavedStateViewModelFactory
 
+    private lateinit var listener: Listener
+
     private val itemAdapter: PagedModelAdapter<Media, MediaItem> = PagedModelAdapter(
         AsyncDifferConfig.Builder(MediaDiffUtilItemCallback()).build(),
         { MediaItem(null) }
     ) { MediaItem(it) }
 
-    private val adapter: FastAdapter<MediaItem> = FastAdapter.with(itemAdapter)
+    private val adapter: FastAdapter<MediaItem> = FastAdapter.with(itemAdapter).apply {
+        onClickListener = { _, _, item, _ ->
+            item.model?.id?.let { listener.onMediaListMediaClick(it) }
+            true
+        }
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         injector.inject(this)
+        listener = requireListener()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -52,6 +61,11 @@ class MediaListFragment : BaseFragment<MediaListViewModel>(
     override fun onDestroyView() {
         recyclerView.adapter = null
         super.onDestroyView()
+    }
+
+    interface Listener {
+
+        fun onMediaListMediaClick(mediaId: Int)
     }
 
     companion object {

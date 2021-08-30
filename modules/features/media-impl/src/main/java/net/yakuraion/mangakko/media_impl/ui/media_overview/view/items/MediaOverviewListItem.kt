@@ -18,24 +18,26 @@ class MediaOverviewListItem(private val mediaList: List<Media?>) : AbstractItem<
 
     override val type: Int = layoutRes
 
-    private val itemAdapter: ItemAdapter<MediaItem> = ItemAdapter<MediaItem>().apply {
-        set(mediaList.map { MediaItem(it) })
+    override fun getViewHolder(v: View): ViewHolder {
+        val itemAdapter = ItemAdapter<MediaItem>()
+        v.nestedItemsRecyclerView.adapter = FastAdapter.with(itemAdapter)
+        return ViewHolder(v)
     }
-    private val adapter: FastAdapter<MediaItem> = FastAdapter.with(itemAdapter)
-
-    override fun getViewHolder(v: View): ViewHolder = ViewHolder(v)
 
     override fun bindView(holder: ViewHolder, payloads: List<Any>) {
         super.bindView(holder, payloads)
-        holder.apply {
-            itemView.apply {
-                nestedItemsRecyclerView.adapter = adapter
-            }
-        }
+        val items = mediaList.map { MediaItem(it) }
+        holder.getItemAdapter().set(items)
     }
 
     override fun unbindView(holder: ViewHolder) {
-        holder.itemView.nestedItemsRecyclerView.adapter = null
+        holder.getItemAdapter().set(emptyList())
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    private fun ViewHolder.getItemAdapter(): ItemAdapter<MediaItem> {
+        return (itemView.nestedItemsRecyclerView.adapter as FastAdapter<MediaItem>)
+            .adapter(0) as ItemAdapter<MediaItem>
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view)

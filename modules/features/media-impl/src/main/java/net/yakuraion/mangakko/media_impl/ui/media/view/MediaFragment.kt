@@ -11,6 +11,7 @@ import net.yakuraion.mangakko.core_ui.onbackpressed.setUpOnBackPressedForClearBa
 import net.yakuraion.mangakko.media_impl.R
 import net.yakuraion.mangakko.media_impl.di.injector
 import net.yakuraion.mangakko.media_impl.ui.media.viewmodel.MediaViewModel
+import net.yakuraion.mangakko.media_impl.ui.media_details.view.MediaDetailsFragment
 import net.yakuraion.mangakko.media_impl.ui.media_list.view.MediaListFragment
 import net.yakuraion.mangakko.media_impl.ui.media_overview.view.MediaOverviewFragment
 import javax.inject.Inject
@@ -19,7 +20,8 @@ import javax.inject.Inject
 class MediaFragment : BaseFragment<MediaViewModel>(
     MediaViewModel::class,
     R.layout.media_fragment_media
-), MediaOverviewFragment.Listener {
+), MediaOverviewFragment.Listener,
+    MediaListFragment.Listener {
 
     @Inject
     override lateinit var abstractViewModelFactory: InjectingSavedStateViewModelFactory
@@ -53,6 +55,16 @@ class MediaFragment : BaseFragment<MediaViewModel>(
 
     override fun onMediaOverviewCategoryMoreClick(sortTypes: List<MediaSortType>) {
         val fragment = MediaListFragment.createFragment(sortTypes)
+        showFragment(fragment, true)
+    }
+
+    override fun onMediaOverviewMediaClick(mediaId: Int) {
+        val fragment = MediaDetailsFragment.createFragment(mediaId)
+        showFragment(fragment, true)
+    }
+
+    override fun onMediaListMediaClick(mediaId: Int) {
+        val fragment = MediaDetailsFragment.createFragment(mediaId)
         showFragment(fragment, true)
     }
 

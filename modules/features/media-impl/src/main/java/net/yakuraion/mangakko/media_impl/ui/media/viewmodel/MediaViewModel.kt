@@ -23,4 +23,3 @@ class MediaViewModel @AssistedInject constructor(
         override fun create(savedStateHandle: SavedStateHandle): MediaViewModel
     }
 }
-

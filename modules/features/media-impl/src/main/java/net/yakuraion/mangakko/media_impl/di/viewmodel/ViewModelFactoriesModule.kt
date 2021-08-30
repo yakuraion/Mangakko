@@ -1,3 +1,5 @@
+@file:Suppress("MaxLineLength")
+
 package net.yakuraion.mangakko.media_impl.di.viewmodel
 
 import androidx.lifecycle.ViewModel

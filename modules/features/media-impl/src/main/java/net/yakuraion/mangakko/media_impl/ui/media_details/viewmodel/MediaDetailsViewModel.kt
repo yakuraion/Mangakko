@@ -26,4 +26,3 @@ class MediaDetailsViewModel @AssistedInject constructor(
         const val ARG_MEDIA_ID = "MEDIA_ID"
     }
 }
-

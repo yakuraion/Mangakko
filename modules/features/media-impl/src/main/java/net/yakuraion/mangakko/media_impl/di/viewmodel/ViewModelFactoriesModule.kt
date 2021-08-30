@@ -21,13 +21,13 @@ interface ViewModelFactoriesModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(MediaListViewModel::class)
-    fun bindsMediaList(impl: MediaListViewModel.Factory): AssistedSavedStateViewModelFactory<out ViewModel>
+    @ViewModelKey(MediaOverviewViewModel::class)
+    fun bindsMediaOverview(impl: MediaOverviewViewModel.Factory): AssistedSavedStateViewModelFactory<out ViewModel>
 
     @Binds
     @IntoMap
-    @ViewModelKey(MediaOverviewViewModel::class)
-    fun bindsMediaOverview(impl: MediaOverviewViewModel.Factory): AssistedSavedStateViewModelFactory<out ViewModel>
+    @ViewModelKey(MediaListViewModel::class)
+    fun bindsMediaList(impl: MediaListViewModel.Factory): AssistedSavedStateViewModelFactory<out ViewModel>
 
     @Binds
     @IntoMap

@@ -16,9 +16,9 @@ interface FeatureComponent {
 
     fun inject(fragment: MediaFragment)
 
-    fun inject(fragment: MediaListFragment)
-
     fun inject(fragment: MediaOverviewFragment)
+
+    fun inject(fragment: MediaListFragment)
 
     fun inject(fragment: MediaDetailsFragment)
 

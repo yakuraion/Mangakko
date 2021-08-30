@@ -12,12 +12,13 @@ import net.yakuraion.mangakko.core_repositories.MediaRepository
 
 class MediaDataSource @AssistedInject constructor(
     @Assisted private val coroutineScope: CoroutineScope,
+    @Assisted private val sortTypes: List<MediaSortType>,
     private val mediaRepository: MediaRepository
 ) : PageKeyedDataSource<Int, Media>() {
 
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Media>) {
         coroutineScope.launch {
-            val page = mediaRepository.getPageMedia(0, params.requestedLoadSize, listOf(SORT_TYPE))
+            val page = mediaRepository.getPageMedia(0, params.requestedLoadSize, sortTypes)
             val nextPageKey = if (page.hasNextPage) 1 else null
             if (params.placeholdersEnabled) {
                 callback.onResult(page.values, null, nextPageKey)
@@ -33,7 +34,7 @@ class MediaDataSource @AssistedInject constructor(
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Media>) {
         coroutineScope.launch {
-            val page = mediaRepository.getPageMedia(params.key, params.requestedLoadSize, listOf(SORT_TYPE))
+            val page = mediaRepository.getPageMedia(params.key, params.requestedLoadSize, sortTypes)
             val nextPageKey = if (page.hasNextPage) params.key + 1 else null
             callback.onResult(page.values, nextPageKey)
         }
@@ -42,11 +43,6 @@ class MediaDataSource @AssistedInject constructor(
     @AssistedFactory
     interface Factory {
 
-        fun create(coroutineScope: CoroutineScope): MediaDataSource
-    }
-
-    companion object {
-
-        private val SORT_TYPE = MediaSortType.POPULARITY_DESC
+        fun create(coroutineScope: CoroutineScope, sortTypes: List<MediaSortType>): MediaDataSource
     }
 }

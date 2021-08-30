@@ -4,6 +4,7 @@ import dagger.Component
 import net.yakuraion.mangakko.core_di.app_provider.AppProvider
 import net.yakuraion.mangakko.media_impl.di.viewmodel.ViewModelFactoriesModule
 import net.yakuraion.mangakko.media_impl.ui.media.view.MediaFragment
+import net.yakuraion.mangakko.media_impl.ui.media_list.view.MediaListFragment
 import net.yakuraion.mangakko.media_impl.ui.media_overview.view.MediaOverviewFragment
 
 @Component(
@@ -13,6 +14,8 @@ import net.yakuraion.mangakko.media_impl.ui.media_overview.view.MediaOverviewFra
 interface FeatureComponent {
 
     fun inject(fragment: MediaFragment)
+
+    fun inject(fragment: MediaListFragment)
 
     fun inject(fragment: MediaOverviewFragment)
 

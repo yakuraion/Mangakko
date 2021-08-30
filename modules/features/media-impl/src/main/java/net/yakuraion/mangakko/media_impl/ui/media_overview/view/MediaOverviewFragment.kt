@@ -7,8 +7,10 @@ import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import kotlinx.android.synthetic.main.media_fragment_media_overview.recyclerView
 import net.yakuraion.mangakko.core_entity.Media
+import net.yakuraion.mangakko.core_entity.MediaSortType
 import net.yakuraion.mangakko.core_feature.di.viewmodel.InjectingSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
+import net.yakuraion.mangakko.core_ui.fragment.requireListener
 import net.yakuraion.mangakko.media_impl.R
 import net.yakuraion.mangakko.media_impl.di.injector
 import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.MOST_POPULAR
@@ -25,6 +27,8 @@ class MediaOverviewFragment : BaseFragment<MediaOverviewViewModel>(
 
     @Inject
     override lateinit var abstractViewModelFactory: InjectingSavedStateViewModelFactory
+
+    private lateinit var listener: Listener
 
     private val mostPopularTitleItemAdapter: ItemAdapter<MediaOverviewListTitleItem> =
         ItemAdapter<MediaOverviewListTitleItem>().apply {
@@ -48,7 +52,9 @@ class MediaOverviewFragment : BaseFragment<MediaOverviewViewModel>(
     ).apply {
         addEventHooks(
             listOf(
-                MediaOverviewListTitleItem.MoreClickEventHook {},
+                MediaOverviewListTitleItem.MoreClickEventHook { category ->
+                    listener.onMediaOverviewCategoryMoreClick(category.toSortTypes())
+                },
                 MediaOverviewListItem.NestedMediaClickEventHook {}
             )
         )
@@ -57,6 +63,7 @@ class MediaOverviewFragment : BaseFragment<MediaOverviewViewModel>(
     override fun onAttach(context: Context) {
         super.onAttach(context)
         injector.inject(this)
+        listener = requireListener()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -80,6 +87,11 @@ class MediaOverviewFragment : BaseFragment<MediaOverviewViewModel>(
     override fun onDestroyView() {
         recyclerView.adapter = null
         super.onDestroyView()
+    }
+
+    interface Listener {
+
+        fun onMediaOverviewCategoryMoreClick(sortTypes: List<MediaSortType>)
     }
 
     companion object {

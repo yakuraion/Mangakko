@@ -7,6 +7,7 @@ import dagger.multibindings.IntoMap
 import net.yakuraion.mangakko.core_feature.di.viewmodel.AssistedSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.di.viewmodel.ViewModelKey
 import net.yakuraion.mangakko.media_impl.ui.media.viewmodel.MediaViewModel
+import net.yakuraion.mangakko.media_impl.ui.media_list.viewmodel.MediaListViewModel
 import net.yakuraion.mangakko.media_impl.ui.media_overview.viewmodel.MediaOverviewViewModel
 
 @Module
@@ -16,6 +17,11 @@ interface ViewModelFactoriesModule {
     @IntoMap
     @ViewModelKey(MediaViewModel::class)
     fun bindsMedia(impl: MediaViewModel.Factory): AssistedSavedStateViewModelFactory<out ViewModel>
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MediaListViewModel::class)
+    fun bindsMediaList(impl: MediaListViewModel.Factory): AssistedSavedStateViewModelFactory<out ViewModel>
 
     @Binds
     @IntoMap

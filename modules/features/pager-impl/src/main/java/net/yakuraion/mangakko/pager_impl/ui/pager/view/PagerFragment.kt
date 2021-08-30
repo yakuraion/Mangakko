@@ -89,7 +89,7 @@ class PagerFragment : BaseFragment<PagerViewModel>(
 
     private fun Page.createFragment(): Fragment {
         return when (this) {
-            HOME -> mediaFeature.getMediaOverviewFragment()
+            HOME -> mediaFeature.getMediaFragment()
             ONGOINGS -> Fragment()
             FAVORITES -> Fragment()
             SETTINGS -> Fragment()

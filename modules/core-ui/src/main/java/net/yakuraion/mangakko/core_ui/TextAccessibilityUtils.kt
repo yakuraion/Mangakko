@@ -11,4 +11,5 @@ fun calculateTextColorByBackground(context: Context, @ColorInt bgColor: Int): In
     return ContextCompat.getColor(context, resId)
 }
 
+@Suppress("MagicNumber")
 private fun isDarkColor(@ColorInt color: Int): Boolean = ColorUtils.calculateLuminance(color) < 0.5

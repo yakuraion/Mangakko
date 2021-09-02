@@ -1,11 +1,12 @@
 package net.yakuraion.mangakko.core_feature.di.viewmodel
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStoreOwner
+import androidx.savedstate.SavedStateRegistryOwner
 import dagger.Reusable
 import javax.inject.Inject
 import javax.inject.Provider
@@ -18,12 +19,14 @@ class InjectingSavedStateViewModelFactory @Inject constructor(
 ) {
 
     @Suppress("UNCHECKED_CAST")
-    fun <VM : ViewModel> create(
+    fun <VM : ViewModel, Owner> create(
         viewModelClass: KClass<out ViewModel>,
-        fragment: Fragment,
+        owner: Owner,
         defaultArgs: Bundle? = null
-    ): VM {
-        val factory = object : AbstractSavedStateViewModelFactory(fragment, defaultArgs) {
+    ): VM
+            where Owner : SavedStateRegistryOwner,
+                  Owner : ViewModelStoreOwner {
+        val factory = object : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
 
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel?> create(
@@ -41,7 +44,7 @@ class InjectingSavedStateViewModelFactory @Inject constructor(
             }
         }
         try {
-            return ViewModelProvider(fragment, factory)[viewModelClass.java] as VM
+            return ViewModelProvider(owner, factory)[viewModelClass.java] as VM
         } catch (e: Exception) {
             throw RuntimeException(e)
         }

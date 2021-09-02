@@ -13,4 +13,5 @@ dependencies {
     implementation(project(":modules:core-feature"))
 
     implementation(project(":modules:features:pager"))
+    implementation(project(":modules:features:media"))
 }

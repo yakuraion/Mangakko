@@ -9,8 +9,10 @@ import androidx.fragment.app.FragmentTransaction
 import kotlinx.android.synthetic.main.pager_fragment_pager.bottomNavigationView
 import net.yakuraion.mangakko.core_feature.di.viewmodel.InjectingSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
+import net.yakuraion.mangakko.core_ui.fragment.requireListener
 import net.yakuraion.mangakko.core_ui.onbackpressed.addCallback
 import net.yakuraion.mangakko.media.MediaFeature
+import net.yakuraion.mangakko.pager.PagerFeature
 import net.yakuraion.mangakko.pager_impl.R
 import net.yakuraion.mangakko.pager_impl.di.injector
 import net.yakuraion.mangakko.pager_impl.ui.pager.view.PagerFragment.Page.FAVORITES
@@ -23,10 +25,12 @@ import javax.inject.Inject
 class PagerFragment : BaseFragment<PagerViewModel>(
     PagerViewModel::class,
     R.layout.pager_fragment_pager
-) {
+), MediaFeature.Owner {
 
     @Inject
     override lateinit var abstractViewModelFactory: InjectingSavedStateViewModelFactory
+
+    private lateinit var featureOwner: PagerFeature.Owner
 
     @Inject
     lateinit var mediaFeature: MediaFeature
@@ -34,6 +38,7 @@ class PagerFragment : BaseFragment<PagerViewModel>(
     override fun onAttach(context: Context) {
         super.onAttach(context)
         injector.inject(this)
+        featureOwner = requireListener()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -101,6 +106,10 @@ class PagerFragment : BaseFragment<PagerViewModel>(
         ONGOINGS(R.id.itemOngoings),
         FAVORITES(R.id.itemFavorites),
         SETTINGS(R.id.itemSettings)
+    }
+
+    override fun onMediaMediaChosen(mediaId: Int) {
+        featureOwner.onPagerMediaChosen(mediaId)
     }
 
     companion object {

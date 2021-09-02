@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="TextAppearance" />
+    <style name="TextAppearance">
+        <item name="android:textColor">?textColor</item>
+    </style>
 
     <style name="TextAppearance.Title1">
         <item name="android:textSize">32sp</item>

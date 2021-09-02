@@ -1,0 +1,13 @@
+query QueryMediaDetails($id: Int!) {
+    Media(id: $id) {
+        id
+        title {
+            romaji
+        }
+        coverImage {
+            extraLarge
+            color
+        }
+        description
+    }
+}

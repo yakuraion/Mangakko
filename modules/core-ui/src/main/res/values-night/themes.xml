@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.App" parent="Theme.Base">
+        <item name="windowBackground">@color/black</item>
+        <item name="textColor">@color/text_light</item>
+    </style>
+
+</resources>

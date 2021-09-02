@@ -5,4 +5,6 @@ import net.yakuraion.mangakko.core_network.type.MediaSort
 interface MediaApi {
 
     suspend fun getMedia(page: Int, perPage: Int, sort: List<MediaSort>): QueryPageMediaQuery.Page
+
+    suspend fun getMediaDetails(id: Int): QueryMediaDetailsQuery.Media
 }

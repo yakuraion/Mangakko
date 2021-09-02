@@ -3,6 +3,9 @@ package net.yakuraion.mangakko.media_impl.ui.media_overview.view
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import kotlinx.android.synthetic.main.media_fragment_media_overview.recyclerView
@@ -70,6 +73,7 @@ class MediaOverviewFragment : BaseFragment<MediaOverviewViewModel>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setUpInsets()
         recyclerView.adapter = fastAdapter
         viewModel.apply {
             mostPopularMediaListLiveData.observe(viewLifecycleOwner) { mediaList ->
@@ -78,6 +82,14 @@ class MediaOverviewFragment : BaseFragment<MediaOverviewViewModel>(
             mostRatedMediaListLiveData.observe(viewLifecycleOwner) { mediaList ->
                 updateMediaList(mostRatedItemAdapter, mediaList)
             }
+        }
+    }
+
+    private fun setUpInsets() {
+        ViewCompat.setOnApplyWindowInsetsListener(recyclerView) { view, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.updatePadding(top = insets.top)
+            WindowInsetsCompat.CONSUMED
         }
     }
 

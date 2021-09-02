@@ -1,9 +1,15 @@
 package net.yakuraion.mangakko.media_impl.ui.media_details.view
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup.MarginLayoutParams
 import androidx.core.os.bundleOf
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updateMargins
 import com.bumptech.glide.Glide
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
@@ -46,6 +52,8 @@ class MediaDetailsFragment : BaseFragment<MediaDetailsViewModel>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        statusBarColor = Color.TRANSPARENT
+        setUpInsets()
         setUpRecyclerView()
         viewModel.apply {
             mediaDetailsLiveData.observe(viewLifecycleOwner) { updateMediaViews(it) }
@@ -62,6 +70,16 @@ class MediaDetailsFragment : BaseFragment<MediaDetailsViewModel>(
         }
     }
 
+    private fun setUpInsets() {
+        ViewCompat.setOnApplyWindowInsetsListener(requireView()) { _, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            coverImageView.updateLayoutParams<MarginLayoutParams> {
+                updateMargins(top = COVER_IMAGE_TOP_MARGIN_DP.dpToPxInt() + insets.top)
+            }
+            WindowInsetsCompat.CONSUMED
+        }
+    }
+
     private fun updateMediaViews(media: MediaDetails) {
         updateMainColorViews(media.mainColor)
         updateCoverImageView(media.imageUrl)
@@ -71,7 +89,6 @@ class MediaDetailsFragment : BaseFragment<MediaDetailsViewModel>(
 
     private fun updateMainColorViews(color: Int) {
         requireView().setBackgroundColor(color)
-        statusBarColor = color
         titleTextView.setTextColor(calculateTextColorByBackground(requireContext(), color))
     }
 
@@ -95,6 +112,8 @@ class MediaDetailsFragment : BaseFragment<MediaDetailsViewModel>(
     companion object {
 
         private const val RECYCLER_VIEW_PADDING_DP = 16f
+
+        private const val COVER_IMAGE_TOP_MARGIN_DP = 16f
 
         fun createFragment(mediaId: Int): MediaDetailsFragment {
             return MediaDetailsFragment().apply {

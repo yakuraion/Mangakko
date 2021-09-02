@@ -24,13 +24,13 @@
                     android:id="@+id/coverImageView"
                     android:layout_width="wrap_content"
                     android:layout_height="300dp"
-                    android:layout_marginTop="16dp"
                     android:background="@android:color/white"
                     android:elevation="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="ContentDescription" />
+                    tools:ignore="ContentDescription"
+                    tools:layout_marginTop="16dp" />
 
                 <TextView
                     android:id="@+id/titleTextView"

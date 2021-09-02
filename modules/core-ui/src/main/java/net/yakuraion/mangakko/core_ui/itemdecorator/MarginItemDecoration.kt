@@ -32,11 +32,11 @@ import androidx.recyclerview.widget.RecyclerView
  *
  */
 class MarginItemDecoration(
-    private val vertical: Int,
     private val horizontal: Int,
+    private val vertical: Int,
     private val left: Int,
-    private val top: Int,
     private val right: Int,
+    private val top: Int,
     private val bottom: Int
 ) : RecyclerView.ItemDecoration() {
 
@@ -74,11 +74,11 @@ class MarginItemDecoration(
     ) {
         val rect = if (orientation == LinearLayout.VERTICAL) {
             getItemOffsetsRectForVertical(
-                position, spanCount, childCount, vertical, horizontal, left, top, right, bottom
+                position, spanCount, childCount, horizontal, vertical, left, right, top, bottom
             )
         } else {
             getItemOffsetsRectForVertical(
-                position, spanCount, childCount, horizontal, vertical, top, right, bottom, left
+                position, spanCount, childCount, horizontal, vertical, top, bottom, right, left
             ).rotateToLeft90()
         }
         outRect.set(rect)
@@ -88,11 +88,11 @@ class MarginItemDecoration(
         position: Int,
         spanCount: Int,
         childCount: Int,
-        vertical: Int,
         horizontal: Int,
+        vertical: Int,
         left: Int,
-        top: Int,
         right: Int,
+        top: Int,
         bottom: Int
     ): Rect {
         val isOnTopRow = position < spanCount
@@ -118,32 +118,32 @@ class MarginItemDecoration(
     }
 }
 
-fun RecyclerView.setItemMargins(vertical: Int, horizontal: Int) {
+fun RecyclerView.setItemMargins(horizontal: Int, vertical: Int) {
     val itemDecoration = MarginItemDecoration(
-        vertical = vertical,
         horizontal = horizontal,
+        vertical = vertical,
         left = horizontal,
-        top = vertical,
         right = horizontal,
+        top = vertical,
         bottom = vertical
     )
     addItemDecoration(itemDecoration)
 }
 
 fun RecyclerView.setItemMargins(
-    vertical: Int,
     horizontal: Int,
+    vertical: Int,
     left: Int,
-    top: Int,
     right: Int,
+    top: Int,
     bottom: Int
 ) {
     val itemDecoration = MarginItemDecoration(
-        vertical = vertical,
         horizontal = horizontal,
+        vertical = vertical,
         left = left,
-        top = top,
         right = right,
+        top = top,
         bottom = bottom
     )
     addItemDecoration(itemDecoration)

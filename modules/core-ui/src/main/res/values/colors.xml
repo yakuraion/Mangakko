@@ -2,8 +2,10 @@
 <resources>
     <color name="white">#ffffff</color>
     <color name="white_50">#80ffffff</color>
+    <color name="white_75">#c0ffffff</color>
     <color name="black">#000000</color>
     <color name="black_50">#80000000</color>
+    <color name="black_75">#c0000000</color>
     <color name="amber">#ff5733</color>
 
     <color name="text_light">#cccccc</color>

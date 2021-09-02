@@ -5,4 +5,5 @@
 
     <attr name="windowBackground" format="color" />
     <attr name="textColor" format="color" />
+    <attr name="behindTextWithAlpha" format="color" />
 </resources>

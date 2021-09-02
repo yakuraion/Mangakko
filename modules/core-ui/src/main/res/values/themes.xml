@@ -21,6 +21,7 @@
 
         <item name="windowBackground">@color/white</item>
         <item name="textColor">@color/text_dark</item>
+        <item name="behindTextWithAlpha">@color/white_75</item>
     </style>
 
 </resources>

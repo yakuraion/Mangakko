@@ -7,7 +7,7 @@ const val apolloVersion = "2.5.9"
 
 object AndroidSdk {
 
-    const val min = 21
+    const val min = 23
     const val compile = 30
     const val target = compile
 }

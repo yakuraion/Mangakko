@@ -6,7 +6,7 @@ const val kotlinVersion = "1.4.32"
 
 object AndroidSdk {
 
-    const val min = 21
+    const val min = 23
     const val compile = 30
     const val target = compile
 }

@@ -4,6 +4,9 @@
     <style name="Theme" />
 
     <style name="Theme.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor">?statusBarColor</item>
+        <item name="android:navigationBarColor">?navigationBarColor</item>
+
         <item name="android:forceDarkAllowed" tools:ignore="NewApi">false</item>
         <item name="android:windowBackground">?windowBackground</item>
 
@@ -11,8 +14,8 @@
     </style>
 
     <style name="Theme.App" parent="Theme.Base">
-        <item name="android:statusBarColor">@color/white_50</item>
-        <item name="android:navigationBarColor">@color/white_50</item>
+        <item name="statusBarColor">@color/white_50</item>
+        <item name="navigationBarColor">@color/white_50</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
 

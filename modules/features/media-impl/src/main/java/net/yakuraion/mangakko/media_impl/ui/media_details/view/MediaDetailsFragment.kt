@@ -10,9 +10,12 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updateMargins
+import androidx.core.view.updatePadding
 import com.bumptech.glide.Glide
+import com.google.android.material.appbar.AppBarLayout
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
+import kotlinx.android.synthetic.main.media_fragment_media_details.appBarLayout
 import kotlinx.android.synthetic.main.media_fragment_media_details.coverImageView
 import kotlinx.android.synthetic.main.media_fragment_media_details.recyclerView
 import kotlinx.android.synthetic.main.media_fragment_media_details.titleTextView
@@ -22,6 +25,7 @@ import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
 import net.yakuraion.mangakko.core_ui.calculateTextColorByBackground
 import net.yakuraion.mangakko.core_ui.dpToPxInt
 import net.yakuraion.mangakko.core_ui.itemdecorator.setItemMargins
+import net.yakuraion.mangakko.core_ui.resolveColorAttr
 import net.yakuraion.mangakko.core_ui.statusBarColor
 import net.yakuraion.mangakko.media_impl.R
 import net.yakuraion.mangakko.media_impl.di.injector
@@ -29,6 +33,7 @@ import net.yakuraion.mangakko.media_impl.ui.media_details.view.items.MediaDetail
 import net.yakuraion.mangakko.media_impl.ui.media_details.viewmodel.MediaDetailsViewModel
 import net.yakuraion.mangakko.media_impl.ui.media_details.viewmodel.MediaDetailsViewModel.Companion.ARG_MEDIA_ID
 import javax.inject.Inject
+import kotlin.math.abs
 
 class MediaDetailsFragment : BaseFragment<MediaDetailsViewModel>(
     MediaDetailsViewModel::class,
@@ -52,7 +57,7 @@ class MediaDetailsFragment : BaseFragment<MediaDetailsViewModel>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        statusBarColor = Color.TRANSPARENT
+        setUpStatusBarColor()
         setUpInsets()
         setUpRecyclerView()
         viewModel.apply {
@@ -60,14 +65,15 @@ class MediaDetailsFragment : BaseFragment<MediaDetailsViewModel>(
         }
     }
 
-    private fun setUpRecyclerView() {
-        recyclerView.apply {
-            adapter = this@MediaDetailsFragment.adapter
-            setItemMargins(
-                RECYCLER_VIEW_PADDING_DP.dpToPxInt(),
-                RECYCLER_VIEW_PADDING_DP.dpToPxInt()
-            )
-        }
+    private fun setUpStatusBarColor() {
+        appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+            val isAppBarLayoutVisible = abs(verticalOffset) != appBarLayout.totalScrollRange
+            statusBarColor = if (isAppBarLayoutVisible) {
+                Color.TRANSPARENT
+            } else {
+                requireContext().resolveColorAttr(R.attr.statusBarColor)
+            }
+        })
     }
 
     private fun setUpInsets() {
@@ -76,7 +82,22 @@ class MediaDetailsFragment : BaseFragment<MediaDetailsViewModel>(
             coverImageView.updateLayoutParams<MarginLayoutParams> {
                 updateMargins(top = COVER_IMAGE_TOP_MARGIN_DP.dpToPxInt() + insets.top)
             }
+            recyclerView.updatePadding(top = insets.top, bottom = insets.bottom)
             WindowInsetsCompat.CONSUMED
+        }
+    }
+
+    private fun setUpRecyclerView() {
+        recyclerView.apply {
+            adapter = this@MediaDetailsFragment.adapter
+            setItemMargins(
+                RECYCLER_VIEW_HORIZONTAL_PADDING_DP.dpToPxInt(),
+                RECYCLER_VIEW_VERTICAL_PADDING_DP.dpToPxInt(),
+                RECYCLER_VIEW_HORIZONTAL_PADDING_DP.dpToPxInt(),
+                RECYCLER_VIEW_HORIZONTAL_PADDING_DP.dpToPxInt(),
+                RECYCLER_VIEW_TOP_PADDING_DP.dpToPxInt(),
+                RECYCLER_VIEW_VERTICAL_PADDING_DP.dpToPxInt()
+            )
         }
     }
 
@@ -111,7 +132,9 @@ class MediaDetailsFragment : BaseFragment<MediaDetailsViewModel>(
 
     companion object {
 
-        private const val RECYCLER_VIEW_PADDING_DP = 16f
+        private const val RECYCLER_VIEW_HORIZONTAL_PADDING_DP = 16f
+        private const val RECYCLER_VIEW_VERTICAL_PADDING_DP = 16f
+        private const val RECYCLER_VIEW_TOP_PADDING_DP = 4f
 
         private const val COVER_IMAGE_TOP_MARGIN_DP = 16f
 

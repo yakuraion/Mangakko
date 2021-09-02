@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="statusBarColor" format="color" />
+    <attr name="navigationBarColor" format="color" />
+
     <attr name="windowBackground" format="color" />
     <attr name="textColor" format="color" />
 </resources>

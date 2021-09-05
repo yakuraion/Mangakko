@@ -8,6 +8,8 @@ import com.mikepenz.fastadapter.items.AbstractItem
 import com.mikepenz.fastadapter.listeners.CustomEventHook
 import kotlinx.android.synthetic.main.media_item_media_overview_list.view.nestedItemsRecyclerView
 import net.yakuraion.mangakko.core_entity.Media
+import net.yakuraion.mangakko.core_ui.dpToPxInt
+import net.yakuraion.mangakko.core_ui.itemdecorator.setItemMargins
 import net.yakuraion.mangakko.media_impl.R
 import net.yakuraion.mangakko.media_impl.ui.common.MediaItem
 import net.yakuraion.mangakko.media_impl.ui.media_overview.view.items.MediaOverviewListItem.ViewHolder
@@ -20,7 +22,13 @@ class MediaOverviewListItem(private val mediaList: List<Media?>) : AbstractItem<
 
     override fun getViewHolder(v: View): ViewHolder {
         val itemAdapter = ItemAdapter<MediaItem>()
-        v.nestedItemsRecyclerView.adapter = FastAdapter.with(itemAdapter)
+        v.nestedItemsRecyclerView.apply {
+            adapter = FastAdapter.with(itemAdapter)
+            setItemMargins(
+                NESTED_RECYCLER_VIEW_PADDING_DP.dpToPxInt(),
+                NESTED_RECYCLER_VIEW_PADDING_DP.dpToPxInt()
+            )
+        }
         return ViewHolder(v)
     }
 
@@ -56,5 +64,10 @@ class MediaOverviewListItem(private val mediaList: List<Media?>) : AbstractItem<
                 true
             }
         }
+    }
+
+    companion object {
+
+        private const val NESTED_RECYCLER_VIEW_PADDING_DP = 8f
     }
 }

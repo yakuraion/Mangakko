@@ -8,7 +8,7 @@
         <item name="android:navigationBarColor">?navigationBarColor</item>
 
         <item name="android:forceDarkAllowed" tools:ignore="NewApi">false</item>
-        <item name="android:windowBackground">?windowBackground</item>
+        <item name="android:windowBackground">?windowBackgroundColor</item>
 
         <item name="appBarLayoutStyle">@style/Style.AppBarLayout</item>
     </style>
@@ -19,9 +19,10 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
 
-        <item name="windowBackground">@color/white</item>
+        <item name="windowBackgroundColor">@color/light_grey</item>
+        <item name="surfaceColor">@color/white</item>
         <item name="textColor">@color/text_dark</item>
-        <item name="behindTextWithAlpha">@color/white_75</item>
+        <item name="behindTextWithAlphaColor">@color/white_75</item>
     </style>
 
 </resources>

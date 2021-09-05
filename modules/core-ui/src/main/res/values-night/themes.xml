@@ -5,9 +5,10 @@
         <item name="statusBarColor">@color/black_50</item>
         <item name="navigationBarColor">@color/black_50</item>
 
-        <item name="windowBackground">@color/black</item>
+        <item name="windowBackgroundColor">@color/black</item>
+        <item name="surfaceColor">@color/dark_grey</item>
         <item name="textColor">@color/text_light</item>
-        <item name="behindTextWithAlpha">@color/black_75</item>
+        <item name="behindTextWithAlphaColor">@color/black_75</item>
     </style>
 
 </resources>

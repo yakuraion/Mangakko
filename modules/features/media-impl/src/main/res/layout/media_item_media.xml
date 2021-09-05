@@ -17,17 +17,20 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/titleTextView"
         android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:background="?behindTextWithAlpha"
+        android:layout_height="60dp"
+        android:background="?behindTextWithAlphaColor"
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="2"
         android:paddingHorizontal="16dp"
         android:paddingVertical="8dp"
         android:textAppearance="@style/TextAppearance.Normal"
+        app:autoSizeMaxTextSize="22sp"
+        app:autoSizeMinTextSize="16sp"
+        app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

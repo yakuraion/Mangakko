@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.media_item_media_overview_list_title.view.
 import kotlinx.android.synthetic.main.media_item_media_overview_list_title.view.titleTextView
 import net.yakuraion.mangakko.media_impl.R
 import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory
+import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.IN_TREND
 import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.MOST_POPULAR
 import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.MOST_RATED
 import net.yakuraion.mangakko.media_impl.ui.media_overview.view.items.MediaOverviewListTitleItem.ViewHolder
@@ -30,6 +31,7 @@ class MediaOverviewListTitleItem(private val category: MediaOverviewCategory) : 
     @StringRes
     private fun MediaOverviewCategory.getTitleRes(): Int {
         return when (this) {
+            IN_TREND -> R.string.media_overview_category_in_trend
             MOST_POPULAR -> R.string.media_overview_category_most_popular
             MOST_RATED -> R.string.media_overview_category_most_rated
         }

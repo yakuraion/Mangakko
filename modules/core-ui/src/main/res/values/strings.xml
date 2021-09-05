@@ -10,6 +10,7 @@
 
     <string name="media_overview_category_more">More</string>
 
+    <string name="media_overview_category_in_trend">In trend</string>
     <string name="media_overview_category_most_popular">Most popular</string>
     <string name="media_overview_category_most_rated">Most rated</string>
 

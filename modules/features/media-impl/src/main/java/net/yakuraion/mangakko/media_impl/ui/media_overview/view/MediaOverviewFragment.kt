@@ -16,6 +16,7 @@ import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
 import net.yakuraion.mangakko.core_ui.fragment.requireListener
 import net.yakuraion.mangakko.media_impl.R
 import net.yakuraion.mangakko.media_impl.di.injector
+import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.IN_TREND
 import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.MOST_POPULAR
 import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.MOST_RATED
 import net.yakuraion.mangakko.media_impl.ui.media_overview.view.items.MediaOverviewListItem
@@ -33,6 +34,12 @@ class MediaOverviewFragment : BaseFragment<MediaOverviewViewModel>(
 
     private lateinit var listener: Listener
 
+    private val inTrendTitleItemAdapter: ItemAdapter<MediaOverviewListTitleItem> =
+        ItemAdapter<MediaOverviewListTitleItem>().apply {
+            set(listOf(MediaOverviewListTitleItem(IN_TREND)))
+        }
+    private val inTrendItemAdapter: ItemAdapter<MediaOverviewListItem> = ItemAdapter()
+
     private val mostPopularTitleItemAdapter: ItemAdapter<MediaOverviewListTitleItem> =
         ItemAdapter<MediaOverviewListTitleItem>().apply {
             set(listOf(MediaOverviewListTitleItem(MOST_POPULAR)))
@@ -47,6 +54,8 @@ class MediaOverviewFragment : BaseFragment<MediaOverviewViewModel>(
 
     private val fastAdapter: FastAdapter<*> = FastAdapter.with(
         listOf(
+            inTrendTitleItemAdapter,
+            inTrendItemAdapter,
             mostPopularTitleItemAdapter,
             mostPopularItemAdapter,
             mostRatedTitleItemAdapter,
@@ -76,6 +85,9 @@ class MediaOverviewFragment : BaseFragment<MediaOverviewViewModel>(
         setUpInsets()
         recyclerView.adapter = fastAdapter
         viewModel.apply {
+            inTrendMediaListLiveData.observe(viewLifecycleOwner) { mediaList ->
+                updateMediaList(inTrendItemAdapter, mediaList)
+            }
             mostPopularMediaListLiveData.observe(viewLifecycleOwner) { mediaList ->
                 updateMediaList(mostPopularItemAdapter, mediaList)
             }

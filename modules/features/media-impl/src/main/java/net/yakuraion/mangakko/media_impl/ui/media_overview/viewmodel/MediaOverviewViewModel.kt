@@ -18,6 +18,11 @@ class MediaOverviewViewModel @AssistedInject constructor(
     private val mediaInteractor: MediaInteractor
 ) : BaseViewModel() {
 
+    val inTrendMediaListLiveData: LiveData<List<Media?>> = liveData(coroutineContext) {
+        emit(List(ITEMS_IN_CATEGORY) { null })
+        emit(mediaInteractor.getInTrendMedia(ITEMS_IN_CATEGORY))
+    }
+
     val mostPopularMediaListLiveData: LiveData<List<Media?>> = liveData(coroutineContext) {
         emit(List(ITEMS_IN_CATEGORY) { null })
         emit(mediaInteractor.getMostPopularMedia(ITEMS_IN_CATEGORY))

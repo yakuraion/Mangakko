@@ -5,6 +5,9 @@
 
     <attr name="windowBackgroundColor" format="color" />
     <attr name="surfaceColor" format="color" />
+
     <attr name="textColor" format="color" />
     <attr name="behindTextWithAlphaColor" format="color" />
+
+    <attr name="placeholderColor" format="color" />
 </resources>

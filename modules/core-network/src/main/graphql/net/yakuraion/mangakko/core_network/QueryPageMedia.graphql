@@ -11,6 +11,7 @@ query QueryPageMedia($page: Int!, $perPage: Int!, $sort: [MediaSort!]!) {
             }
             coverImage {
                 extraLarge
+                color
             }
         }
     }

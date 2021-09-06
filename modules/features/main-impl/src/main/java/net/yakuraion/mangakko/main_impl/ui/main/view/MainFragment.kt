@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import net.yakuraion.mangakko.core_entity.Media
 import net.yakuraion.mangakko.core_feature.di.viewmodel.InjectingSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
 import net.yakuraion.mangakko.core_ui.onbackpressed.setUpOnBackPressedForClearBackStack
@@ -43,8 +44,8 @@ class MainFragment : BaseFragment<MainViewModel>(
         }
     }
 
-    override fun onPagerMediaChosen(mediaId: Int) {
-        val fragment = mediaFeature.getMediaDetailsFragment(mediaId)
+    override fun onPagerMediaChosen(media: Media) {
+        val fragment = mediaFeature.getMediaDetailsFragment(media)
         showFragment(fragment, true)
     }
 

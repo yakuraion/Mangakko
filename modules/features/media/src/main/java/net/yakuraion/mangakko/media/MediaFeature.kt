@@ -1,6 +1,7 @@
 package net.yakuraion.mangakko.media
 
 import androidx.fragment.app.Fragment
+import net.yakuraion.mangakko.core_entity.Media
 
 interface MediaFeature {
 
@@ -8,8 +9,10 @@ interface MediaFeature {
 
     fun getMediaDetailsFragment(mediaId: Int): Fragment
 
+    fun getMediaDetailsFragment(media: Media): Fragment
+
     interface Owner {
 
-        fun onMediaMediaChosen(mediaId: Int)
+        fun onMediaMediaChosen(media: Media)
     }
 }

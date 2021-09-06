@@ -7,6 +7,7 @@ import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import kotlinx.android.synthetic.main.pager_fragment_pager.bottomNavigationView
+import net.yakuraion.mangakko.core_entity.Media
 import net.yakuraion.mangakko.core_feature.di.viewmodel.InjectingSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
 import net.yakuraion.mangakko.core_ui.fragment.requireListener
@@ -108,8 +109,8 @@ class PagerFragment : BaseFragment<PagerViewModel>(
         SETTINGS(R.id.itemSettings)
     }
 
-    override fun onMediaMediaChosen(mediaId: Int) {
-        featureOwner.onPagerMediaChosen(mediaId)
+    override fun onMediaMediaChosen(media: Media) {
+        featureOwner.onPagerMediaChosen(media)
     }
 
     companion object {

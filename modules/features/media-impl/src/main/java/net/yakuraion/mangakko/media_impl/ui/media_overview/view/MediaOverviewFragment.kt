@@ -68,7 +68,7 @@ class MediaOverviewFragment : BaseFragment<MediaOverviewViewModel>(
                     listener.onMediaOverviewCategoryMoreClick(category.toSortTypes())
                 },
                 MediaOverviewListItem.NestedMediaClickEventHook { media ->
-                    listener.onMediaOverviewMediaClick(media.id)
+                    listener.onMediaOverviewMediaClick(media)
                 }
             )
         )
@@ -119,7 +119,7 @@ class MediaOverviewFragment : BaseFragment<MediaOverviewViewModel>(
 
         fun onMediaOverviewCategoryMoreClick(sortTypes: List<MediaSortType>)
 
-        fun onMediaOverviewMediaClick(mediaId: Int)
+        fun onMediaOverviewMediaClick(media: Media)
     }
 
     companion object {

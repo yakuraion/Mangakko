@@ -1,5 +1,6 @@
 package net.yakuraion.mangakko.core_repositories_impl.mappers
 
+import android.graphics.Color
 import net.yakuraion.mangakko.core_entity.Media
 import net.yakuraion.mangakko.core_network.QueryPageMediaQuery
 
@@ -9,7 +10,8 @@ object MediaApiToMediaMapper {
         return Media(
             id = value.id(),
             title = value.title()?.romaji().orEmpty(),
-            imageUrl = value.coverImage()?.extraLarge().orEmpty()
+            imageUrl = value.coverImage()?.extraLarge().orEmpty(),
+            mainColor = value.coverImage()?.color()?.let { Color.parseColor(it) }
         )
     }
 }

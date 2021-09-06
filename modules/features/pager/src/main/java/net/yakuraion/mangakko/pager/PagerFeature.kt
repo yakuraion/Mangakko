@@ -1,6 +1,7 @@
 package net.yakuraion.mangakko.pager
 
 import androidx.fragment.app.Fragment
+import net.yakuraion.mangakko.core_entity.Media
 
 interface PagerFeature {
 
@@ -8,6 +9,6 @@ interface PagerFeature {
 
     interface Owner {
 
-        fun onPagerMediaChosen(mediaId: Int)
+        fun onPagerMediaChosen(media: Media)
     }
 }

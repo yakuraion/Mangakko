@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import net.yakuraion.mangakko.core_entity.Media
 import net.yakuraion.mangakko.core_entity.MediaSortType
 import net.yakuraion.mangakko.core_feature.di.viewmodel.InjectingSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
@@ -62,12 +63,12 @@ class MediaFragment : BaseFragment<MediaViewModel>(
         showFragment(fragment, true)
     }
 
-    override fun onMediaOverviewMediaClick(mediaId: Int) {
-        featureOwner.onMediaMediaChosen(mediaId)
+    override fun onMediaOverviewMediaClick(media: Media) {
+        featureOwner.onMediaMediaChosen(media)
     }
 
-    override fun onMediaListMediaClick(mediaId: Int) {
-        featureOwner.onMediaMediaChosen(mediaId)
+    override fun onMediaListMediaClick(media: Media) {
+        featureOwner.onMediaMediaChosen(media)
     }
 
     companion object {

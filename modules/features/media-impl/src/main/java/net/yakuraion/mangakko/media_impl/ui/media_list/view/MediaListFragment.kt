@@ -39,7 +39,7 @@ class MediaListFragment : BaseFragment<MediaListViewModel>(
 
     private val adapter: FastAdapter<MediaItem> = FastAdapter.with(itemAdapter).apply {
         onClickListener = { _, _, item, _ ->
-            item.model?.id?.let { listener.onMediaListMediaClick(it) }
+            item.model?.let { listener.onMediaListMediaClick(it) }
             true
         }
     }
@@ -65,7 +65,7 @@ class MediaListFragment : BaseFragment<MediaListViewModel>(
 
     interface Listener {
 
-        fun onMediaListMediaClick(mediaId: Int)
+        fun onMediaListMediaClick(media: Media)
     }
 
     companion object {

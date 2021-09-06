@@ -10,7 +10,8 @@
     <color name="grey_80_100">#cdcdcd</color>
     <color name="grey_20_100">#333333</color>
     <color name="grey_10_100">#1a1a1a</color>
-    <color name="amber">#ff5733</color>
+    <color name="grey_5_100">#0d0d0d</color>
+    <color name="amber">#ffa000</color>
 
     <color name="text_light">#cccccc</color>
     <color name="text_dark">#333333</color>

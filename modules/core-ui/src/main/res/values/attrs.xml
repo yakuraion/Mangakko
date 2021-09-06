@@ -12,4 +12,6 @@
     <attr name="behindTextWithAlphaColor" format="color" />
 
     <attr name="placeholderColor" format="color" />
+
+    <attr name="dividerColor" format="color" />
 </resources>

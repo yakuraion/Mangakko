@@ -12,6 +12,8 @@
         <item name="android:forceDarkAllowed" tools:ignore="NewApi">false</item>
         <item name="android:windowBackground">?windowBackgroundColor</item>
 
+        <item name="bottomNavigationStyle">@style/Style.BottomNavigationView</item>
+
         <item name="appBarLayoutStyle">@style/Style.AppBarLayout</item>
 
         <item name="circularProgressIndicatorStyle">@style/Style.CircularProgressIndicator</item>
@@ -30,6 +32,8 @@
         <item name="behindTextWithAlphaColor">@color/white_75</item>
 
         <item name="placeholderColor">@color/grey_80_100</item>
+
+        <item name="dividerColor">@color/grey_80_100</item>
     </style>
 
 </resources>

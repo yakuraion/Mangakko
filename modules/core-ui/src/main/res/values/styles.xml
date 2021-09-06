@@ -3,6 +3,18 @@
 
     <style name="Style" />
 
+    <style name="ThemeOverlay" />
+
+    <style name="Style.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="elevation">0dp</item>
+        <item name="backgroundTint">?surfaceColor</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.BottomNavigationView">
+        <item name="colorPrimary">?accentColor</item>
+    </style>
+
     <style name="Style.AppBarLayout" parent="Widget.MaterialComponents.AppBarLayout.Primary">
         <item name="android:background">@android:color/transparent</item>
         <item name="elevation">0dp</item>

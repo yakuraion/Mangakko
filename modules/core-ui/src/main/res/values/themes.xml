@@ -4,8 +4,6 @@
     <style name="Theme" />
 
     <style name="Theme.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="accentColor">@color/amber</item>
-
         <item name="android:statusBarColor">?statusBarColor</item>
         <item name="android:navigationBarColor">?navigationBarColor</item>
 
@@ -20,6 +18,10 @@
     </style>
 
     <style name="Theme.App" parent="Theme.Base">
+        <item name="accentColor">@color/amber_dark</item>
+
+        <item name="android:colorEdgeEffect">@color/amber_dark_30</item>
+
         <item name="statusBarColor">@color/white_50</item>
         <item name="navigationBarColor">@color/white_50</item>
         <item name="android:windowLightStatusBar">true</item>

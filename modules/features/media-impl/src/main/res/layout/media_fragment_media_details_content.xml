@@ -61,6 +61,7 @@
         android:background="@drawable/media_media_details_main_info_bg"
         android:clipToPadding="false"
         android:elevation="4dp"
+        android:overScrollMode="never"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 

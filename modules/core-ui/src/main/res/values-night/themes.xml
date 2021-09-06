@@ -2,6 +2,10 @@
 <resources>
 
     <style name="Theme.App" parent="Theme.Base">
+        <item name="accentColor">@color/amber</item>
+
+        <item name="android:colorEdgeEffect">@color/amber_30</item>
+
         <item name="statusBarColor">@color/black_50</item>
         <item name="navigationBarColor">@color/black_50</item>
 

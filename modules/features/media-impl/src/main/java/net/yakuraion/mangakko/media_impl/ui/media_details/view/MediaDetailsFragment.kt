@@ -19,7 +19,6 @@ import kotlinx.android.synthetic.main.media_fragment_media_details_content.appBa
 import kotlinx.android.synthetic.main.media_fragment_media_details_content.coverImageView
 import kotlinx.android.synthetic.main.media_fragment_media_details_content.recyclerView
 import kotlinx.android.synthetic.main.media_fragment_media_details_content.titleTextView
-import kotlinx.android.synthetic.main.media_fragment_media_details_placeholder.coverPlaceholderView
 import net.yakuraion.mangakko.core_entity.Media
 import net.yakuraion.mangakko.core_feature.di.viewmodel.InjectingSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
@@ -32,6 +31,7 @@ import net.yakuraion.mangakko.core_ui.statusBarColor
 import net.yakuraion.mangakko.media_impl.R
 import net.yakuraion.mangakko.media_impl.di.injector
 import net.yakuraion.mangakko.media_impl.ui.media_details.view.items.MediaDetailsDescriptionItem
+import net.yakuraion.mangakko.media_impl.ui.media_details.view.items.MediaDetailsPlaceholderItem
 import net.yakuraion.mangakko.media_impl.ui.media_details.viewmodel.MediaDetailsViewModel
 import net.yakuraion.mangakko.media_impl.ui.media_details.viewmodel.MediaDetailsViewModel.Companion.ARG_MEDIA
 import net.yakuraion.mangakko.media_impl.ui.media_details.viewmodel.MediaDetailsViewModel.Companion.ARG_MEDIA_ID
@@ -48,14 +48,21 @@ class MediaDetailsFragment : BaseFragment<MediaDetailsViewModel>(
 
     private val contentStateController: ContentStateController = ContentStateController(
         contentViewIds = listOf(R.id.contentLayout),
-        progressViewIds = listOf(R.id.placeholderLayout)
+        progressViewIds = listOf(R.id.progressBar)
     )
 
     private var previousStatusBarColor: Int = 0
 
+    private val placeholderItemAdapter: ItemAdapter<MediaDetailsPlaceholderItem> = ItemAdapter()
+
     private val descriptionItemAdapter: ItemAdapter<MediaDetailsDescriptionItem> = ItemAdapter()
 
-    private val adapter: FastAdapter<*> = FastAdapter.with(descriptionItemAdapter)
+    private val adapter: FastAdapter<*> = FastAdapter.with(
+        listOf(
+            placeholderItemAdapter,
+            descriptionItemAdapter
+        )
+    )
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -75,6 +82,7 @@ class MediaDetailsFragment : BaseFragment<MediaDetailsViewModel>(
             mainColorLiveData.observe(viewLifecycleOwner) { updateMainColorViews(it) }
             titleLiveData.observe(viewLifecycleOwner) { titleTextView.text = it }
             coverImageUrlLiveData.observe(viewLifecycleOwner) { updateCoverImageView(it) }
+            isShowingPlaceholderLiveData.observe(viewLifecycleOwner) { updateIsShowingPlaceholder(it) }
             descriptionLiveData.observe(viewLifecycleOwner) { updateDescriptionView(it) }
         }
     }
@@ -93,10 +101,8 @@ class MediaDetailsFragment : BaseFragment<MediaDetailsViewModel>(
     private fun setUpInsets() {
         ViewCompat.setOnApplyWindowInsetsListener(requireView()) { _, windowInsets ->
             val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
-            listOf(coverImageView, coverPlaceholderView).forEach { view ->
-                view.updateLayoutParams<MarginLayoutParams> {
-                    updateMargins(top = COVER_IMAGE_TOP_MARGIN_DP.dpToPxInt() + insets.top)
-                }
+            coverImageView.updateLayoutParams<MarginLayoutParams> {
+                updateMargins(top = COVER_IMAGE_TOP_MARGIN_DP.dpToPxInt() + insets.top)
             }
             recyclerView.updatePadding(top = insets.top, bottom = insets.bottom)
             WindowInsetsCompat.CONSUMED
@@ -131,6 +137,11 @@ class MediaDetailsFragment : BaseFragment<MediaDetailsViewModel>(
         Glide.with(this)
             .load(imageUrl)
             .into(coverImageView)
+    }
+
+    private fun updateIsShowingPlaceholder(isShowing: Boolean) {
+        val items = if (isShowing) listOf(MediaDetailsPlaceholderItem()) else emptyList()
+        placeholderItemAdapter.set(items)
     }
 
     private fun updateDescriptionView(description: String) {

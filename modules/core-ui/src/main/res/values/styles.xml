@@ -8,4 +8,9 @@
         <item name="elevation">0dp</item>
     </style>
 
+    <style name="Style.CircularProgressIndicator" parent="Widget.MaterialComponents.CircularProgressIndicator">
+        <item name="android:indeterminate">true</item>
+        <item name="indicatorColor">?accentColor</item>
+    </style>
+
 </resources>

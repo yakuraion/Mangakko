@@ -4,6 +4,8 @@
     <style name="Theme" />
 
     <style name="Theme.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="accentColor">@color/amber</item>
+
         <item name="android:statusBarColor">?statusBarColor</item>
         <item name="android:navigationBarColor">?navigationBarColor</item>
 
@@ -11,6 +13,8 @@
         <item name="android:windowBackground">?windowBackgroundColor</item>
 
         <item name="appBarLayoutStyle">@style/Style.AppBarLayout</item>
+
+        <item name="circularProgressIndicatorStyle">@style/Style.CircularProgressIndicator</item>
     </style>
 
     <style name="Theme.App" parent="Theme.Base">

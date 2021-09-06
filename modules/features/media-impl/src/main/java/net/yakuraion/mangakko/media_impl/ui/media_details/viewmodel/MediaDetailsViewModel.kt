@@ -37,12 +37,12 @@ class MediaDetailsViewModel @AssistedInject constructor(
     }
 
     val contentStateLiveData: LiveData<ContentState> = MediatorLiveData<ContentState>().apply {
-        value = PROGRESS
+        value = if (initMedia != null) CONTENT else PROGRESS
         addSource(mediaDetailsLiveData) { value = CONTENT }
     }
 
     val mainColorLiveData: LiveData<Int> = MediatorLiveData<Int>().apply {
-        initMedia?.let { value = it.mainColor }
+        initMedia?.mainColor?.let { value = it }
         addSource(mediaDetailsLiveData) { mediaDetails -> mediaDetails.mainColor?.let { value = it } }
     }
 
@@ -54,6 +54,11 @@ class MediaDetailsViewModel @AssistedInject constructor(
     val coverImageUrlLiveData: LiveData<String> = MediatorLiveData<String>().apply {
         initMedia?.let { value = it.imageUrl }
         addSource(mediaDetailsLiveData) { value = it.imageUrl }
+    }
+
+    val isShowingPlaceholderLiveData: LiveData<Boolean> = MediatorLiveData<Boolean>().apply {
+        value = true
+        addSource(mediaDetailsLiveData) { value = false }
     }
 
     val descriptionLiveData: LiveData<String> = Transformations.map(mediaDetailsLiveData) { it.description }

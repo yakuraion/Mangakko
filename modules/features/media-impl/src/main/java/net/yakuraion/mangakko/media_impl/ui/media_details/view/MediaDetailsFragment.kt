@@ -88,14 +88,15 @@ class MediaDetailsFragment : BaseFragment<MediaDetailsViewModel>(
     }
 
     private fun setUpStatusBarColor() {
-        appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+        val offsetChangedListener = AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
             val isAppBarLayoutVisible = abs(verticalOffset) != appBarLayout.totalScrollRange
             statusBarColor = if (isAppBarLayoutVisible) {
                 Color.TRANSPARENT
             } else {
                 requireContext().resolveColorAttr(R.attr.statusBarColor)
             }
-        })
+        }
+        appBarLayout.addOnOffsetChangedListener(offsetChangedListener)
     }
 
     private fun setUpInsets() {

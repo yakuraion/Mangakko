@@ -7,5 +7,6 @@ data class MediaDetails(
     val title: String,
     val imageUrl: String,
     @ColorInt val mainColor: Int?,
+    val score: Int?,
     val description: String
 )

@@ -25,4 +25,10 @@
         <item name="indicatorColor">?accentColor</item>
     </style>
 
+    <style name="Style.ScoreView" parent="Widget.AppCompat.TextView">
+        <item name="android:textAppearance">@style/TextAppearance.Title4</item>
+        <item name="android:textColor">?accentColor</item>
+        <item name="android:padding">4dp</item>
+    </style>
+
 </resources>

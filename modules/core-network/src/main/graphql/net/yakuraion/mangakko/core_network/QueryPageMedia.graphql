@@ -13,6 +13,7 @@ query QueryPageMedia($page: Int!, $perPage: Int!, $sort: [MediaSort!]!) {
                 extraLarge
                 color
             }
+            meanScore
         }
     }
 }

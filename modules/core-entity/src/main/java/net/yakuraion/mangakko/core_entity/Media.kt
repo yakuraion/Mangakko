@@ -7,5 +7,6 @@ data class Media(
     val id: Int,
     val title: String,
     val imageUrl: String,
-    @ColorInt val mainColor: Int?
+    @ColorInt val mainColor: Int?,
+    val score: Int?
 ) : Serializable

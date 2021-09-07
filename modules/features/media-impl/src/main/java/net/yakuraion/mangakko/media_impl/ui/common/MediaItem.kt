@@ -7,6 +7,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.mikepenz.fastadapter.items.ModelAbstractItem
 import kotlinx.android.synthetic.main.media_item_media.view.imageView
+import kotlinx.android.synthetic.main.media_item_media.view.scoreView
 import kotlinx.android.synthetic.main.media_item_media.view.shimmerFrameLayout
 import kotlinx.android.synthetic.main.media_item_media.view.titleTextView
 import net.yakuraion.mangakko.core_entity.Media
@@ -33,6 +34,7 @@ class MediaItem(model: Media?) : ModelAbstractItem<Media?, ViewHolder>(model) {
         itemView.shimmerFrameLayout.hideShimmer()
         bindImage(model.imageUrl)
         bindTitle(model.title)
+        bindScore(model.score)
     }
 
     private fun ViewHolder.bindImage(imageUrl: String) {
@@ -48,10 +50,18 @@ class MediaItem(model: Media?) : ModelAbstractItem<Media?, ViewHolder>(model) {
         }
     }
 
+    private fun ViewHolder.bindScore(score: Int?) {
+        itemView.scoreView.apply {
+            isVisible = score != null
+            score?.let { setScore(it) }
+        }
+    }
+
     private fun ViewHolder.bindWithPlaceholder() {
         itemView.apply {
             shimmerFrameLayout.showShimmer(true)
             titleTextView.isVisible = false
+            scoreView.isVisible = false
         }
     }
 

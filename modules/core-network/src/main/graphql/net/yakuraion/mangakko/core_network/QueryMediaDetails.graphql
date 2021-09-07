@@ -8,6 +8,7 @@ query QueryMediaDetails($id: Int!) {
             extraLarge
             color
         }
+        meanScore
         description
     }
 }

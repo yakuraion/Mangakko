@@ -12,6 +12,7 @@ object MediaDetailsApiToMediaDetailsMapper {
             title = value.title()?.romaji().orEmpty(),
             imageUrl = value.coverImage()?.extraLarge().orEmpty(),
             mainColor = value.coverImage()?.color()?.let { Color.parseColor(it) },
+            score = value.meanScore(),
             description = value.description().orEmpty().replace("<br>", "")
         )
     }

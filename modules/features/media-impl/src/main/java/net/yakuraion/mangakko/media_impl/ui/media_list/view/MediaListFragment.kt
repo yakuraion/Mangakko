@@ -4,6 +4,9 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.AsyncDifferConfig
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.paged.PagedModelAdapter
@@ -12,7 +15,9 @@ import net.yakuraion.mangakko.core_entity.Media
 import net.yakuraion.mangakko.core_entity.MediaSortType
 import net.yakuraion.mangakko.core_feature.di.viewmodel.InjectingSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
+import net.yakuraion.mangakko.core_uikit.dpToPxInt
 import net.yakuraion.mangakko.core_uikit.fragment.requireListener
+import net.yakuraion.mangakko.core_uikit.itemdecorator.setItemMargins
 import net.yakuraion.mangakko.media_impl.R
 import net.yakuraion.mangakko.media_impl.di.injector
 import net.yakuraion.mangakko.media_impl.ui.common.MediaDiffUtilItemCallback
@@ -52,9 +57,28 @@ class MediaListFragment : BaseFragment<MediaListViewModel>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recyclerView.adapter = adapter
+        setUpRecyclerView()
+        setUpInsets()
         viewModel.apply {
             mediaPagedListLiveData.observe(viewLifecycleOwner) { itemAdapter.submitList(it) }
+        }
+    }
+
+    private fun setUpRecyclerView() {
+        recyclerView.apply {
+            adapter = this@MediaListFragment.adapter
+            setItemMargins(
+                RECYCLER_VIEW_PADDING_DP.dpToPxInt(),
+                RECYCLER_VIEW_PADDING_DP.dpToPxInt()
+            )
+        }
+    }
+
+    private fun setUpInsets() {
+        ViewCompat.setOnApplyWindowInsetsListener(recyclerView) { view, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.updatePadding(top = insets.top)
+            WindowInsetsCompat.CONSUMED
         }
     }
 
@@ -69,6 +93,8 @@ class MediaListFragment : BaseFragment<MediaListViewModel>(
     }
 
     companion object {
+
+        private const val RECYCLER_VIEW_PADDING_DP = 8f
 
         fun createFragment(sortTypes: List<MediaSortType>): MediaListFragment {
             return MediaListFragment().apply {

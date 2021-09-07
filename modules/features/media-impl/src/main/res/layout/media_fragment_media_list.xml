@@ -4,5 +4,7 @@
     android:id="@+id/recyclerView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?uikit_surfaceColor"
+    android:clipToPadding="false"
     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
     app:spanCount="2" />

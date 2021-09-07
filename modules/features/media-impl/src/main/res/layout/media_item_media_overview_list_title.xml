@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?surfaceColor">
+    android:background="?uikit_surfaceColor">
 
     <TextView
         android:id="@+id/titleTextView"
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:paddingHorizontal="16dp"
         android:paddingVertical="8dp"
-        android:textAppearance="@style/TextAppearance.Title3"
+        android:textAppearance="@style/UiKit.TextAppearance.Title3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/moreTextView"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +28,7 @@
         android:paddingVertical="4dp"
         android:text="@string/media_overview_category_more"
         android:textAllCaps="true"
-        android:textAppearance="@style/TextAppearance.Normal"
+        android:textAppearance="@style/UiKit.TextAppearance.Normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

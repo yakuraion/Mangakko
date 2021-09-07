@@ -8,7 +8,7 @@ import com.mikepenz.fastadapter.adapters.ItemAdapter
 import kotlinx.android.synthetic.main.genres_fragment_genres.recyclerView
 import net.yakuraion.mangakko.core_feature.di.viewmodel.InjectingSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
-import net.yakuraion.mangakko.core_ui.fragment.requireListener
+import net.yakuraion.mangakko.core_uikit.fragment.requireListener
 import net.yakuraion.mangakko.genres.GenresFeature
 import net.yakuraion.mangakko.genres_impl.R
 import net.yakuraion.mangakko.genres_impl.di.injector

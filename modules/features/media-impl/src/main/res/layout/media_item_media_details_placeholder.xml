@@ -11,55 +11,55 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:background="?placeholderColor" />
+            android:background="?uikit_placeholderColor" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_marginTop="8dp"
-            android:background="?placeholderColor" />
+            android:background="?uikit_placeholderColor" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_marginTop="8dp"
-            android:background="?placeholderColor" />
+            android:background="?uikit_placeholderColor" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_marginTop="8dp"
-            android:background="?placeholderColor" />
+            android:background="?uikit_placeholderColor" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_marginTop="8dp"
-            android:background="?placeholderColor" />
+            android:background="?uikit_placeholderColor" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_marginTop="8dp"
-            android:background="?placeholderColor" />
+            android:background="?uikit_placeholderColor" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_marginTop="8dp"
-            android:background="?placeholderColor" />
+            android:background="?uikit_placeholderColor" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_marginTop="8dp"
-            android:background="?placeholderColor" />
+            android:background="?uikit_placeholderColor" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_marginTop="8dp"
-            android:background="?placeholderColor" />
+            android:background="?uikit_placeholderColor" />
 
     </LinearLayout>
 

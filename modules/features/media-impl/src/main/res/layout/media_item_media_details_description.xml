@@ -4,5 +4,5 @@
     android:id="@+id/descriptionTextView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:textAppearance="@style/TextAppearance.Normal"
+    android:textAppearance="@style/UiKit.TextAppearance.Normal"
     tools:text="Description" />

@@ -15,9 +15,9 @@ import net.yakuraion.mangakko.core_entity.MediaDetails
 import net.yakuraion.mangakko.core_feature.di.viewmodel.AssistedSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseViewModel
 import net.yakuraion.mangakko.core_repositories.MediaRepository
-import net.yakuraion.mangakko.core_ui.content.ContentState
-import net.yakuraion.mangakko.core_ui.content.ContentState.CONTENT
-import net.yakuraion.mangakko.core_ui.content.ContentState.PROGRESS
+import net.yakuraion.mangakko.core_uikit.content.ContentState
+import net.yakuraion.mangakko.core_uikit.content.ContentState.CONTENT
+import net.yakuraion.mangakko.core_uikit.content.ContentState.PROGRESS
 
 class MediaDetailsViewModel @AssistedInject constructor(
     @Assisted private val savedStateHandle: SavedStateHandle,

@@ -12,7 +12,7 @@ import net.yakuraion.mangakko.core_entity.Media
 import net.yakuraion.mangakko.core_entity.MediaSortType
 import net.yakuraion.mangakko.core_feature.di.viewmodel.InjectingSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
-import net.yakuraion.mangakko.core_ui.fragment.requireListener
+import net.yakuraion.mangakko.core_uikit.fragment.requireListener
 import net.yakuraion.mangakko.media_impl.R
 import net.yakuraion.mangakko.media_impl.di.injector
 import net.yakuraion.mangakko.media_impl.ui.common.MediaDiffUtilItemCallback

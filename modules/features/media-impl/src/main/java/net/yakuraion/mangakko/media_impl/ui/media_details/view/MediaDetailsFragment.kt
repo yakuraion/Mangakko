@@ -22,12 +22,12 @@ import kotlinx.android.synthetic.main.media_fragment_media_details_content.title
 import net.yakuraion.mangakko.core_entity.Media
 import net.yakuraion.mangakko.core_feature.di.viewmodel.InjectingSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
-import net.yakuraion.mangakko.core_ui.calculateTextColorByBackground
-import net.yakuraion.mangakko.core_ui.content.ContentStateController
-import net.yakuraion.mangakko.core_ui.dpToPxInt
-import net.yakuraion.mangakko.core_ui.itemdecorator.setItemMargins
-import net.yakuraion.mangakko.core_ui.resolveColorAttr
-import net.yakuraion.mangakko.core_ui.statusBarColor
+import net.yakuraion.mangakko.core_uikit.calculateTextColorByBackground
+import net.yakuraion.mangakko.core_uikit.content.ContentStateController
+import net.yakuraion.mangakko.core_uikit.dpToPxInt
+import net.yakuraion.mangakko.core_uikit.itemdecorator.setItemMargins
+import net.yakuraion.mangakko.core_uikit.resolveColorAttr
+import net.yakuraion.mangakko.core_uikit.statusBarColor
 import net.yakuraion.mangakko.media_impl.R
 import net.yakuraion.mangakko.media_impl.di.injector
 import net.yakuraion.mangakko.media_impl.ui.media_details.view.items.MediaDetailsDescriptionItem
@@ -93,7 +93,7 @@ class MediaDetailsFragment : BaseFragment<MediaDetailsViewModel>(
             statusBarColor = if (isAppBarLayoutVisible) {
                 Color.TRANSPARENT
             } else {
-                requireContext().resolveColorAttr(R.attr.statusBarColor)
+                requireContext().resolveColorAttr(R.attr.uikit_statusBarColor)
             }
         }
         appBarLayout.addOnOffsetChangedListener(offsetChangedListener)
@@ -125,7 +125,7 @@ class MediaDetailsFragment : BaseFragment<MediaDetailsViewModel>(
     }
 
     private fun setUpInitMainColorViews() {
-        val color = requireContext().resolveColorAttr(R.attr.windowBackgroundColor)
+        val color = requireContext().resolveColorAttr(R.attr.uikit_windowBackgroundColor)
         updateMainColorViews(color)
     }
 

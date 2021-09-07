@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import net.yakuraion.mangakko.core_entity.Media
 import net.yakuraion.mangakko.core_feature.di.viewmodel.InjectingSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
-import net.yakuraion.mangakko.core_ui.onbackpressed.setUpOnBackPressedForClearBackStack
+import net.yakuraion.mangakko.core_uikit.onbackpressed.setUpOnBackPressedForClearBackStack
 import net.yakuraion.mangakko.main_impl.di.injector
 import net.yakuraion.mangakko.main_impl.ui.main.viewmodel.MainViewModel
 import net.yakuraion.mangakko.media.MediaFeature

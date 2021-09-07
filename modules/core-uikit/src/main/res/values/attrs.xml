@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="uikit_accentColor" format="color" />
+    <attr name="uikit_statusBarColor" format="color" />
+    <attr name="uikit_navigationBarColor" format="color" />
+    <attr name="uikit_windowBackgroundColor" format="color" />
+    <attr name="uikit_surfaceColor" format="color" />
+    <attr name="uikit_textColor" format="color" />
+    <attr name="uikit_behindTextWithAlphaColor" format="color" />
+    <attr name="uikit_placeholderColor" format="color" />
+    <attr name="uikit_dividerColor" format="color" />
+
+    <attr name="uikit_scoreViewStyle" format="reference" />
+</resources>

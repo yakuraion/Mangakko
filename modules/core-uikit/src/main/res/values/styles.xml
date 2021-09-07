@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="UiKit" />
+
+    <style name="UiKit.Style" />
+
+    <style name="UiKit.ThemeOverlay" />
+
+    <style name="UiKit.Style.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="elevation">0dp</item>
+        <item name="backgroundTint">?attr/uikit_surfaceColor</item>
+        <item name="materialThemeOverlay">@style/UiKit.ThemeOverlay.BottomNavigationView</item>
+    </style>
+
+    <style name="UiKit.ThemeOverlay.BottomNavigationView">
+        <item name="colorPrimary">?attr/uikit_accentColor</item>
+    </style>
+
+    <style name="UiKit.Style.AppBarLayout" parent="Widget.MaterialComponents.AppBarLayout.Primary">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="elevation">0dp</item>
+    </style>
+
+    <style name="UiKit.Style.CircularProgressIndicator" parent="Widget.MaterialComponents.CircularProgressIndicator">
+        <item name="android:indeterminate">true</item>
+        <item name="indicatorColor">?attr/uikit_accentColor</item>
+    </style>
+
+    <style name="UiKit.Style.ScoreView" parent="Widget.AppCompat.TextView">
+        <item name="android:textAppearance">@style/UiKit.TextAppearance.Title4</item>
+        <item name="android:textColor">?attr/uikit_accentColor</item>
+        <item name="android:padding">4dp</item>
+    </style>
+
+</resources>

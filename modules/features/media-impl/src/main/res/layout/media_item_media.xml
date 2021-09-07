@@ -14,7 +14,7 @@
             android:id="@+id/imageView"
             android:layout_width="200dp"
             android:layout_height="300dp"
-            android:background="?placeholderColor"
+            android:background="?uikit_placeholderColor"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -22,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
 
-        <net.yakuraion.mangakko.core_ui.views.ScoreView
+        <net.yakuraion.mangakko.core_uikit.views.UiKitScoreView
             android:id="@+id/scoreView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,13 +35,13 @@
             android:id="@+id/titleTextView"
             android:layout_width="0dp"
             android:layout_height="60dp"
-            android:background="?behindTextWithAlphaColor"
+            android:background="?uikit_behindTextWithAlphaColor"
             android:ellipsize="end"
             android:gravity="center"
             android:maxLines="2"
             android:paddingHorizontal="16dp"
             android:paddingVertical="8dp"
-            android:textAppearance="@style/TextAppearance.Normal"
+            android:textAppearance="@style/UiKit.TextAppearance.Normal"
             app:autoSizeMaxTextSize="22sp"
             app:autoSizeMinTextSize="16sp"
             app:autoSizeTextType="uniform"

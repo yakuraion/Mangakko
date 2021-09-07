@@ -10,8 +10,8 @@ import kotlinx.android.synthetic.main.pager_fragment_pager.bottomNavigationView
 import net.yakuraion.mangakko.core_entity.Media
 import net.yakuraion.mangakko.core_feature.di.viewmodel.InjectingSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
-import net.yakuraion.mangakko.core_ui.fragment.requireListener
-import net.yakuraion.mangakko.core_ui.onbackpressed.addCallback
+import net.yakuraion.mangakko.core_uikit.fragment.requireListener
+import net.yakuraion.mangakko.core_uikit.onbackpressed.addCallback
 import net.yakuraion.mangakko.media.MediaFeature
 import net.yakuraion.mangakko.pager.PagerFeature
 import net.yakuraion.mangakko.pager_impl.R

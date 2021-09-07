@@ -8,5 +8,5 @@ plugins {
 
 dependencies {
     addCommon()
-    implementation(project(":modules:core-ui"))
+    implementation(project(":modules:core-uikit"))
 }

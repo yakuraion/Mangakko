@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="uikit_white">#ffffff</color>
+    <color name="uikit_white_50">#80ffffff</color>
+    <color name="uikit_white_75">#c0ffffff</color>
+    <color name="uikit_black">#000000</color>
+    <color name="uikit_black_50">#80000000</color>
+    <color name="uikit_black_75">#c0000000</color>
+    <color name="uikit_grey_90_100">#e6e6e6</color>
+    <color name="uikit_grey_80_100">#cdcdcd</color>
+    <color name="uikit_grey_20_100">#333333</color>
+    <color name="uikit_grey_10_100">#1a1a1a</color>
+    <color name="uikit_grey_5_100">#0d0d0d</color>
+    <color name="uikit_amber">#ffa000</color>
+    <color name="uikit_amber_30">#4dffa000</color>
+    <color name="uikit_amber_dark">#ff6f00</color>
+    <color name="uikit_amber_dark_30">#4dff6f00</color>
+
+    <color name="uikit_text_light">#cccccc</color>
+    <color name="uikit_text_dark">#333333</color>
+</resources>

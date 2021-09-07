@@ -70,7 +70,7 @@ dependencies {
     debugImplementation(Libraries.leakCanary)
 
     implementation(project(":modules:core-di"))
-    implementation(project(":modules:core-ui"))
+    implementation(project(":modules:core-uikit"))
     implementation(project(":modules:core-repositories-impl"))
     implementation(project(":modules:core-network-impl"))
     implementation(project(":modules:core-persistence-impl"))

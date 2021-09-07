@@ -13,7 +13,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <net.yakuraion.mangakko.core_ui.views.DividerView
+    <net.yakuraion.mangakko.core_uikit.views.UiKitDividerView
         android:id="@+id/bottomNavigationDividerView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

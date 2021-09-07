@@ -13,7 +13,7 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.App">
+        android:theme="@style/UiKit.Theme.App">
 
         <activity
             android:name="net.yakuraion.mangakko.AppActivity"

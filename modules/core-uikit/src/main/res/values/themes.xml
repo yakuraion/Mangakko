@@ -11,9 +11,7 @@
         <item name="android:windowBackground">?attr/uikit_windowBackgroundColor</item>
 
         <item name="bottomNavigationStyle">@style/UiKit.Style.BottomNavigationView</item>
-
         <item name="appBarLayoutStyle">@style/UiKit.Style.AppBarLayout</item>
-
         <item name="circularProgressIndicatorStyle">@style/UiKit.Style.CircularProgressIndicator</item>
 
         <item name="uikit_scoreViewStyle">@style/UiKit.Style.ScoreView</item>

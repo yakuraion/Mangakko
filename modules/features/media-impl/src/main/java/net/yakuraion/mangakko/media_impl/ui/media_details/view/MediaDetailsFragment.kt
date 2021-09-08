@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.appbar.AppBarLayout
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
+import com.mikepenz.fastadapter.items.AbstractItem
 import kotlinx.android.synthetic.main.media_fragment_media_details_content.appBarLayout
 import kotlinx.android.synthetic.main.media_fragment_media_details_content.coverImageView
 import kotlinx.android.synthetic.main.media_fragment_media_details_content.recyclerView
@@ -32,6 +33,7 @@ import net.yakuraion.mangakko.media_impl.R
 import net.yakuraion.mangakko.media_impl.di.injector
 import net.yakuraion.mangakko.media_impl.ui.media_details.view.items.MediaDetailsDescriptionItem
 import net.yakuraion.mangakko.media_impl.ui.media_details.view.items.MediaDetailsPlaceholderItem
+import net.yakuraion.mangakko.media_impl.ui.media_details.view.items.MediaDetailsScoreWithLikeItem
 import net.yakuraion.mangakko.media_impl.ui.media_details.viewmodel.MediaDetailsViewModel
 import net.yakuraion.mangakko.media_impl.ui.media_details.viewmodel.MediaDetailsViewModel.Companion.ARG_MEDIA
 import net.yakuraion.mangakko.media_impl.ui.media_details.viewmodel.MediaDetailsViewModel.Companion.ARG_MEDIA_ID
@@ -55,14 +57,23 @@ class MediaDetailsFragment : BaseFragment<MediaDetailsViewModel>(
 
     private val placeholderItemAdapter: ItemAdapter<MediaDetailsPlaceholderItem> = ItemAdapter()
 
+    private val scoreWithLikeItemAdapter: ItemAdapter<MediaDetailsScoreWithLikeItem> = ItemAdapter()
+
     private val descriptionItemAdapter: ItemAdapter<MediaDetailsDescriptionItem> = ItemAdapter()
 
-    private val adapter: FastAdapter<*> = FastAdapter.with(
+    private val adapter: FastAdapter<AbstractItem<*>> = FastAdapter.with(
         listOf(
             placeholderItemAdapter,
+            scoreWithLikeItemAdapter,
             descriptionItemAdapter
         )
-    )
+    ).apply {
+        addEventHooks(
+            listOf(
+                MediaDetailsScoreWithLikeItem.LikeClickEventHook { viewModel.onLikeClick() }
+            )
+        )
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -77,12 +88,24 @@ class MediaDetailsFragment : BaseFragment<MediaDetailsViewModel>(
         setUpInsets()
         setUpRecyclerView()
         setUpInitMainColorViews()
+        scoreWithLikeItemAdapter.set(listOf())
         viewModel.apply {
             contentStateLiveData.observe(viewLifecycleOwner) { contentStateController.state = it }
             mainColorLiveData.observe(viewLifecycleOwner) { updateMainColorViews(it) }
             titleLiveData.observe(viewLifecycleOwner) { titleTextView.text = it }
             coverImageUrlLiveData.observe(viewLifecycleOwner) { updateCoverImageView(it) }
-            isShowingPlaceholderLiveData.observe(viewLifecycleOwner) { updateIsShowingPlaceholder(it) }
+            isShowingPlaceholderLiveData.observe(viewLifecycleOwner) { updateIsShowingPlaceholderView(it) }
+            isShowingScoreWithLikeLiveData.observe(viewLifecycleOwner) { isShowing ->
+                updateIsShowingScoreWithLikeView(isShowing)
+            }
+            scoreWithIsFavoriteLiveData.observe(viewLifecycleOwner) { params ->
+                updateScoreWithIsFavoriteView(
+                    params.score,
+                    params.rateRank,
+                    params.popularityRank,
+                    params.isFavorite
+                )
+            }
             descriptionLiveData.observe(viewLifecycleOwner) { updateDescriptionView(it) }
         }
     }
@@ -140,9 +163,34 @@ class MediaDetailsFragment : BaseFragment<MediaDetailsViewModel>(
             .into(coverImageView)
     }
 
-    private fun updateIsShowingPlaceholder(isShowing: Boolean) {
+    private fun updateIsShowingPlaceholderView(isShowing: Boolean) {
         val items = if (isShowing) listOf(MediaDetailsPlaceholderItem()) else emptyList()
         placeholderItemAdapter.set(items)
+    }
+
+    private fun updateIsShowingScoreWithLikeView(showing: Boolean) {
+        val list = if (showing) {
+            listOf(MediaDetailsScoreWithLikeItem())
+        } else {
+            emptyList()
+        }
+        scoreWithLikeItemAdapter.set(list)
+    }
+
+    private fun updateScoreWithIsFavoriteView(
+        score: Int?,
+        rateRank: Int?,
+        popularityRank: Int?,
+        isFavorite: Boolean
+    ) {
+        scoreWithLikeItemAdapter.itemList[0]?.let { item ->
+            item.score = score
+            item.rateRank = rateRank
+            item.popularityRank = popularityRank
+            item.isFavorite = isFavorite
+            val position = adapter.getPosition(item)
+            adapter.notifyAdapterItemChanged(position, Any())
+        }
     }
 
     private fun updateDescriptionView(description: String) {

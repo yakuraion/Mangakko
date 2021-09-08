@@ -10,5 +10,10 @@ query QueryMediaDetails($id: Int!) {
         }
         meanScore
         description
+        rankings {
+            allTime
+            type
+            rank
+        }
     }
 }

@@ -8,12 +8,15 @@ import androidx.lifecycle.liveData
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import net.yakuraion.mangakko.core_di.dispatchers.Dispatchers
 import net.yakuraion.mangakko.core_entity.Media
 import net.yakuraion.mangakko.core_entity.MediaDetails
 import net.yakuraion.mangakko.core_feature.di.viewmodel.AssistedSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseViewModel
+import net.yakuraion.mangakko.core_feature.ui.livedata.combineLatestLiveData
+import net.yakuraion.mangakko.core_repositories.FavoritesRepository
 import net.yakuraion.mangakko.core_repositories.MediaRepository
 import net.yakuraion.mangakko.core_uikit.content.ContentState
 import net.yakuraion.mangakko.core_uikit.content.ContentState.CONTENT
@@ -22,7 +25,8 @@ import net.yakuraion.mangakko.core_uikit.content.ContentState.PROGRESS
 class MediaDetailsViewModel @AssistedInject constructor(
     @Assisted private val savedStateHandle: SavedStateHandle,
     private val dispatchers: Dispatchers,
-    private val mediaRepository: MediaRepository
+    private val mediaRepository: MediaRepository,
+    private val favoritesRepository: FavoritesRepository
 ) : BaseViewModel() {
 
     private val mediaId: Int = savedStateHandle.get(ARG_MEDIA_ID)!!
@@ -34,6 +38,13 @@ class MediaDetailsViewModel @AssistedInject constructor(
             mediaRepository.getMediaDetails(mediaId)
         }
         emit(media)
+    }
+
+    private val isFavoriteLiveData: MediatorLiveData<Boolean> = MediatorLiveData<Boolean>().apply {
+        val repositoryLiveData = liveData(coroutineContext) {
+            emit(favoritesRepository.getIsFavoriteMedia(mediaId))
+        }
+        addSource(repositoryLiveData) { value = it }
     }
 
     val contentStateLiveData: LiveData<ContentState> = MediatorLiveData<ContentState>().apply {
@@ -61,7 +72,34 @@ class MediaDetailsViewModel @AssistedInject constructor(
         addSource(mediaDetailsLiveData) { value = false }
     }
 
+    val isShowingScoreWithLikeLiveData: LiveData<Boolean> =
+        Transformations.map(isShowingPlaceholderLiveData) { !it }
+
+    val scoreWithIsFavoriteLiveData: LiveData<ScoreWithIsFavoriteParams> = combineLatestLiveData(
+        mediaDetailsLiveData,
+        isFavoriteLiveData
+    ) { media, isFavorite ->
+        ScoreWithIsFavoriteParams(media.score, media.rateRank, media.popularityRank, isFavorite)
+    }
+
     val descriptionLiveData: LiveData<String> = Transformations.map(mediaDetailsLiveData) { it.description }
+
+    fun onLikeClick() {
+        val newIsFavorite = !(isFavoriteLiveData.value ?: false)
+        isFavoriteLiveData.value = newIsFavorite
+        launch {
+            withContext(dispatchers.io) {
+                favoritesRepository.setIsFavoriteMedia(mediaId, newIsFavorite)
+            }
+        }
+    }
+
+    class ScoreWithIsFavoriteParams(
+        val score: Int?,
+        val rateRank: Int?,
+        val popularityRank: Int?,
+        val isFavorite: Boolean
+    )
 
     @AssistedFactory
     interface Factory : AssistedSavedStateViewModelFactory<MediaDetailsViewModel> {

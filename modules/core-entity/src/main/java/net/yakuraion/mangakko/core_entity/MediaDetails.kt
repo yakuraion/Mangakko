@@ -8,5 +8,7 @@ data class MediaDetails(
     val imageUrl: String,
     @ColorInt val mainColor: Int?,
     val score: Int?,
-    val description: String
+    val description: String,
+    val rateRank: Int?,
+    val popularityRank: Int?
 )

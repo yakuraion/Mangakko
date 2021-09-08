@@ -87,4 +87,3 @@ class MediaDetailsScoreWithLikeItem : AbstractItem<ViewHolder>() {
         }
     }
 }
-

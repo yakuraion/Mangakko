@@ -27,7 +27,7 @@ import javax.inject.Inject
 class PagerFragment : BaseFragment<PagerViewModel>(
     PagerViewModel::class,
     R.layout.pager_fragment_pager
-), MediaFeature.Owner {
+), MediaFeature.Owner, FavoritesFeature.Owner {
 
     @Inject
     override lateinit var abstractViewModelFactory: InjectingSavedStateViewModelFactory
@@ -114,6 +114,10 @@ class PagerFragment : BaseFragment<PagerViewModel>(
     }
 
     override fun onMediaMediaChosen(media: Media) {
+        featureOwner.onPagerMediaChosen(media)
+    }
+
+    override fun onFavoritesMediaClick(media: Media) {
         featureOwner.onPagerMediaChosen(media)
     }
 

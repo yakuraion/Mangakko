@@ -7,11 +7,6 @@
         android:title="@string/pager_menu_home" />
 
     <item
-        android:id="@+id/itemOngoings"
-        android:icon="@drawable/uikit_ic_directions_run_24"
-        android:title="@string/pager_menu_ongoings" />
-
-    <item
         android:id="@+id/itemFavorites"
         android:icon="@drawable/uikit_ic_favorite_border_24"
         android:title="@string/pager_menu_favorites" />

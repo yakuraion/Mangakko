@@ -19,7 +19,6 @@ import net.yakuraion.mangakko.pager_impl.R
 import net.yakuraion.mangakko.pager_impl.di.injector
 import net.yakuraion.mangakko.pager_impl.ui.pager.view.PagerFragment.Page.FAVORITES
 import net.yakuraion.mangakko.pager_impl.ui.pager.view.PagerFragment.Page.HOME
-import net.yakuraion.mangakko.pager_impl.ui.pager.view.PagerFragment.Page.ONGOINGS
 import net.yakuraion.mangakko.pager_impl.ui.pager.view.PagerFragment.Page.SETTINGS
 import net.yakuraion.mangakko.pager_impl.ui.pager.viewmodel.PagerViewModel
 import javax.inject.Inject
@@ -70,7 +69,6 @@ class PagerFragment : BaseFragment<PagerViewModel>(
         bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             val page = when (menuItem.itemId) {
                 R.id.itemHome -> HOME
-                R.id.itemOngoings -> ONGOINGS
                 R.id.itemFavorites -> FAVORITES
                 R.id.itemSettings -> SETTINGS
                 else -> error("Unexpected itemId")
@@ -100,7 +98,6 @@ class PagerFragment : BaseFragment<PagerViewModel>(
     private fun Page.createFragment(): Fragment {
         return when (this) {
             HOME -> mediaFeature.getMediaFragment()
-            ONGOINGS -> Fragment()
             FAVORITES -> favoritesFeature.getFavoritesFragment()
             SETTINGS -> Fragment()
         }
@@ -108,7 +105,6 @@ class PagerFragment : BaseFragment<PagerViewModel>(
 
     enum class Page(@IdRes val itemId: Int) {
         HOME(R.id.itemHome),
-        ONGOINGS(R.id.itemOngoings),
         FAVORITES(R.id.itemFavorites),
         SETTINGS(R.id.itemSettings)
     }

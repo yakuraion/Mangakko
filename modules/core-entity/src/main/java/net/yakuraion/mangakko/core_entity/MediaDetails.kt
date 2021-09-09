@@ -11,4 +11,15 @@ data class MediaDetails(
     val description: String,
     val rateRank: Int?,
     val popularityRank: Int?
-)
+) {
+
+    fun toMedia(): Media {
+        return Media(
+            id = id,
+            title = title,
+            imageUrl = imageUrl,
+            mainColor = mainColor,
+            score = score
+        )
+    }
+}

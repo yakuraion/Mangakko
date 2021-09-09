@@ -89,7 +89,12 @@ class MediaDetailsViewModel @AssistedInject constructor(
         isFavoriteLiveData.value = newIsFavorite
         launch {
             withContext(dispatchers.io) {
-                favoritesRepository.setIsFavoriteMedia(mediaId, newIsFavorite)
+                if (newIsFavorite) {
+                    val mediaDetails = mediaDetailsLiveData.value!!
+                    favoritesRepository.addToFavorite(mediaDetails.toMedia())
+                } else {
+                    favoritesRepository.removeFromFavorite(mediaId)
+                }
             }
         }
     }

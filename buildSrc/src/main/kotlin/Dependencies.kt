@@ -41,6 +41,8 @@ object Libraries {
 
         const val lifecycle = "2.3.1"
 
+        const val room = "2.3.0"
+
         const val material = "1.3.0"
         const val constraintLayout = "2.0.4"
         const val recyclerView = "1.1.0"
@@ -85,6 +87,10 @@ object Libraries {
     const val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
     const val viewModelSavedState = "androidx.lifecycle:lifecycle-viewmodel-savedstate:${Versions.lifecycle}"
     const val liveDataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
+
+    const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
+    const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+    const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
 
     const val material = "com.google.android.material:material:${Versions.material}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
@@ -164,6 +170,12 @@ object Libraries {
         debugImplementation(hyperionRecorder)
         debugImplementation(hyperionSharedPreferences)
         debugImplementation(hyperionTimber)
+    }
+
+    fun DependencyHandler.addRoom() {
+        implementation(roomRuntime)
+        kapt(roomCompiler)
+        implementation(roomKtx)
     }
 
     fun DependencyHandler.apiFastAdapter() {

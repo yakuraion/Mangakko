@@ -1,4 +1,5 @@
 import Libraries.addCommon
+import Libraries.addRoom
 
 plugins {
     id("com.android.library")
@@ -8,5 +9,6 @@ plugins {
 
 dependencies {
     addCommon()
+    addRoom()
     api(project(":modules:core-entity"))
 }

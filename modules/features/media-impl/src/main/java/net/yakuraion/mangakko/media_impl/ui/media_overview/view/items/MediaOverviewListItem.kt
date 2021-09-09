@@ -11,7 +11,7 @@ import net.yakuraion.mangakko.core_entity.Media
 import net.yakuraion.mangakko.core_uikit.dpToPxInt
 import net.yakuraion.mangakko.core_uikit.itemdecorator.setItemMargins
 import net.yakuraion.mangakko.media_impl.R
-import net.yakuraion.mangakko.media_impl.ui.common.MediaItem
+import net.yakuraion.mangakko.core_uikit.fastadapter.items.media.MediaItem
 import net.yakuraion.mangakko.media_impl.ui.media_overview.view.items.MediaOverviewListItem.ViewHolder
 
 class MediaOverviewListItem(private val mediaList: List<Media?>) : AbstractItem<ViewHolder>() {

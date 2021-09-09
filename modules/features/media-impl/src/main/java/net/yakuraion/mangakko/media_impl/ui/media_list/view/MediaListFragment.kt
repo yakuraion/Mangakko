@@ -20,8 +20,8 @@ import net.yakuraion.mangakko.core_uikit.fragment.requireListener
 import net.yakuraion.mangakko.core_uikit.itemdecorator.setItemMargins
 import net.yakuraion.mangakko.media_impl.R
 import net.yakuraion.mangakko.media_impl.di.injector
-import net.yakuraion.mangakko.media_impl.ui.common.MediaDiffUtilItemCallback
-import net.yakuraion.mangakko.media_impl.ui.common.MediaItem
+import net.yakuraion.mangakko.core_uikit.fastadapter.items.media.MediaDiffUtilItemCallback
+import net.yakuraion.mangakko.core_uikit.fastadapter.items.media.MediaItem
 import net.yakuraion.mangakko.media_impl.ui.media_list.viewmodel.MediaListViewModel
 import net.yakuraion.mangakko.media_impl.ui.media_list.viewmodel.MediaListViewModel.Companion.ARG_SORT_TYPES
 import javax.inject.Inject

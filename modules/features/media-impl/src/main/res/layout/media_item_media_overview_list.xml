@@ -8,4 +8,4 @@
     android:layout_marginBottom="16dp"
     android:orientation="horizontal"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-    tools:listitem="@layout/media_item_media" />
+    tools:listitem="@layout/uikit_item_media" />

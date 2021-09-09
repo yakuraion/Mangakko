@@ -1,4 +1,4 @@
-package net.yakuraion.mangakko.media_impl.ui.common
+package net.yakuraion.mangakko.core_uikit.fastadapter.items.media
 
 import android.view.View
 import androidx.core.view.isVisible
@@ -6,17 +6,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.mikepenz.fastadapter.items.ModelAbstractItem
-import kotlinx.android.synthetic.main.media_item_media.view.imageView
-import kotlinx.android.synthetic.main.media_item_media.view.scoreView
-import kotlinx.android.synthetic.main.media_item_media.view.shimmerFrameLayout
-import kotlinx.android.synthetic.main.media_item_media.view.titleTextView
+import kotlinx.android.synthetic.main.uikit_item_media.view.imageView
+import kotlinx.android.synthetic.main.uikit_item_media.view.scoreView
+import kotlinx.android.synthetic.main.uikit_item_media.view.shimmerFrameLayout
+import kotlinx.android.synthetic.main.uikit_item_media.view.titleTextView
 import net.yakuraion.mangakko.core_entity.Media
-import net.yakuraion.mangakko.media_impl.R
-import net.yakuraion.mangakko.media_impl.ui.common.MediaItem.ViewHolder
+import net.yakuraion.mangakko.core_uikit.R
+import net.yakuraion.mangakko.core_uikit.fastadapter.items.media.MediaItem.ViewHolder
 
 class MediaItem(model: Media?) : ModelAbstractItem<Media?, ViewHolder>(model) {
 
-    override val layoutRes: Int = R.layout.media_item_media
+    override val layoutRes: Int = R.layout.uikit_item_media
 
     override val type: Int = layoutRes
 

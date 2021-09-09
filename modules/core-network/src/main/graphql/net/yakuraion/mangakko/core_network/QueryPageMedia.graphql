@@ -1,10 +1,15 @@
-query QueryPageMedia($page: Int!, $perPage: Int!, $sort: [MediaSort!]!) {
+query QueryPageMedia(
+    $page: Int!,
+    $perPage: Int!,
+    $sort: [MediaSort!]!,
+    $status: MediaStatus
+) {
     Page(page: $page, perPage: $perPage) {
         pageInfo {
             total
             hasNextPage
         }
-        media(sort: $sort) {
+        media(sort: $sort, status: $status) {
             id
             title {
                 romaji

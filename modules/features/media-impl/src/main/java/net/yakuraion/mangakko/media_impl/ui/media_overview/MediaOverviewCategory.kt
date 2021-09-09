@@ -3,22 +3,27 @@ package net.yakuraion.mangakko.media_impl.ui.media_overview
 import net.yakuraion.mangakko.core_entity.MediaSortType
 import net.yakuraion.mangakko.core_entity.MediaSortType.POPULARITY_DESC
 import net.yakuraion.mangakko.core_entity.MediaSortType.RATE_DESC
-import net.yakuraion.mangakko.core_entity.MediaSortType.TRENDING_DESC
+import net.yakuraion.mangakko.core_entity.MediaStatus
+import net.yakuraion.mangakko.core_entity.MediaStatus.RELEASING
 
 enum class MediaOverviewCategory {
-    IN_TREND {
+    ONGOING {
 
-        override fun toSortTypes(): List<MediaSortType> = listOf(TRENDING_DESC)
+        override fun getSortTypes(): List<MediaSortType> = listOf(POPULARITY_DESC)
+
+        override fun getStatus(): MediaStatus = RELEASING
     },
 
     MOST_POPULAR {
 
-        override fun toSortTypes(): List<MediaSortType> = listOf(POPULARITY_DESC)
+        override fun getSortTypes(): List<MediaSortType> = listOf(POPULARITY_DESC)
     },
     MOST_RATED {
 
-        override fun toSortTypes(): List<MediaSortType> = listOf(RATE_DESC)
+        override fun getSortTypes(): List<MediaSortType> = listOf(RATE_DESC)
     };
 
-    abstract fun toSortTypes(): List<MediaSortType>
+    abstract fun getSortTypes(): List<MediaSortType>
+
+    open fun getStatus(): MediaStatus? = null
 }

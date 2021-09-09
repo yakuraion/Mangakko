@@ -11,12 +11,13 @@ import com.mikepenz.fastadapter.adapters.ItemAdapter
 import kotlinx.android.synthetic.main.media_fragment_media_overview.recyclerView
 import net.yakuraion.mangakko.core_entity.Media
 import net.yakuraion.mangakko.core_entity.MediaSortType
+import net.yakuraion.mangakko.core_entity.MediaStatus
 import net.yakuraion.mangakko.core_feature.di.viewmodel.InjectingSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
 import net.yakuraion.mangakko.core_uikit.fragment.requireListener
 import net.yakuraion.mangakko.media_impl.R
 import net.yakuraion.mangakko.media_impl.di.injector
-import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.IN_TREND
+import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.ONGOING
 import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.MOST_POPULAR
 import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.MOST_RATED
 import net.yakuraion.mangakko.media_impl.ui.media_overview.view.items.MediaOverviewListItem
@@ -34,11 +35,11 @@ class MediaOverviewFragment : BaseFragment<MediaOverviewViewModel>(
 
     private lateinit var listener: Listener
 
-    private val inTrendTitleItemAdapter: ItemAdapter<MediaOverviewListTitleItem> =
+    private val ongoingTitleItemAdapter: ItemAdapter<MediaOverviewListTitleItem> =
         ItemAdapter<MediaOverviewListTitleItem>().apply {
-            set(listOf(MediaOverviewListTitleItem(IN_TREND)))
+            set(listOf(MediaOverviewListTitleItem(ONGOING)))
         }
-    private val inTrendItemAdapter: ItemAdapter<MediaOverviewListItem> = ItemAdapter()
+    private val ongoingItemAdapter: ItemAdapter<MediaOverviewListItem> = ItemAdapter()
 
     private val mostPopularTitleItemAdapter: ItemAdapter<MediaOverviewListTitleItem> =
         ItemAdapter<MediaOverviewListTitleItem>().apply {
@@ -54,8 +55,8 @@ class MediaOverviewFragment : BaseFragment<MediaOverviewViewModel>(
 
     private val fastAdapter: FastAdapter<*> = FastAdapter.with(
         listOf(
-            inTrendTitleItemAdapter,
-            inTrendItemAdapter,
+            ongoingTitleItemAdapter,
+            ongoingItemAdapter,
             mostPopularTitleItemAdapter,
             mostPopularItemAdapter,
             mostRatedTitleItemAdapter,
@@ -65,7 +66,7 @@ class MediaOverviewFragment : BaseFragment<MediaOverviewViewModel>(
         addEventHooks(
             listOf(
                 MediaOverviewListTitleItem.MoreClickEventHook { category ->
-                    listener.onMediaOverviewCategoryMoreClick(category.toSortTypes())
+                    listener.onMediaOverviewCategoryMoreClick(category.getSortTypes(), category.getStatus())
                 },
                 MediaOverviewListItem.NestedMediaClickEventHook { media ->
                     listener.onMediaOverviewMediaClick(media)
@@ -85,8 +86,8 @@ class MediaOverviewFragment : BaseFragment<MediaOverviewViewModel>(
         setUpInsets()
         recyclerView.adapter = fastAdapter
         viewModel.apply {
-            inTrendMediaListLiveData.observe(viewLifecycleOwner) { mediaList ->
-                updateMediaList(inTrendItemAdapter, mediaList)
+            ongoingMediaListLiveData.observe(viewLifecycleOwner) { mediaList ->
+                updateMediaList(ongoingItemAdapter, mediaList)
             }
             mostPopularMediaListLiveData.observe(viewLifecycleOwner) { mediaList ->
                 updateMediaList(mostPopularItemAdapter, mediaList)
@@ -117,7 +118,7 @@ class MediaOverviewFragment : BaseFragment<MediaOverviewViewModel>(
 
     interface Listener {
 
-        fun onMediaOverviewCategoryMoreClick(sortTypes: List<MediaSortType>)
+        fun onMediaOverviewCategoryMoreClick(sortTypes: List<MediaSortType>, status: MediaStatus?)
 
         fun onMediaOverviewMediaClick(media: Media)
     }

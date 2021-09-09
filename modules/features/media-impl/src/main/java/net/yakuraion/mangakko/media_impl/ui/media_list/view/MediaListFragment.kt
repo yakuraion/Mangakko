@@ -13,6 +13,7 @@ import com.mikepenz.fastadapter.paged.PagedModelAdapter
 import kotlinx.android.synthetic.main.media_fragment_media_list.recyclerView
 import net.yakuraion.mangakko.core_entity.Media
 import net.yakuraion.mangakko.core_entity.MediaSortType
+import net.yakuraion.mangakko.core_entity.MediaStatus
 import net.yakuraion.mangakko.core_feature.di.viewmodel.InjectingSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
 import net.yakuraion.mangakko.core_uikit.dpToPxInt
@@ -24,6 +25,7 @@ import net.yakuraion.mangakko.media_impl.R
 import net.yakuraion.mangakko.media_impl.di.injector
 import net.yakuraion.mangakko.media_impl.ui.media_list.viewmodel.MediaListViewModel
 import net.yakuraion.mangakko.media_impl.ui.media_list.viewmodel.MediaListViewModel.Companion.ARG_SORT_TYPES
+import net.yakuraion.mangakko.media_impl.ui.media_list.viewmodel.MediaListViewModel.Companion.ARG_STATUS
 import javax.inject.Inject
 
 @Suppress("EXPERIMENTAL_API_USAGE")
@@ -96,10 +98,11 @@ class MediaListFragment : BaseFragment<MediaListViewModel>(
 
         private const val RECYCLER_VIEW_PADDING_DP = 8f
 
-        fun createFragment(sortTypes: List<MediaSortType>): MediaListFragment {
+        fun createFragment(sortTypes: List<MediaSortType>, status: MediaStatus?): MediaListFragment {
             return MediaListFragment().apply {
                 arguments = bundleOf(
-                    ARG_SORT_TYPES to sortTypes
+                    ARG_SORT_TYPES to sortTypes,
+                    ARG_STATUS to status
                 )
             }
         }

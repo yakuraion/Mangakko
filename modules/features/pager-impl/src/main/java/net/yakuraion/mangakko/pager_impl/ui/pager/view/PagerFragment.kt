@@ -12,6 +12,7 @@ import net.yakuraion.mangakko.core_feature.di.viewmodel.InjectingSavedStateViewM
 import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
 import net.yakuraion.mangakko.core_uikit.fragment.requireListener
 import net.yakuraion.mangakko.core_uikit.onbackpressed.addCallback
+import net.yakuraion.mangakko.favorites.FavoritesFeature
 import net.yakuraion.mangakko.media.MediaFeature
 import net.yakuraion.mangakko.pager.PagerFeature
 import net.yakuraion.mangakko.pager_impl.R
@@ -35,6 +36,9 @@ class PagerFragment : BaseFragment<PagerViewModel>(
 
     @Inject
     lateinit var mediaFeature: MediaFeature
+
+    @Inject
+    lateinit var favoritesFeature: FavoritesFeature
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -97,7 +101,7 @@ class PagerFragment : BaseFragment<PagerViewModel>(
         return when (this) {
             HOME -> mediaFeature.getMediaFragment()
             ONGOINGS -> Fragment()
-            FAVORITES -> Fragment()
+            FAVORITES -> favoritesFeature.getFavoritesFragment()
             SETTINGS -> Fragment()
         }
     }

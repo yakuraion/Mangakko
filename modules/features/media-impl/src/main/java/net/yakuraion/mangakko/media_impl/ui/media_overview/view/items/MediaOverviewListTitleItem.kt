@@ -10,9 +10,9 @@ import kotlinx.android.synthetic.main.media_item_media_overview_list_title.view.
 import kotlinx.android.synthetic.main.media_item_media_overview_list_title.view.titleTextView
 import net.yakuraion.mangakko.media_impl.R
 import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory
-import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.ONGOING
 import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.MOST_POPULAR
 import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.MOST_RATED
+import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.ONGOING
 import net.yakuraion.mangakko.media_impl.ui.media_overview.view.items.MediaOverviewListTitleItem.ViewHolder
 
 class MediaOverviewListTitleItem(private val category: MediaOverviewCategory) : AbstractItem<ViewHolder>() {

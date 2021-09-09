@@ -9,9 +9,9 @@ import com.mikepenz.fastadapter.listeners.CustomEventHook
 import kotlinx.android.synthetic.main.media_item_media_overview_list.view.nestedItemsRecyclerView
 import net.yakuraion.mangakko.core_entity.Media
 import net.yakuraion.mangakko.core_uikit.dpToPxInt
+import net.yakuraion.mangakko.core_uikit.fastadapter.items.media.MediaItem
 import net.yakuraion.mangakko.core_uikit.itemdecorator.setItemMargins
 import net.yakuraion.mangakko.media_impl.R
-import net.yakuraion.mangakko.core_uikit.fastadapter.items.media.MediaItem
 import net.yakuraion.mangakko.media_impl.ui.media_overview.view.items.MediaOverviewListItem.ViewHolder
 
 class MediaOverviewListItem(private val mediaList: List<Media?>) : AbstractItem<ViewHolder>() {

@@ -17,9 +17,9 @@ import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
 import net.yakuraion.mangakko.core_uikit.fragment.requireListener
 import net.yakuraion.mangakko.media_impl.R
 import net.yakuraion.mangakko.media_impl.di.injector
-import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.ONGOING
 import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.MOST_POPULAR
 import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.MOST_RATED
+import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.ONGOING
 import net.yakuraion.mangakko.media_impl.ui.media_overview.view.items.MediaOverviewListItem
 import net.yakuraion.mangakko.media_impl.ui.media_overview.view.items.MediaOverviewListTitleItem
 import net.yakuraion.mangakko.media_impl.ui.media_overview.viewmodel.MediaOverviewViewModel

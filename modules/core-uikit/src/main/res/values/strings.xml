@@ -23,4 +23,9 @@
     <string name="settings_theme_light">Light</string>
     <string name="settings_theme_dark">Dark</string>
 
+    <string name="settings_media_types_title">Media types to show</string>
+    <string name="settings_media_types_anime_and_manga">Anime and Manga</string>
+    <string name="settings_media_types_anime">Only Anime</string>
+    <string name="settings_media_types_manga">Only Manga</string>
+
 </resources>

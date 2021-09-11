@@ -7,10 +7,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import kotlinx.android.synthetic.main.settings_fragment_settings.rootLayout
-import kotlinx.android.synthetic.main.settings_fragment_settings.themeDarkRadioButton
-import kotlinx.android.synthetic.main.settings_fragment_settings.themeLightRadioButton
-import kotlinx.android.synthetic.main.settings_fragment_settings.themeRadioGroup
-import kotlinx.android.synthetic.main.settings_fragment_settings.themeSystemRadioButton
+import kotlinx.android.synthetic.main.settings_fragment_settings_theme_mode.themeDarkRadioButton
+import kotlinx.android.synthetic.main.settings_fragment_settings_theme_mode.themeLightRadioButton
+import kotlinx.android.synthetic.main.settings_fragment_settings_theme_mode.themeRadioGroup
+import kotlinx.android.synthetic.main.settings_fragment_settings_theme_mode.themeSystemRadioButton
 import net.yakuraion.mangakko.core_entity.settings.ThemeMode
 import net.yakuraion.mangakko.core_entity.settings.ThemeMode.DARK
 import net.yakuraion.mangakko.core_entity.settings.ThemeMode.LIGHT

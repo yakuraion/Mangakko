@@ -1,61 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <include
+        layout="@layout/settings_fragment_settings_theme_mode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?uikit_surfaceColor">
+        android:layout_marginBottom="24dp" />
 
-        <TextView
-            android:id="@+id/themeTitleTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/settings_theme_title"
-            android:textAppearance="@style/UiKit.TextAppearance.Title4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <RadioGroup
-            android:id="@+id/themeRadioGroup"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/themeTitleTextView">
-
-            <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/themeSystemRadioButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:text="@string/settings_theme_system"
-                tools:checked="true" />
-
-            <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/themeLightRadioButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:text="@string/settings_theme_light" />
-
-            <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/themeDarkRadioButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:text="@string/settings_theme_dark" />
-
-        </RadioGroup>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <include layout="@layout/settings_fragment_settings_media_types" />
 
 </LinearLayout>

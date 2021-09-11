@@ -7,7 +7,7 @@ import androidx.core.graphics.ColorUtils
 
 @ColorInt
 fun calculateTextColorByBackground(context: Context, @ColorInt bgColor: Int): Int {
-    val resId = if (isDarkColor(bgColor)) R.color.uikit_white else R.color.uikit_text_dark
+    val resId = if (isDarkColor(bgColor)) R.color.uikit_white else R.color.uikit_grey_20_100
     return ContextCompat.getColor(context, resId)
 }
 

@@ -9,6 +9,7 @@
     <color name="uikit_grey_90_100">#e6e6e6</color>
     <color name="uikit_grey_80_100">#cdcdcd</color>
     <color name="uikit_grey_70_100">#b3b3b3</color>
+    <color name="uikit_grey_60_100">#9a9a9a</color>
     <color name="uikit_grey_50_100">#808080</color>
     <color name="uikit_grey_40_100">#666666</color>
     <color name="uikit_grey_30_100">#4d4d4d</color>
@@ -20,7 +21,4 @@
     <color name="uikit_amber_dark">#ff6f00</color>
     <color name="uikit_amber_dark_30">#4dff6f00</color>
     <color name="uikit_red">#dd2222</color>
-
-    <color name="uikit_text_light">#cccccc</color>
-    <color name="uikit_text_dark">#333333</color>
 </resources>

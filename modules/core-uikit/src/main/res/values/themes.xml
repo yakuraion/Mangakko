@@ -30,7 +30,8 @@
         <item name="uikit_windowBackgroundColor">@color/uikit_grey_90_100</item>
         <item name="uikit_surfaceColor">@color/uikit_white</item>
 
-        <item name="uikit_textColor">@color/uikit_text_dark</item>
+        <item name="uikit_textColor">@color/uikit_grey_20_100</item>
+        <item name="uikit_textColorDisabled">@color/uikit_grey_40_100</item>
         <item name="uikit_behindTextWithAlphaColor">@color/uikit_white_75</item>
 
         <item name="uikit_placeholderColor">@color/uikit_grey_80_100</item>

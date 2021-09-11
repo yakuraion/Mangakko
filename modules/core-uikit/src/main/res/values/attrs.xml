@@ -6,6 +6,7 @@
     <attr name="uikit_windowBackgroundColor" format="color" />
     <attr name="uikit_surfaceColor" format="color" />
     <attr name="uikit_textColor" format="color" />
+    <attr name="uikit_textColorDisabled" format="color" />
     <attr name="uikit_behindTextWithAlphaColor" format="color" />
     <attr name="uikit_placeholderColor" format="color" />
     <attr name="uikit_dividerColor" format="color" />

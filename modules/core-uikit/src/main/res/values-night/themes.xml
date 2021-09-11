@@ -11,7 +11,8 @@
 
         <item name="uikit_windowBackgroundColor">@color/uikit_black</item>
         <item name="uikit_surfaceColor">@color/uikit_grey_10_100</item>
-        <item name="uikit_textColor">@color/uikit_text_light</item>
+        <item name="uikit_textColor">@color/uikit_grey_80_100</item>
+        <item name="uikit_textColorDisabled">@color/uikit_grey_60_100</item>
         <item name="uikit_behindTextWithAlphaColor">@color/uikit_black_75</item>
 
         <item name="uikit_placeholderColor">@color/uikit_grey_20_100</item>

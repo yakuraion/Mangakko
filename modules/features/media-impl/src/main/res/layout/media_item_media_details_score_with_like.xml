@@ -22,11 +22,11 @@
         android:drawablePadding="4dp"
         android:textAppearance="@style/UiKit.TextAppearance.Normal"
         app:drawableStartCompat="@drawable/uikit_ic_star_16"
-        app:drawableTint="?uikit_accentColor"
         app:layout_constraintBottom_toTopOf="@id/popularityAllTimeTextView"
         app:layout_constraintStart_toEndOf="@id/scoreView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
+        tools:drawableTint="?uikit_accentColor"
         tools:text="@string/media_details_highest_score_all_time" />
 
     <TextView
@@ -36,7 +36,7 @@
         android:drawablePadding="4dp"
         android:textAppearance="@style/UiKit.TextAppearance.Normal"
         app:drawableStartCompat="@drawable/uikit_ic_favorite_16"
-        app:drawableTint="@color/uikit_red"
+        tools:drawableTint="@color/uikit_red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/rateAllTimeTextView"
         app:layout_constraintTop_toBottomOf="@id/rateAllTimeTextView"

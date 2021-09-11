@@ -21,6 +21,7 @@ import net.yakuraion.mangakko.pager_impl.ui.pager.view.PagerFragment.Page.FAVORI
 import net.yakuraion.mangakko.pager_impl.ui.pager.view.PagerFragment.Page.HOME
 import net.yakuraion.mangakko.pager_impl.ui.pager.view.PagerFragment.Page.SETTINGS
 import net.yakuraion.mangakko.pager_impl.ui.pager.viewmodel.PagerViewModel
+import net.yakuraion.mangakko.settings.SettingsFeature
 import javax.inject.Inject
 
 class PagerFragment : BaseFragment<PagerViewModel>(
@@ -38,6 +39,9 @@ class PagerFragment : BaseFragment<PagerViewModel>(
 
     @Inject
     lateinit var favoritesFeature: FavoritesFeature
+
+    @Inject
+    lateinit var settingsFeature: SettingsFeature
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -99,7 +103,7 @@ class PagerFragment : BaseFragment<PagerViewModel>(
         return when (this) {
             HOME -> mediaFeature.getMediaFragment()
             FAVORITES -> favoritesFeature.getFavoritesFragment()
-            SETTINGS -> Fragment()
+            SETTINGS -> settingsFeature.getSettingsFragment()
         }
     }
 

@@ -22,6 +22,8 @@ include(":modules:features:media")
 include(":modules:features:media-impl")
 include(":modules:features:favorites")
 include(":modules:features:favorites-impl")
+include(":modules:features:settings")
+include(":modules:features:settings-impl")
 
 exec { commandLine("git", "init") }
 exec { commandLine("git", "config", "core.hooksPath", ".githooks") }

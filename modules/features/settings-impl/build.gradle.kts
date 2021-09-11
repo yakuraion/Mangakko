@@ -9,10 +9,9 @@ plugins {
 
 dependencies {
     addCommon()
-    api(project(":modules:features:pager"))
+    api(project(":modules:features:settings"))
     implementation(project(":modules:core-feature"))
 
-    implementation(project(":modules:features:media"))
-    implementation(project(":modules:features:favorites"))
-    implementation(project(":modules:features:settings"))
+    testImplementation(project(":modules:core-testutils"))
+    testImplementation(Libraries.archTest)
 }

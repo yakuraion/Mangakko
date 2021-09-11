@@ -81,4 +81,5 @@ dependencies {
     implementation(project(":modules:features:pager-impl"))
     implementation(project(":modules:features:media-impl"))
     implementation(project(":modules:features:favorites-impl"))
+    implementation(project(":modules:features:settings-impl"))
 }

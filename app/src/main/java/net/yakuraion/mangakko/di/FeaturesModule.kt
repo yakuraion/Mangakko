@@ -10,6 +10,8 @@ import net.yakuraion.mangakko.media.MediaFeature
 import net.yakuraion.mangakko.media_impl.MediaFeatureImpl
 import net.yakuraion.mangakko.pager.PagerFeature
 import net.yakuraion.mangakko.pager_impl.PagerFeatureImpl
+import net.yakuraion.mangakko.settings.SettingsFeature
+import net.yakuraion.mangakko.settings_impl.SettingsFeatureImpl
 
 @Module
 interface FeaturesModule {
@@ -25,4 +27,7 @@ interface FeaturesModule {
 
     @Binds
     fun bindsFavorites(impl: FavoritesFeatureImpl): FavoritesFeature
+
+    @Binds
+    fun bindsSettings(impl: SettingsFeatureImpl): SettingsFeature
 }

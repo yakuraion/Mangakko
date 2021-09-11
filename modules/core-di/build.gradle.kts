@@ -19,4 +19,5 @@ dependencies {
     implementation(project(":modules:features:pager"))
     implementation(project(":modules:features:media"))
     implementation(project(":modules:features:favorites"))
+    implementation(project(":modules:features:settings"))
 }

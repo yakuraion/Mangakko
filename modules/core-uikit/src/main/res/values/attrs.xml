@@ -10,6 +10,10 @@
     <attr name="uikit_behindTextWithAlphaColor" format="color" />
     <attr name="uikit_placeholderColor" format="color" />
     <attr name="uikit_dividerColor" format="color" />
+    <attr name="uikit_red" format="reference" />
+    <attr name="uikit_amber" format="reference" />
+    <attr name="uikit_amber_30" format="reference" />
+    <attr name="uikit_green" format="reference" />
 
     <attr name="uikit_scoreViewStyle" format="reference" />
 </resources>

@@ -4,11 +4,15 @@
     <style name="UiKit.Theme" />
 
     <style name="UiKit.Theme.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="uikit_accentColor">?uikit_amber</item>
+
         <item name="android:statusBarColor">?attr/uikit_statusBarColor</item>
         <item name="android:navigationBarColor">?attr/uikit_navigationBarColor</item>
 
         <item name="android:forceDarkAllowed" tools:ignore="NewApi">false</item>
         <item name="android:windowBackground">?attr/uikit_windowBackgroundColor</item>
+
+        <item name="android:colorEdgeEffect">?uikit_amber_30</item>
 
         <item name="bottomNavigationStyle">@style/UiKit.Style.BottomNavigationView</item>
         <item name="appBarLayoutStyle">@style/UiKit.Style.AppBarLayout</item>
@@ -18,25 +22,22 @@
     </style>
 
     <style name="UiKit.Theme.App" parent="UiKit.Theme.Base">
-        <item name="uikit_accentColor">@color/uikit_amber_dark</item>
-
-        <item name="android:colorEdgeEffect">@color/uikit_amber_dark_30</item>
-
-        <item name="uikit_statusBarColor">@color/uikit_white_50</item>
-        <item name="uikit_navigationBarColor">@color/uikit_white_50</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
 
+        <item name="uikit_statusBarColor">@color/uikit_white_50</item>
+        <item name="uikit_navigationBarColor">@color/uikit_white_50</item>
         <item name="uikit_windowBackgroundColor">@color/uikit_grey_90_100</item>
         <item name="uikit_surfaceColor">@color/uikit_white</item>
-
         <item name="uikit_textColor">@color/uikit_grey_20_100</item>
         <item name="uikit_textColorDisabled">@color/uikit_grey_40_100</item>
-        <item name="uikit_behindTextWithAlphaColor">@color/uikit_white_75</item>
-
+        <item name="uikit_behindTextWithAlphaColor">@color/uikit_white_80</item>
         <item name="uikit_placeholderColor">@color/uikit_grey_80_100</item>
-
         <item name="uikit_dividerColor">@color/uikit_grey_80_100</item>
+        <item name="uikit_red">@color/uikit_red</item>
+        <item name="uikit_amber">@color/uikit_amber_dark</item>
+        <item name="uikit_amber_30">@color/uikit_amber_dark_30</item>
+        <item name="uikit_green">@color/uikit_green_dark</item>
     </style>
 
 </resources>

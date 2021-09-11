@@ -7,6 +7,7 @@ import androidx.annotation.AttrRes
 import androidx.appcompat.widget.AppCompatTextView
 import net.yakuraion.mangakko.core_uikit.R
 import net.yakuraion.mangakko.core_uikit.dpToPxInt
+import net.yakuraion.mangakko.core_uikit.resolveColorAttr
 
 class UiKitScoreView : AppCompatTextView {
 
@@ -14,7 +15,6 @@ class UiKitScoreView : AppCompatTextView {
         minimumWidth = SIZE_DP.dpToPxInt()
         minimumHeight = SIZE_DP.dpToPxInt()
         gravity = Gravity.CENTER
-        setBackgroundResource(R.drawable.uikit_score_view_bg)
     }
 
     constructor(context: Context) : this(context, null)
@@ -43,10 +43,33 @@ class UiKitScoreView : AppCompatTextView {
 
     fun setScore(score: Int) {
         text = score.toString()
+        updateBackground(score)
+        updateTextColor(score)
+    }
+
+    private fun updateBackground(score: Int) {
+        val res = when {
+            score >= GREEN_MIN -> R.drawable.uikit_score_view_bg_green
+            score >= AMBER_MIN -> R.drawable.uikit_score_view_bg_amber
+            else -> R.drawable.uikit_score_view_bg_red
+        }
+        setBackgroundResource(res)
+    }
+
+    private fun updateTextColor(score: Int) {
+        val attrRes = when {
+            score >= GREEN_MIN -> R.attr.uikit_green
+            score >= AMBER_MIN -> R.attr.uikit_amber
+            else -> R.attr.uikit_red
+        }
+        setTextColor(context.resolveColorAttr(attrRes))
     }
 
     companion object {
 
         private const val SIZE_DP = 40f
+
+        private const val GREEN_MIN = 80
+        private const val AMBER_MIN = 60
     }
 }

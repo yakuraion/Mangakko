@@ -2,22 +2,19 @@
 <resources>
 
     <style name="UiKit.Theme.App" parent="UiKit.Theme.Base">
-        <item name="uikit_accentColor">@color/uikit_amber</item>
-
-        <item name="android:colorEdgeEffect">@color/uikit_amber_30</item>
-
         <item name="uikit_statusBarColor">@color/uikit_black_50</item>
         <item name="uikit_navigationBarColor">@color/uikit_black_50</item>
-
         <item name="uikit_windowBackgroundColor">@color/uikit_black</item>
         <item name="uikit_surfaceColor">@color/uikit_grey_10_100</item>
         <item name="uikit_textColor">@color/uikit_grey_80_100</item>
         <item name="uikit_textColorDisabled">@color/uikit_grey_60_100</item>
-        <item name="uikit_behindTextWithAlphaColor">@color/uikit_black_75</item>
-
+        <item name="uikit_behindTextWithAlphaColor">@color/uikit_black_80</item>
         <item name="uikit_placeholderColor">@color/uikit_grey_20_100</item>
-
         <item name="uikit_dividerColor">@color/uikit_grey_20_100</item>
+        <item name="uikit_red">@color/uikit_red</item>
+        <item name="uikit_amber">@color/uikit_amber</item>
+        <item name="uikit_amber_30">@color/uikit_amber_30</item>
+        <item name="uikit_green">@color/uikit_green</item>
     </style>
 
 </resources>

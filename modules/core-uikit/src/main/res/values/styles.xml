@@ -29,7 +29,6 @@
 
     <style name="UiKit.Style.ScoreView" parent="Widget.AppCompat.TextView">
         <item name="android:textAppearance">@style/UiKit.TextAppearance.Title4</item>
-        <item name="android:textColor">?attr/uikit_accentColor</item>
         <item name="android:padding">4dp</item>
     </style>
 

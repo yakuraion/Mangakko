@@ -1,7 +1,7 @@
 package net.yakuraion.mangakko.core_di
 
-import net.yakuraion.mangakko.MainFeature
 import net.yakuraion.mangakko.favorites.FavoritesFeature
+import net.yakuraion.mangakko.main.MainFeature
 import net.yakuraion.mangakko.media.MediaFeature
 import net.yakuraion.mangakko.pager.PagerFeature
 

@@ -1,4 +1,4 @@
-package net.yakuraion.mangakko
+package net.yakuraion.mangakko.main
 
 import androidx.fragment.app.Fragment
 

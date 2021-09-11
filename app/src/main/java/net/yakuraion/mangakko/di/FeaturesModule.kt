@@ -2,9 +2,9 @@ package net.yakuraion.mangakko.di
 
 import dagger.Binds
 import dagger.Module
-import net.yakuraion.mangakko.MainFeature
 import net.yakuraion.mangakko.favorites.FavoritesFeature
 import net.yakuraion.mangakko.favorites_impl.FavoritesFeatureImpl
+import net.yakuraion.mangakko.main.MainFeature
 import net.yakuraion.mangakko.main_impl.MainFeatureImpl
 import net.yakuraion.mangakko.media.MediaFeature
 import net.yakuraion.mangakko.media_impl.MediaFeatureImpl

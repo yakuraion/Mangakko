@@ -1,3 +1,8 @@
 package net.yakuraion.mangakko.core_persistence
 
-interface PreferencesManager
+import net.yakuraion.mangakko.core_entity.settings.ThemeMode
+
+interface PreferencesManager {
+
+    var themeMode: ThemeMode
+}

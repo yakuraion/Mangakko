@@ -11,6 +11,7 @@ import net.yakuraion.mangakko.core_feature.di.viewmodel.InjectingSavedStateViewM
 import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
 import net.yakuraion.mangakko.core_uikit.fragment.requireListener
 import net.yakuraion.mangakko.core_uikit.onbackpressed.setUpOnBackPressedForClearBackStack
+import net.yakuraion.mangakko.core_utils.applyIf
 import net.yakuraion.mangakko.media.MediaFeature
 import net.yakuraion.mangakko.media_impl.R
 import net.yakuraion.mangakko.media_impl.di.injector
@@ -51,11 +52,7 @@ class MediaFragment : BaseFragment<MediaViewModel>(
     private fun showFragment(fragment: Fragment, addToBackStack: Boolean = false) {
         childFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainerView, fragment)
-            .apply {
-                if (addToBackStack) {
-                    addToBackStack(null)
-                }
-            }
+            .applyIf(addToBackStack) { addToBackStack(null) }
             .commit()
     }
 

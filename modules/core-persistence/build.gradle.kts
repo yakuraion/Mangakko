@@ -9,6 +9,7 @@ plugins {
 
 dependencies {
     addCommon()
+    implementation(project(":modules:core-utils"))
     addRoom()
     api(project(":modules:core-entity"))
 }

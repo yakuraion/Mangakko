@@ -8,6 +8,7 @@ plugins {
 
 dependencies {
     addCommon()
+    implementation(project(":modules:core-utils"))
     implementation(Libraries.gson)
 
     implementation(project(":modules:core-repositories"))

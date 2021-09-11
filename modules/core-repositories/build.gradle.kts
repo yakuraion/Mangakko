@@ -8,6 +8,7 @@ plugins {
 
 dependencies {
     addCommon()
+    implementation(project(":modules:core-utils"))
     api(Libraries.paging)
     api(project(":modules:core-entity"))
 }

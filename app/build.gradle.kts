@@ -64,6 +64,7 @@ android {
 
 dependencies {
     addCommon()
+    implementation(project(":modules:core-utils"))
     addHyperion()
     implementation(Libraries.gson)
 

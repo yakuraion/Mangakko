@@ -1,7 +1,7 @@
 package net.yakuraion.mangakko.main_impl
 
 import androidx.fragment.app.Fragment
-import net.yakuraion.mangakko.MainFeature
+import net.yakuraion.mangakko.main.MainFeature
 import net.yakuraion.mangakko.main_impl.ui.main.view.MainFragment
 import javax.inject.Inject
 

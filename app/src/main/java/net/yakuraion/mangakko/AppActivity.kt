@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import net.yakuraion.mangakko.core_di.app_provider.AppProviderHolder
 import net.yakuraion.mangakko.di.AppComponent
+import net.yakuraion.mangakko.main.MainFeature
 import javax.inject.Inject
 
 class AppActivity : AppCompatActivity() {

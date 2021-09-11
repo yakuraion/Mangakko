@@ -1,4 +1,4 @@
-package net.yakuraion.mangakko.core_feature.utils
+package net.yakuraion.mangakko.core_utils
 
 /**
  * Create a new list where some items will be replaced with new items

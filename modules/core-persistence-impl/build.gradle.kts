@@ -8,6 +8,7 @@ plugins {
 
 dependencies {
     addCommon()
+    implementation(project(":modules:core-utils"))
     api(project(":modules:core-persistence"))
     implementation(project(":modules:core-di"))
     implementation(Libraries.gson)

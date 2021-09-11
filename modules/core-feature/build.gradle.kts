@@ -8,6 +8,7 @@ plugins {
 
 dependencies {
     addCommon()
+    api(project(":modules:core-utils"))
 
     api(project(":modules:core-uikit"))
     api(project(":modules:core-di"))

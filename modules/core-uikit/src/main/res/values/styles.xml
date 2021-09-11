@@ -22,6 +22,11 @@
         <item name="elevation">0dp</item>
     </style>
 
+    <style name="UiKit.Style.RadioButton" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
+        <item name="android:textAppearance">@style/UiKit.TextAppearance.Normal</item>
+        <item name="buttonTint">@color/uikit_radio_button_color</item>
+    </style>
+
     <style name="UiKit.Style.CircularProgressIndicator" parent="Widget.MaterialComponents.CircularProgressIndicator">
         <item name="android:indeterminate">true</item>
         <item name="indicatorColor">?attr/uikit_accentColor</item>

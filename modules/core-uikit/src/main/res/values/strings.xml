@@ -18,4 +18,9 @@
     <string name="media_details_most_popular_all_time">#%d Popularity All Time</string>
     <string name="media_details_most_popular_all_time_not_available">Popularity not available</string>
 
+    <string name="settings_theme_title">Theme</string>
+    <string name="settings_theme_system">System dependent</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+
 </resources>

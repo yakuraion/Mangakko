@@ -17,7 +17,6 @@ dependencies {
 
     implementation(project(":modules:features:main"))
     implementation(project(":modules:features:pager"))
-    implementation(project(":modules:features:genres"))
     implementation(project(":modules:features:media"))
     implementation(project(":modules:features:favorites"))
 }

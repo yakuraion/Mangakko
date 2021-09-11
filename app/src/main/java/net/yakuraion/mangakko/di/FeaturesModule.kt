@@ -5,8 +5,6 @@ import dagger.Module
 import net.yakuraion.mangakko.MainFeature
 import net.yakuraion.mangakko.favorites.FavoritesFeature
 import net.yakuraion.mangakko.favorites_impl.FavoritesFeatureImpl
-import net.yakuraion.mangakko.genres.GenresFeature
-import net.yakuraion.mangakko.genres_impl.GenresFeatureImpl
 import net.yakuraion.mangakko.main_impl.MainFeatureImpl
 import net.yakuraion.mangakko.media.MediaFeature
 import net.yakuraion.mangakko.media_impl.MediaFeatureImpl
@@ -21,9 +19,6 @@ interface FeaturesModule {
 
     @Binds
     fun bindsPager(impl: PagerFeatureImpl): PagerFeature
-
-    @Binds
-    fun bindsGenres(impl: GenresFeatureImpl): GenresFeature
 
     @Binds
     fun bindsMedia(impl: MediaFeatureImpl): MediaFeature

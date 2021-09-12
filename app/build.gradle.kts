@@ -9,6 +9,7 @@ plugins {
     kotlin("android.extensions")
 }
 
+val localProperties = loadProperties("${rootDir}/local.properties")
 val versionProperties = loadProperties("${rootDir}/version.properties")
 
 android {
@@ -31,6 +32,13 @@ android {
             keyAlias = "debugkey"
             keyPassword = "debugpassword"
         }
+
+        create("releaseConfig") {
+            storeFile = File("$rootDir/keystores/release_keystore.jks")
+            storePassword = localProperties.getProperty("release_password")
+            keyAlias = "releasekey"
+            keyPassword = localProperties.getProperty("release_password")
+        }
     }
 
     buildTypes {
@@ -38,6 +46,13 @@ android {
             applicationIdSuffix = ".debug"
             signingConfig = signingConfigs.getByName("debugConfig")
             isDebuggable = true
+            isShrinkResources = false
+            isMinifyEnabled = false
+        }
+
+        getByName("release") {
+            signingConfig = signingConfigs.getByName("releaseConfig")
+            // todo fix
             isShrinkResources = false
             isMinifyEnabled = false
         }
@@ -50,6 +65,11 @@ android {
             dimension = "environment"
             applicationIdSuffix = ".dev"
             resValue("string", "app_name", "Mangakko (Dev)")
+        }
+
+        create("prod") {
+            dimension = "environment"
+            resValue("string", "app_name", "Mangakko")
         }
     }
 

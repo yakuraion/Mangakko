@@ -1,6 +1,7 @@
 package net.yakuraion.mangakko.media_impl.ui.media_list.viewmodel
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.paging.DataSource
 import androidx.paging.LivePagedListBuilder
@@ -30,7 +31,7 @@ class MediaListViewModel @AssistedInject constructor(
     private val status: MediaStatus? = savedStateHandle.get(ARG_STATUS)
 
     private val dataSourceFactory: DataSource.Factory<Int, Media> = dataSourcesFactoriesFactory
-        .createMediaDataSourceFactory(this, sortTypes, mediaType, status)
+        .createMediaDataSourceFactory(coroutineContext, sortTypes, mediaType, status)
 
     private val config: PagedList.Config = PagedList.Config.Builder()
         .setEnablePlaceholders(true)
@@ -39,6 +40,11 @@ class MediaListViewModel @AssistedInject constructor(
 
     val mediaPagedListLiveData: LiveData<PagedList<Media>> = LivePagedListBuilder(dataSourceFactory, config)
         .build()
+
+    val placeholderCountLiveData: LiveData<Int?> = MediatorLiveData<Int?>().apply {
+        value = INIT_PLACEHOLDER_COUNT
+        addSource(mediaPagedListLiveData) { value = null }
+    }
 
     @AssistedFactory
     interface Factory : AssistedSavedStateViewModelFactory<MediaListViewModel> {
@@ -51,6 +57,8 @@ class MediaListViewModel @AssistedInject constructor(
         const val ARG_SORT_TYPES = "SORT_TYPES"
         const val ARG_MEDIA_TYPE = "MEDIA_TYPE"
         const val ARG_STATUS = "STATUS"
+
+        private const val INIT_PLACEHOLDER_COUNT = 10
 
         private const val PAGE_SIZE = 40
     }

@@ -4,16 +4,16 @@ import androidx.paging.PageKeyedDataSource
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import net.yakuraion.mangakko.core_entity.Media
 import net.yakuraion.mangakko.core_entity.MediaSortType
 import net.yakuraion.mangakko.core_entity.MediaStatus
 import net.yakuraion.mangakko.core_entity.MediaType
 import net.yakuraion.mangakko.core_repositories.MediaRepository
+import kotlin.coroutines.CoroutineContext
 
 class MediaDataSource @AssistedInject constructor(
-    @Assisted private val coroutineScope: CoroutineScope,
+    @Assisted private val coroutineContext: CoroutineContext,
     @Assisted private val sortTypes: List<MediaSortType>,
     @Assisted private val mediaType: MediaType?,
     @Assisted private val status: MediaStatus?,
@@ -21,7 +21,7 @@ class MediaDataSource @AssistedInject constructor(
 ) : PageKeyedDataSource<Int, Media>() {
 
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Media>) {
-        coroutineScope.launch {
+        runBlocking(coroutineContext) {
             val page = mediaRepository.getPageMedia(
                 0,
                 params.requestedLoadSize,
@@ -43,7 +43,7 @@ class MediaDataSource @AssistedInject constructor(
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Media>) {
-        coroutineScope.launch {
+        runBlocking(coroutineContext) {
             val page = mediaRepository.getPageMedia(
                 params.key,
                 params.requestedLoadSize,
@@ -60,7 +60,7 @@ class MediaDataSource @AssistedInject constructor(
     interface Factory {
 
         fun create(
-            coroutineScope: CoroutineScope,
+            coroutineContext: CoroutineContext,
             sortTypes: List<MediaSortType>,
             mediaType: MediaType?,
             status: MediaStatus?

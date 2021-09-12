@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.AsyncDifferConfig
 import com.mikepenz.fastadapter.FastAdapter
+import com.mikepenz.fastadapter.adapters.ItemAdapter
 import com.mikepenz.fastadapter.paged.PagedModelAdapter
 import kotlinx.android.synthetic.main.media_fragment_media_list.recyclerView
 import net.yakuraion.mangakko.core_entity.Media
@@ -41,12 +42,16 @@ class MediaListFragment : BaseFragment<MediaListViewModel>(
 
     private lateinit var listener: Listener
 
+    private val placeholderItemAdapter: ItemAdapter<MediaItem> = ItemAdapter()
+
     private val itemAdapter: PagedModelAdapter<Media, MediaItem> = PagedModelAdapter(
         AsyncDifferConfig.Builder(MediaDiffUtilItemCallback()).build(),
         { MediaItem(null) }
     ) { MediaItem(it) }
 
-    private val adapter: FastAdapter<MediaItem> = FastAdapter.with(itemAdapter).apply {
+    private val adapter: FastAdapter<MediaItem> = FastAdapter.with(
+        listOf(placeholderItemAdapter, itemAdapter)
+    ).apply {
         onClickListener = { _, _, item, _ ->
             item.model?.let { listener.onMediaListMediaClick(it) }
             true
@@ -65,6 +70,7 @@ class MediaListFragment : BaseFragment<MediaListViewModel>(
         setUpInsets()
         viewModel.apply {
             mediaPagedListLiveData.observe(viewLifecycleOwner) { itemAdapter.submitList(it) }
+            placeholderCountLiveData.observe(viewLifecycleOwner) { updatePlaceholderCount(it) }
         }
     }
 
@@ -83,6 +89,14 @@ class MediaListFragment : BaseFragment<MediaListViewModel>(
             val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
             view.updatePadding(top = insets.top)
             WindowInsetsCompat.CONSUMED
+        }
+    }
+
+    private fun updatePlaceholderCount(count: Int?) {
+        val items = List(count ?: 0) { MediaItem(null) }
+        placeholderItemAdapter.apply {
+            set(items)
+            active = count != null
         }
     }
 

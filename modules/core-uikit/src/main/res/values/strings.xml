@@ -9,12 +9,12 @@
 
     <string name="media_overview_category_more">More</string>
 
-    <string name="media_overview_category_ongoing_anime">Ongoing anime</string>
-    <string name="media_overview_category_most_popular_anime">Most popular anime</string>
-    <string name="media_overview_category_most_rated_anime">Most rated anime</string>
-    <string name="media_overview_category_ongoing_manga">Ongoing manga</string>
-    <string name="media_overview_category_most_popular_manga">Most popular manga</string>
-    <string name="media_overview_category_most_rated_manga">Most rated manga</string>
+    <string name="media_overview_category_ongoing_anime">Ongoing Anime</string>
+    <string name="media_overview_category_most_popular_anime">Most popular Anime</string>
+    <string name="media_overview_category_most_rated_anime">Most rated Anime</string>
+    <string name="media_overview_category_ongoing_manga">Ongoing Manga</string>
+    <string name="media_overview_category_most_popular_manga">Most popular Manga</string>
+    <string name="media_overview_category_most_rated_manga">Most rated Manga</string>
 
     <string name="media_details_highest_score_all_time">#%d Highest Rated All Time</string>
     <string name="media_details_highest_score_all_time_not_available">Highest Rated not available</string>

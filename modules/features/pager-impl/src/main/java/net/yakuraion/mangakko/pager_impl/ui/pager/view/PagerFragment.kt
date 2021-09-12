@@ -3,7 +3,13 @@ package net.yakuraion.mangakko.pager_impl.ui.pager.view
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup.MarginLayoutParams
 import androidx.annotation.IdRes
+import androidx.core.graphics.Insets
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updateMargins
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import kotlinx.android.synthetic.main.pager_fragment_pager.bottomNavigationView
@@ -51,10 +57,22 @@ class PagerFragment : BaseFragment<PagerViewModel>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setUpInsets()
         setUpOnBackPressedCallback()
         setUpBottomNavigationView()
         viewModel.apply {
             openFirstPageLiveData.observe(viewLifecycleOwner) { openPage(HOME) }
+        }
+    }
+
+    private fun setUpInsets() {
+        ViewCompat.setOnApplyWindowInsetsListener(requireView()) { _, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            bottomNavigationView.updateLayoutParams<MarginLayoutParams> {
+                updateMargins(bottom = insets.bottom)
+            }
+            val newInsets = Insets.of(insets.left, insets.top, insets.right, 0)
+            WindowInsetsCompat.Builder().setInsets(WindowInsetsCompat.Type.systemBars(), newInsets).build()
         }
     }
 

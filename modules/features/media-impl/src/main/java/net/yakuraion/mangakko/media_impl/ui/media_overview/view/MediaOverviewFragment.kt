@@ -118,6 +118,8 @@ class MediaOverviewFragment : BaseFragment<MediaOverviewViewModel>(
         setUpInsets()
         recyclerView.adapter = fastAdapter
         viewModel.apply {
+            animeIsShowingLiveData.observe(viewLifecycleOwner) { updateAnimeIsShowing(it) }
+            mangaIsShowingLiveData.observe(viewLifecycleOwner) { updateMangaIsShowing(it) }
             ongoingAnimeListLiveData.observe(viewLifecycleOwner) { mediaList ->
                 updateMediaList(ongoingAnimeItemAdapter, mediaList)
             }
@@ -145,6 +147,24 @@ class MediaOverviewFragment : BaseFragment<MediaOverviewViewModel>(
             view.updatePadding(top = insets.top)
             WindowInsetsCompat.CONSUMED
         }
+    }
+
+    private fun updateAnimeIsShowing(isShowing: Boolean) {
+        ongoingAnimeTitleItemAdapter.active = isShowing
+        ongoingAnimeItemAdapter.active = isShowing
+        mostPopularAnimeTitleItemAdapter.active = isShowing
+        mostPopularAnimeItemAdapter.active = isShowing
+        mostRatedAnimeTitleItemAdapter.active = isShowing
+        mostRatedAnimeItemAdapter.active = isShowing
+    }
+
+    private fun updateMangaIsShowing(isShowing: Boolean) {
+        ongoingMangaTitleItemAdapter.active = isShowing
+        ongoingMangaItemAdapter.active = isShowing
+        mostPopularMangaTitleItemAdapter.active = isShowing
+        mostPopularMangaItemAdapter.active = isShowing
+        mostRatedMangaTitleItemAdapter.active = isShowing
+        mostRatedMangaItemAdapter.active = isShowing
     }
 
     private fun updateMediaList(itemAdapter: ItemAdapter<MediaOverviewListItem>, list: List<Media?>) {

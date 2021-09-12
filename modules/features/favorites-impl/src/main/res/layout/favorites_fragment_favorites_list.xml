@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/recyclerView"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?uikit_surfaceColor"
-    android:clipToPadding="false"
-    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-    app:spanCount="2" />
+    android:layout_height="match_parent">
+
+    <include layout="@layout/favorites_fragment_favorites_list_content" />
+
+    <include
+        android:id="@+id/emptyLayout"
+        layout="@layout/favorites_fragment_favorites_list_empty" />
+
+</FrameLayout>

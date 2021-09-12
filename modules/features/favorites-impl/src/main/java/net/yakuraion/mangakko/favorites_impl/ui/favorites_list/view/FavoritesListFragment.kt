@@ -8,10 +8,11 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
-import kotlinx.android.synthetic.main.favorites_fragment_favorites_list.recyclerView
+import kotlinx.android.synthetic.main.favorites_fragment_favorites_list_content.recyclerView
 import net.yakuraion.mangakko.core_entity.Media
 import net.yakuraion.mangakko.core_feature.di.viewmodel.InjectingSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
+import net.yakuraion.mangakko.core_uikit.content.ContentStateController
 import net.yakuraion.mangakko.core_uikit.dpToPxInt
 import net.yakuraion.mangakko.core_uikit.fastadapter.items.media.MediaItem
 import net.yakuraion.mangakko.core_uikit.fragment.requireListener
@@ -31,6 +32,11 @@ class FavoritesListFragment : BaseFragment<FavoritesListViewModel>(
 
     private lateinit var listener: Listener
 
+    private val contentStateController: ContentStateController = ContentStateController(
+        contentViewIds = listOf(R.id.recyclerView),
+        emptyViewIds = listOf(R.id.emptyLayout)
+    )
+
     private val itemAdapter: ItemAdapter<MediaItem> = ItemAdapter()
 
     private val adapter: FastAdapter<MediaItem> = FastAdapter.with(itemAdapter).apply {
@@ -48,9 +54,11 @@ class FavoritesListFragment : BaseFragment<FavoritesListViewModel>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        contentStateController.attachView(view)
         setUpRecyclerView()
         setUpInsets()
         viewModel.apply {
+            contentStateLiveData.observe(viewLifecycleOwner) { contentStateController.state = it }
             mediaListLiveData.observe(viewLifecycleOwner) { updateMediaList(it) }
         }
     }
@@ -79,6 +87,7 @@ class FavoritesListFragment : BaseFragment<FavoritesListViewModel>(
     }
 
     override fun onDestroyView() {
+        contentStateController.detachView()
         recyclerView.adapter = null
         super.onDestroyView()
     }

@@ -31,9 +31,9 @@ class MediaDataSource @AssistedInject constructor(
             )
             val nextPageKey = if (page.hasNextPage) 1 else null
             if (params.placeholdersEnabled) {
-                callback.onResult(page.values, null, nextPageKey)
-            } else {
                 callback.onResult(page.values, 0, page.totalCount, null, nextPageKey)
+            } else {
+                callback.onResult(page.values, null, nextPageKey)
             }
         }
     }

@@ -22,6 +22,19 @@
                 app:layout_collapseParallaxMultiplier="0.7">
 
                 <ImageView
+                    android:id="@+id/navigationImageView"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="16dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:scaleType="center"
+                    android:src="@drawable/uikit_ic_arrow_back_24"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription"
+                    tools:layout_marginTop="8dp" />
+
+                <ImageView
                     android:id="@+id/coverImageView"
                     android:layout_width="wrap_content"
                     android:layout_height="300dp"

@@ -1,10 +1,12 @@
 package net.yakuraion.mangakko.media_impl.ui.media_details.view
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup.MarginLayoutParams
+import androidx.annotation.ColorInt
 import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -18,6 +20,7 @@ import com.mikepenz.fastadapter.adapters.ItemAdapter
 import com.mikepenz.fastadapter.items.AbstractItem
 import kotlinx.android.synthetic.main.media_fragment_media_details_content.appBarLayout
 import kotlinx.android.synthetic.main.media_fragment_media_details_content.coverImageView
+import kotlinx.android.synthetic.main.media_fragment_media_details_content.navigationImageView
 import kotlinx.android.synthetic.main.media_fragment_media_details_content.recyclerView
 import kotlinx.android.synthetic.main.media_fragment_media_details_content.titleTextView
 import net.yakuraion.mangakko.core_entity.Media
@@ -89,6 +92,7 @@ class MediaDetailsFragment : BaseFragment<MediaDetailsViewModel>(
         setUpRecyclerView()
         setUpInitMainColorViews()
         scoreWithLikeItemAdapter.set(listOf())
+        navigationImageView.setOnClickListener { requireActivity().onBackPressed() }
         viewModel.apply {
             contentStateLiveData.observe(viewLifecycleOwner) { contentStateController.state = it }
             mainColorLiveData.observe(viewLifecycleOwner) { updateMainColorViews(it) }
@@ -125,6 +129,9 @@ class MediaDetailsFragment : BaseFragment<MediaDetailsViewModel>(
     private fun setUpInsets() {
         ViewCompat.setOnApplyWindowInsetsListener(requireView()) { _, windowInsets ->
             val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            navigationImageView.updateLayoutParams<MarginLayoutParams> {
+                updateMargins(top = NAVIGATION_IMAGE_VIEW_MARGIN_TOP_DP.dpToPxInt() + insets.top)
+            }
             coverImageView.updateLayoutParams<MarginLayoutParams> {
                 updateMargins(top = COVER_IMAGE_TOP_MARGIN_DP.dpToPxInt() + insets.top)
             }
@@ -152,9 +159,12 @@ class MediaDetailsFragment : BaseFragment<MediaDetailsViewModel>(
         updateMainColorViews(color)
     }
 
-    private fun updateMainColorViews(color: Int) {
+    private fun updateMainColorViews(@ColorInt color: Int) {
         requireView().setBackgroundColor(color)
-        titleTextView.setTextColor(calculateTextColorByBackground(requireContext(), color))
+        calculateTextColorByBackground(requireContext(), color).let { textColor ->
+            navigationImageView.imageTintList = ColorStateList.valueOf(textColor)
+            titleTextView.setTextColor(textColor)
+        }
     }
 
     private fun updateCoverImageView(imageUrl: String) {
@@ -206,6 +216,8 @@ class MediaDetailsFragment : BaseFragment<MediaDetailsViewModel>(
     }
 
     companion object {
+
+        private const val NAVIGATION_IMAGE_VIEW_MARGIN_TOP_DP = 8f
 
         private const val RECYCLER_VIEW_HORIZONTAL_PADDING_DP = 16f
         private const val RECYCLER_VIEW_VERTICAL_PADDING_DP = 16f

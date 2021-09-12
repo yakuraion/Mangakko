@@ -7,10 +7,18 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import kotlinx.android.synthetic.main.settings_fragment_settings.rootLayout
+import kotlinx.android.synthetic.main.settings_fragment_settings_media_types.mediaTypesAnimeAndMangaRadioButton
+import kotlinx.android.synthetic.main.settings_fragment_settings_media_types.mediaTypesAnimeRadioButton
+import kotlinx.android.synthetic.main.settings_fragment_settings_media_types.mediaTypesMangaRadioButton
+import kotlinx.android.synthetic.main.settings_fragment_settings_media_types.mediaTypesRadioGroup
 import kotlinx.android.synthetic.main.settings_fragment_settings_theme_mode.themeDarkRadioButton
 import kotlinx.android.synthetic.main.settings_fragment_settings_theme_mode.themeLightRadioButton
 import kotlinx.android.synthetic.main.settings_fragment_settings_theme_mode.themeRadioGroup
 import kotlinx.android.synthetic.main.settings_fragment_settings_theme_mode.themeSystemRadioButton
+import net.yakuraion.mangakko.core_entity.settings.MediaTypesToShow
+import net.yakuraion.mangakko.core_entity.settings.MediaTypesToShow.ANIME_AND_MANGA
+import net.yakuraion.mangakko.core_entity.settings.MediaTypesToShow.ONLY_ANIME
+import net.yakuraion.mangakko.core_entity.settings.MediaTypesToShow.ONLY_MANGA
 import net.yakuraion.mangakko.core_entity.settings.ThemeMode
 import net.yakuraion.mangakko.core_entity.settings.ThemeMode.DARK
 import net.yakuraion.mangakko.core_entity.settings.ThemeMode.LIGHT
@@ -40,8 +48,10 @@ class SettingsFragment : BaseFragment<SettingsViewModel>(
         super.onViewCreated(view, savedInstanceState)
         setUpInsets()
         setUpThemeRadioGroup()
+        setUpMediaTypesRadioGroup()
         viewModel.apply {
             setThemeModeLiveData.observe(viewLifecycleOwner) { updateThemeRadioSelection(it) }
+            setMediaTypesLiveData.observe(viewLifecycleOwner) { updateMediaTypesRadioSelection(it) }
         }
     }
 
@@ -63,11 +73,30 @@ class SettingsFragment : BaseFragment<SettingsViewModel>(
         }
     }
 
+    private fun setUpMediaTypesRadioGroup() {
+        mediaTypesRadioGroup.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                R.id.mediaTypesAnimeAndMangaRadioButton -> viewModel.onMediaTypesAnimeAndMangaChecked()
+                R.id.mediaTypesAnimeRadioButton -> viewModel.onMediaTypesAnimeChecked()
+                R.id.mediaTypesMangaRadioButton -> viewModel.onMediaTypesMangaChecked()
+            }
+        }
+    }
+
     private fun updateThemeRadioSelection(themeMode: ThemeMode) {
         val view = when (themeMode) {
             SYSTEM -> themeSystemRadioButton
             LIGHT -> themeLightRadioButton
             DARK -> themeDarkRadioButton
+        }
+        view.isChecked = true
+    }
+
+    private fun updateMediaTypesRadioSelection(mediaTypes: MediaTypesToShow) {
+        val view = when (mediaTypes) {
+            ANIME_AND_MANGA -> mediaTypesAnimeAndMangaRadioButton
+            ONLY_ANIME -> mediaTypesAnimeRadioButton
+            ONLY_MANGA -> mediaTypesMangaRadioButton
         }
         view.isChecked = true
     }

@@ -6,6 +6,7 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import net.yakuraion.mangakko.core_di.dispatchers.Dispatchers
+import net.yakuraion.mangakko.core_entity.settings.MediaTypesToShow
 import net.yakuraion.mangakko.core_entity.settings.ThemeMode
 import net.yakuraion.mangakko.core_feature.di.viewmodel.AssistedSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseViewModel
@@ -22,6 +23,10 @@ class SettingsViewModel @AssistedInject constructor(
         value = appSettingsRepository.themeMode
     }
 
+    val setMediaTypesLiveData: LiveData<MediaTypesToShow> = SingleLiveEvent<MediaTypesToShow>().apply {
+        value = appSettingsRepository.mediaTypesToShow
+    }
+
     fun onThemeSystemChecked() {
         appSettingsRepository.themeMode = ThemeMode.SYSTEM
     }
@@ -32,6 +37,18 @@ class SettingsViewModel @AssistedInject constructor(
 
     fun onThemeDarkChecked() {
         appSettingsRepository.themeMode = ThemeMode.DARK
+    }
+
+    fun onMediaTypesAnimeAndMangaChecked() {
+        appSettingsRepository.mediaTypesToShow = MediaTypesToShow.ANIME_AND_MANGA
+    }
+
+    fun onMediaTypesAnimeChecked() {
+        appSettingsRepository.mediaTypesToShow = MediaTypesToShow.ONLY_ANIME
+    }
+
+    fun onMediaTypesMangaChecked() {
+        appSettingsRepository.mediaTypesToShow = MediaTypesToShow.ONLY_MANGA
     }
 
     @AssistedFactory

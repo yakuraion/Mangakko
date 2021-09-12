@@ -4,12 +4,13 @@ query QueryMediaDetails($id: Int!) {
         title {
             romaji
         }
+        type
         coverImage {
             extraLarge
             color
         }
         meanScore
-        description
+        description(asHtml: true)
         rankings {
             allTime
             type

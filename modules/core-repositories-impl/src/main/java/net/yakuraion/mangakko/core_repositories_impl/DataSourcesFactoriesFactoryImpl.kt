@@ -6,6 +6,7 @@ import kotlinx.coroutines.CoroutineScope
 import net.yakuraion.mangakko.core_entity.Media
 import net.yakuraion.mangakko.core_entity.MediaSortType
 import net.yakuraion.mangakko.core_entity.MediaStatus
+import net.yakuraion.mangakko.core_entity.MediaType
 import net.yakuraion.mangakko.core_repositories.DataSourcesFactoriesFactory
 import net.yakuraion.mangakko.core_repositories_impl.datasource.MediaDataSource
 import javax.inject.Inject
@@ -17,11 +18,12 @@ class DataSourcesFactoriesFactoryImpl @Inject constructor(
     override fun createMediaDataSourceFactory(
         coroutineScope: CoroutineScope,
         sortTypes: List<MediaSortType>,
+        mediaType: MediaType?,
         status: MediaStatus?
     ): Factory<Int, Media> {
         return object : DataSource.Factory<Int, Media>() {
             override fun create(): DataSource<Int, Media> {
-                return mediaDataSourceFactory.create(coroutineScope, sortTypes, status)
+                return mediaDataSourceFactory.create(coroutineScope, sortTypes, mediaType, status)
             }
         }
     }

@@ -10,9 +10,12 @@ import kotlinx.android.synthetic.main.media_item_media_overview_list_title.view.
 import kotlinx.android.synthetic.main.media_item_media_overview_list_title.view.titleTextView
 import net.yakuraion.mangakko.media_impl.R
 import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory
-import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.MOST_POPULAR
-import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.MOST_RATED
-import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.ONGOING
+import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.MOST_POPULAR_ANIME
+import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.MOST_POPULAR_MANGA
+import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.MOST_RATED_ANIME
+import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.MOST_RATED_MANGA
+import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.ONGOING_ANIME
+import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.ONGOING_MANGA
 import net.yakuraion.mangakko.media_impl.ui.media_overview.view.items.MediaOverviewListTitleItem.ViewHolder
 
 class MediaOverviewListTitleItem(private val category: MediaOverviewCategory) : AbstractItem<ViewHolder>() {
@@ -31,9 +34,12 @@ class MediaOverviewListTitleItem(private val category: MediaOverviewCategory) : 
     @StringRes
     private fun MediaOverviewCategory.getTitleRes(): Int {
         return when (this) {
-            ONGOING -> R.string.media_overview_category_ongoing
-            MOST_POPULAR -> R.string.media_overview_category_most_popular
-            MOST_RATED -> R.string.media_overview_category_most_rated
+            ONGOING_ANIME -> R.string.media_overview_category_ongoing_anime
+            MOST_POPULAR_ANIME -> R.string.media_overview_category_most_popular_anime
+            MOST_RATED_ANIME -> R.string.media_overview_category_most_rated_anime
+            ONGOING_MANGA -> R.string.media_overview_category_ongoing_manga
+            MOST_POPULAR_MANGA -> R.string.media_overview_category_most_popular_manga
+            MOST_RATED_MANGA -> R.string.media_overview_category_most_rated_manga
         }
     }
 

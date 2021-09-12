@@ -10,6 +10,7 @@ object MediaToFavoriteMediaEntityMapper {
             addedToFavoritesAt = addedToFavoritesAt,
             id = value.id,
             title = value.title,
+            type = value.type,
             imageUrl = value.imageUrl,
             mainColor = value.mainColor,
             score = value.score

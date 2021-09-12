@@ -12,6 +12,7 @@ import net.yakuraion.mangakko.core_di.dispatchers.Dispatchers
 import net.yakuraion.mangakko.core_entity.Media
 import net.yakuraion.mangakko.core_entity.MediaSortType
 import net.yakuraion.mangakko.core_entity.MediaStatus
+import net.yakuraion.mangakko.core_entity.MediaType
 import net.yakuraion.mangakko.core_feature.di.viewmodel.AssistedSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseViewModel
 import net.yakuraion.mangakko.core_repositories.DataSourcesFactoriesFactory
@@ -24,10 +25,12 @@ class MediaListViewModel @AssistedInject constructor(
 
     private val sortTypes: List<MediaSortType> = savedStateHandle.get(ARG_SORT_TYPES)!!
 
+    private val mediaType: MediaType? = savedStateHandle.get(ARG_MEDIA_TYPE)
+
     private val status: MediaStatus? = savedStateHandle.get(ARG_STATUS)
 
     private val dataSourceFactory: DataSource.Factory<Int, Media> = dataSourcesFactoriesFactory
-        .createMediaDataSourceFactory(this, sortTypes, status)
+        .createMediaDataSourceFactory(this, sortTypes, mediaType, status)
 
     private val config: PagedList.Config = PagedList.Config.Builder()
         .setEnablePlaceholders(true)
@@ -46,6 +49,7 @@ class MediaListViewModel @AssistedInject constructor(
     companion object {
 
         const val ARG_SORT_TYPES = "SORT_TYPES"
+        const val ARG_MEDIA_TYPE = "MEDIA_TYPE"
         const val ARG_STATUS = "STATUS"
 
         private const val PAGE_SIZE = 40

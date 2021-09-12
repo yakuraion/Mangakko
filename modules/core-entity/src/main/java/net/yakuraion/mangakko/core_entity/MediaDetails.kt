@@ -5,6 +5,7 @@ import androidx.annotation.ColorInt
 data class MediaDetails(
     val id: Int,
     val title: String,
+    val type: MediaType,
     val imageUrl: String,
     @ColorInt val mainColor: Int?,
     val score: Int?,
@@ -17,6 +18,7 @@ data class MediaDetails(
         return Media(
             id = id,
             title = title,
+            type = type,
             imageUrl = imageUrl,
             mainColor = mainColor,
             score = score

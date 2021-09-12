@@ -9,6 +9,7 @@ import net.yakuraion.mangakko.core_network.QueryMediaDetailsQuery.Media
 import net.yakuraion.mangakko.core_network.QueryPageMediaQuery
 import net.yakuraion.mangakko.core_network.type.MediaSort
 import net.yakuraion.mangakko.core_network.type.MediaStatus
+import net.yakuraion.mangakko.core_network.type.MediaType
 import javax.inject.Inject
 
 class MediaApiImpl @Inject constructor(private val client: ApolloClient) : MediaApi {
@@ -17,9 +18,10 @@ class MediaApiImpl @Inject constructor(private val client: ApolloClient) : Media
         page: Int,
         perPage: Int,
         sort: List<MediaSort>,
+        type: MediaType?,
         status: MediaStatus?
     ): QueryPageMediaQuery.Page {
-        val query = QueryPageMediaQuery(page, perPage, sort, Input.optional(status))
+        val query = QueryPageMediaQuery(page, perPage, sort, Input.optional(type), Input.optional(status))
         return client.query(query).await().data?.Page()!!
     }
 

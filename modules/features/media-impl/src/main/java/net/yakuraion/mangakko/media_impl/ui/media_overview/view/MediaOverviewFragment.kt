@@ -12,14 +12,18 @@ import kotlinx.android.synthetic.main.media_fragment_media_overview.recyclerView
 import net.yakuraion.mangakko.core_entity.Media
 import net.yakuraion.mangakko.core_entity.MediaSortType
 import net.yakuraion.mangakko.core_entity.MediaStatus
+import net.yakuraion.mangakko.core_entity.MediaType
 import net.yakuraion.mangakko.core_feature.di.viewmodel.InjectingSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
 import net.yakuraion.mangakko.core_uikit.fragment.requireListener
 import net.yakuraion.mangakko.media_impl.R
 import net.yakuraion.mangakko.media_impl.di.injector
-import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.MOST_POPULAR
-import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.MOST_RATED
-import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.ONGOING
+import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.MOST_POPULAR_ANIME
+import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.MOST_POPULAR_MANGA
+import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.MOST_RATED_ANIME
+import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.MOST_RATED_MANGA
+import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.ONGOING_ANIME
+import net.yakuraion.mangakko.media_impl.ui.media_overview.MediaOverviewCategory.ONGOING_MANGA
 import net.yakuraion.mangakko.media_impl.ui.media_overview.view.items.MediaOverviewListItem
 import net.yakuraion.mangakko.media_impl.ui.media_overview.view.items.MediaOverviewListTitleItem
 import net.yakuraion.mangakko.media_impl.ui.media_overview.viewmodel.MediaOverviewViewModel
@@ -35,38 +39,66 @@ class MediaOverviewFragment : BaseFragment<MediaOverviewViewModel>(
 
     private lateinit var listener: Listener
 
-    private val ongoingTitleItemAdapter: ItemAdapter<MediaOverviewListTitleItem> =
+    private val ongoingAnimeTitleItemAdapter: ItemAdapter<MediaOverviewListTitleItem> =
         ItemAdapter<MediaOverviewListTitleItem>().apply {
-            set(listOf(MediaOverviewListTitleItem(ONGOING)))
+            set(listOf(MediaOverviewListTitleItem(ONGOING_ANIME)))
         }
-    private val ongoingItemAdapter: ItemAdapter<MediaOverviewListItem> = ItemAdapter()
+    private val ongoingAnimeItemAdapter: ItemAdapter<MediaOverviewListItem> = ItemAdapter()
 
-    private val mostPopularTitleItemAdapter: ItemAdapter<MediaOverviewListTitleItem> =
+    private val mostPopularAnimeTitleItemAdapter: ItemAdapter<MediaOverviewListTitleItem> =
         ItemAdapter<MediaOverviewListTitleItem>().apply {
-            set(listOf(MediaOverviewListTitleItem(MOST_POPULAR)))
+            set(listOf(MediaOverviewListTitleItem(MOST_POPULAR_ANIME)))
         }
-    private val mostPopularItemAdapter: ItemAdapter<MediaOverviewListItem> = ItemAdapter()
+    private val mostPopularAnimeItemAdapter: ItemAdapter<MediaOverviewListItem> = ItemAdapter()
 
-    private val mostRatedTitleItemAdapter: ItemAdapter<MediaOverviewListTitleItem> =
+    private val mostRatedAnimeTitleItemAdapter: ItemAdapter<MediaOverviewListTitleItem> =
         ItemAdapter<MediaOverviewListTitleItem>().apply {
-            set(listOf(MediaOverviewListTitleItem(MOST_RATED)))
+            set(listOf(MediaOverviewListTitleItem(MOST_RATED_ANIME)))
         }
-    private val mostRatedItemAdapter: ItemAdapter<MediaOverviewListItem> = ItemAdapter()
+    private val mostRatedAnimeItemAdapter: ItemAdapter<MediaOverviewListItem> = ItemAdapter()
+
+    private val ongoingMangaTitleItemAdapter: ItemAdapter<MediaOverviewListTitleItem> =
+        ItemAdapter<MediaOverviewListTitleItem>().apply {
+            set(listOf(MediaOverviewListTitleItem(ONGOING_MANGA)))
+        }
+    private val ongoingMangaItemAdapter: ItemAdapter<MediaOverviewListItem> = ItemAdapter()
+
+    private val mostPopularMangaTitleItemAdapter: ItemAdapter<MediaOverviewListTitleItem> =
+        ItemAdapter<MediaOverviewListTitleItem>().apply {
+            set(listOf(MediaOverviewListTitleItem(MOST_POPULAR_MANGA)))
+        }
+    private val mostPopularMangaItemAdapter: ItemAdapter<MediaOverviewListItem> = ItemAdapter()
+
+    private val mostRatedMangaTitleItemAdapter: ItemAdapter<MediaOverviewListTitleItem> =
+        ItemAdapter<MediaOverviewListTitleItem>().apply {
+            set(listOf(MediaOverviewListTitleItem(MOST_RATED_MANGA)))
+        }
+    private val mostRatedMangaItemAdapter: ItemAdapter<MediaOverviewListItem> = ItemAdapter()
 
     private val fastAdapter: FastAdapter<*> = FastAdapter.with(
         listOf(
-            ongoingTitleItemAdapter,
-            ongoingItemAdapter,
-            mostPopularTitleItemAdapter,
-            mostPopularItemAdapter,
-            mostRatedTitleItemAdapter,
-            mostRatedItemAdapter
+            ongoingAnimeTitleItemAdapter,
+            ongoingAnimeItemAdapter,
+            mostPopularAnimeTitleItemAdapter,
+            mostPopularAnimeItemAdapter,
+            mostRatedAnimeTitleItemAdapter,
+            mostRatedAnimeItemAdapter,
+            ongoingMangaTitleItemAdapter,
+            ongoingMangaItemAdapter,
+            mostPopularMangaTitleItemAdapter,
+            mostPopularMangaItemAdapter,
+            mostRatedMangaTitleItemAdapter,
+            mostRatedMangaItemAdapter,
         )
     ).apply {
         addEventHooks(
             listOf(
                 MediaOverviewListTitleItem.MoreClickEventHook { category ->
-                    listener.onMediaOverviewCategoryMoreClick(category.getSortTypes(), category.getStatus())
+                    listener.onMediaOverviewCategoryMoreClick(
+                        category.sortTypes,
+                        category.mediaType,
+                        category.status
+                    )
                 },
                 MediaOverviewListItem.NestedMediaClickEventHook { media ->
                     listener.onMediaOverviewMediaClick(media)
@@ -86,14 +118,23 @@ class MediaOverviewFragment : BaseFragment<MediaOverviewViewModel>(
         setUpInsets()
         recyclerView.adapter = fastAdapter
         viewModel.apply {
-            ongoingMediaListLiveData.observe(viewLifecycleOwner) { mediaList ->
-                updateMediaList(ongoingItemAdapter, mediaList)
+            ongoingAnimeListLiveData.observe(viewLifecycleOwner) { mediaList ->
+                updateMediaList(ongoingAnimeItemAdapter, mediaList)
             }
-            mostPopularMediaListLiveData.observe(viewLifecycleOwner) { mediaList ->
-                updateMediaList(mostPopularItemAdapter, mediaList)
+            mostPopularAnimeListLiveData.observe(viewLifecycleOwner) { mediaList ->
+                updateMediaList(mostPopularAnimeItemAdapter, mediaList)
             }
-            mostRatedMediaListLiveData.observe(viewLifecycleOwner) { mediaList ->
-                updateMediaList(mostRatedItemAdapter, mediaList)
+            mostRatedAnimeListLiveData.observe(viewLifecycleOwner) { mediaList ->
+                updateMediaList(mostRatedAnimeItemAdapter, mediaList)
+            }
+            ongoingMangaListLiveData.observe(viewLifecycleOwner) { mediaList ->
+                updateMediaList(ongoingMangaItemAdapter, mediaList)
+            }
+            mostPopularMangaListLiveData.observe(viewLifecycleOwner) { mediaList ->
+                updateMediaList(mostPopularMangaItemAdapter, mediaList)
+            }
+            mostRatedMangaListLiveData.observe(viewLifecycleOwner) { mediaList ->
+                updateMediaList(mostRatedMangaItemAdapter, mediaList)
             }
         }
     }
@@ -118,7 +159,11 @@ class MediaOverviewFragment : BaseFragment<MediaOverviewViewModel>(
 
     interface Listener {
 
-        fun onMediaOverviewCategoryMoreClick(sortTypes: List<MediaSortType>, status: MediaStatus?)
+        fun onMediaOverviewCategoryMoreClick(
+            sortTypes: List<MediaSortType>,
+            mediaType: MediaType,
+            status: MediaStatus?
+        )
 
         fun onMediaOverviewMediaClick(media: Media)
     }

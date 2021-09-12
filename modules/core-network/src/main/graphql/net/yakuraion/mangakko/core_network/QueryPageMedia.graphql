@@ -2,6 +2,7 @@ query QueryPageMedia(
     $page: Int!,
     $perPage: Int!,
     $sort: [MediaSort!]!,
+    $type: MediaType,
     $status: MediaStatus
 ) {
     Page(page: $page, perPage: $perPage) {
@@ -9,11 +10,12 @@ query QueryPageMedia(
             total
             hasNextPage
         }
-        media(sort: $sort, status: $status) {
+        media(sort: $sort, status: $status, type: $type) {
             id
             title {
                 romaji
             }
+            type
             coverImage {
                 extraLarge
                 color

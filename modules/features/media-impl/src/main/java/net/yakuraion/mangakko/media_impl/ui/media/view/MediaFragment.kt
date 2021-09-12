@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import net.yakuraion.mangakko.core_entity.Media
 import net.yakuraion.mangakko.core_entity.MediaSortType
 import net.yakuraion.mangakko.core_entity.MediaStatus
+import net.yakuraion.mangakko.core_entity.MediaType
 import net.yakuraion.mangakko.core_feature.di.viewmodel.InjectingSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseFragment
 import net.yakuraion.mangakko.core_uikit.fragment.requireListener
@@ -56,8 +57,12 @@ class MediaFragment : BaseFragment<MediaViewModel>(
             .commit()
     }
 
-    override fun onMediaOverviewCategoryMoreClick(sortTypes: List<MediaSortType>, status: MediaStatus?) {
-        val fragment = MediaListFragment.createFragment(sortTypes, status)
+    override fun onMediaOverviewCategoryMoreClick(
+        sortTypes: List<MediaSortType>,
+        mediaType: MediaType,
+        status: MediaStatus?
+    ) {
+        val fragment = MediaListFragment.createFragment(sortTypes, mediaType, status)
         showFragment(fragment, true)
     }
 

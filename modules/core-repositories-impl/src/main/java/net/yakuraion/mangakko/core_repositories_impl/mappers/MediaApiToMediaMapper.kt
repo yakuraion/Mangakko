@@ -10,6 +10,7 @@ object MediaApiToMediaMapper {
         return Media(
             id = value.id(),
             title = value.title()?.romaji().orEmpty(),
+            type = MediaTypeApiToMediaTypeMapper.invoke(value.type()!!),
             imageUrl = value.coverImage()?.extraLarge().orEmpty(),
             mainColor = value.coverImage()?.color()?.let { Color.parseColor(it) },
             score = value.meanScore()

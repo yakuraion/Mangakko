@@ -8,6 +8,8 @@ import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import net.yakuraion.mangakko.core_di.dispatchers.Dispatchers
 import net.yakuraion.mangakko.core_entity.Media
+import net.yakuraion.mangakko.core_entity.MediaType.ANIME
+import net.yakuraion.mangakko.core_entity.MediaType.MANGA
 import net.yakuraion.mangakko.core_feature.di.viewmodel.AssistedSavedStateViewModelFactory
 import net.yakuraion.mangakko.core_feature.ui.base.BaseViewModel
 import net.yakuraion.mangakko.media_impl.domain.MediaInteractor
@@ -18,19 +20,34 @@ class MediaOverviewViewModel @AssistedInject constructor(
     private val mediaInteractor: MediaInteractor
 ) : BaseViewModel() {
 
-    val ongoingMediaListLiveData: LiveData<List<Media?>> = liveData(coroutineContext) {
+    val ongoingAnimeListLiveData: LiveData<List<Media?>> = liveData(coroutineContext) {
         emit(List(ITEMS_IN_CATEGORY) { null })
-        emit(mediaInteractor.getOngoingMedia(ITEMS_IN_CATEGORY))
+        emit(mediaInteractor.getOngoingMedia(ITEMS_IN_CATEGORY, ANIME))
     }
 
-    val mostPopularMediaListLiveData: LiveData<List<Media?>> = liveData(coroutineContext) {
+    val mostPopularAnimeListLiveData: LiveData<List<Media?>> = liveData(coroutineContext) {
         emit(List(ITEMS_IN_CATEGORY) { null })
-        emit(mediaInteractor.getMostPopularMedia(ITEMS_IN_CATEGORY))
+        emit(mediaInteractor.getMostPopularMedia(ITEMS_IN_CATEGORY, ANIME))
     }
 
-    val mostRatedMediaListLiveData: LiveData<List<Media?>> = liveData(coroutineContext) {
+    val mostRatedAnimeListLiveData: LiveData<List<Media?>> = liveData(coroutineContext) {
         emit(List(ITEMS_IN_CATEGORY) { null })
-        emit(mediaInteractor.getMostRatedMedia(ITEMS_IN_CATEGORY))
+        emit(mediaInteractor.getMostRatedMedia(ITEMS_IN_CATEGORY, ANIME))
+    }
+
+    val ongoingMangaListLiveData: LiveData<List<Media?>> = liveData(coroutineContext) {
+        emit(List(ITEMS_IN_CATEGORY) { null })
+        emit(mediaInteractor.getOngoingMedia(ITEMS_IN_CATEGORY, MANGA))
+    }
+
+    val mostPopularMangaListLiveData: LiveData<List<Media?>> = liveData(coroutineContext) {
+        emit(List(ITEMS_IN_CATEGORY) { null })
+        emit(mediaInteractor.getMostPopularMedia(ITEMS_IN_CATEGORY, MANGA))
+    }
+
+    val mostRatedMangaListLiveData: LiveData<List<Media?>> = liveData(coroutineContext) {
+        emit(List(ITEMS_IN_CATEGORY) { null })
+        emit(mediaInteractor.getMostRatedMedia(ITEMS_IN_CATEGORY, MANGA))
     }
 
     @AssistedFactory

@@ -3,10 +3,14 @@ package net.yakuraion.mangakko.core_feature.ui.base
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.LayoutRes
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import net.yakuraion.mangakko.core_feature.ui.mvvm.MVVMFragment
 import kotlin.reflect.KClass
 
+/**
+ * Базовый [Fragment], от которой должны наследоваться все [Fragment] в приложении
+ */
 abstract class BaseFragment<VM : BaseViewModel>(
     viewModelClass: KClass<out ViewModel>,
     @LayoutRes layoutRes: Int

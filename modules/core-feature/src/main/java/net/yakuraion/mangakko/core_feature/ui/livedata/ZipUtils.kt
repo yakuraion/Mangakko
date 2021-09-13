@@ -3,6 +3,16 @@ package net.yakuraion.mangakko.core_feature.ui.livedata
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 
+/**
+ * Взять две [LiveData] и на основе результата функции [transform] сформировать новую [LiveData]
+ *
+ * Новое значение результирующей [LiveData] появляется на каждое новое значение
+ * любой из изначальных [LiveData].
+ *
+ * Работает по аналогии с одноименным оператором в Rx.
+ *
+ * @see <a href="http://reactivex.io/documentation/operators/combinelatest.html">Аналогичный оператор в Rx</a>
+ */
 fun <A, B, C> combineLatestLiveData(
     liveData1: LiveData<A>,
     liveData2: LiveData<B>,

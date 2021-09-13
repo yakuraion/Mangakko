@@ -8,6 +8,12 @@ import net.yakuraion.mangakko.core_uikit.content.ContentState.ERROR
 import net.yakuraion.mangakko.core_uikit.content.ContentState.PROGRESS
 import kotlin.properties.Delegates
 
+/**
+ * Контроллер, управляющий состоянием экрана
+ *
+ * Позволяет удобно определить какие [View] надо показывать при каждом конкретном состоянии экрана
+ * (есть контент, загрузка, нет данных, ошибка)
+ */
 class ContentStateController(
     private val contentViewIds: List<Int> = emptyList(),
     private val progressViewIds: List<Int> = emptyList(),

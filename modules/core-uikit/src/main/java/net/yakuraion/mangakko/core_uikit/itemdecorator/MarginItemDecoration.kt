@@ -10,25 +10,31 @@ import androidx.recyclerview.widget.RecyclerView
 /**
  * [RecyclerView.ItemDecoration] to add margins to items
  *
- * Note: Not working with [GridLayoutManager] with different item span size
- * Note: Not working with reverse layout and stackFromEnd
+ * NOTE: Not working with [GridLayoutManager] with different item span size
+ * NOTE: Not working with reverse layout and stackFromEnd
  *
  *
- *   Left                   Horizontal                Right
- *     |                        |                       |
- *     V                        V                       V
+ *    Left      Horizontal   Horizontal   Horizontal    Right
+ *     |            |            |            |           |
+ *     V            V            V            V           V
  *
- *                                                          <- Top
+ *                                                             <- Top
  *
- *          Item        Item        Item        Item
+ *          Item         Item         Item         Item
  *
- *          Item        Item        Item        Item
- *                                                          <- Vertical
- *          Item        Item        Item        Item
+ *                                                             <- Vertical
  *
- *          Item        Item        Item        Item
+ *          Item         Item         Item         Item
  *
- *                                                          <- Bottom
+ *                                                             <- Vertical
+ *
+ *          Item         Item         Item         Item
+ *
+ *                                                             <- Vertical
+ *
+ *          Item         Item         Item         Item
+ *
+ *                                                             <- Bottom
  *
  */
 class MarginItemDecoration(

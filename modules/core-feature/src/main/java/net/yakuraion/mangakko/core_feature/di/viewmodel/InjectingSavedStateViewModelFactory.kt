@@ -12,6 +12,9 @@ import javax.inject.Inject
 import javax.inject.Provider
 import kotlin.reflect.KClass
 
+/**
+ * Фабрика для создания всех ViewModel в приложении
+ */
 @Reusable
 class InjectingSavedStateViewModelFactory @Inject constructor(
     @Suppress("MaxLineLength")

@@ -4,10 +4,14 @@ import android.app.Dialog
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.LayoutRes
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModel
 import net.yakuraion.mangakko.core_feature.ui.mvvm.MVVMDialogFragment
 import kotlin.reflect.KClass
 
+/**
+ * Базовый [DialogFragment], от которой должны наследоваться все [DialogFragment] в приложении
+ */
 abstract class BaseDialogFragment<VM : BaseViewModel>(
     viewModelClass: KClass<out ViewModel>,
     @LayoutRes layoutRes: Int

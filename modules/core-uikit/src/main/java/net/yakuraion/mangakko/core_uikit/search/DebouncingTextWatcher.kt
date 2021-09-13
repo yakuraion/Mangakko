@@ -8,6 +8,10 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+/**
+ * [TextWatcher] при котором [action] срабатывает спустя [DEFAULT_DEBOUNCE_PERIOD] миллисекунд
+ * после изменения текста
+ */
 class DebouncingTextWatcher(
     lifecycle: Lifecycle,
     private val action: (String) -> Unit

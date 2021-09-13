@@ -9,6 +9,11 @@ import com.google.gson.JsonSerializationContext
 import com.google.gson.JsonSerializer
 import java.lang.reflect.Type
 
+/**
+ * Gson адаптер, позволяющий сериализовывать/десериализовывать абстрактные классы.
+ *
+ * При десериализации восстанавливается объект конкретного (не абстрактного) класса.
+ */
 class AbstractTypeGsonAdapter<T> : JsonSerializer<T>, JsonDeserializer<T>
         where T : Any {
 

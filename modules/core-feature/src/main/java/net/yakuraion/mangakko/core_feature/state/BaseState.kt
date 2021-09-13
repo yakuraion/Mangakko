@@ -1,5 +1,8 @@
 package net.yakuraion.mangakko.core_feature.state
 
+/**
+ * @see <a href="https://refactoring.guru/ru/design-patterns/state">Паттерн "Состояние"</a>
+ */
 interface BaseState<SELF : BaseState<SELF, OWNER>, OWNER : BaseOwner<OWNER, SELF>> {
 
     /**

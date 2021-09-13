@@ -33,6 +33,9 @@ fun OnBackPressedDispatcher.addCallback(
     }
 }
 
+/**
+ * Скрывать BottomSheet по вызову OnBackPressed
+ */
 fun OnBackPressedDispatcher.addCallbackForHideBottomSheetBehavior(
     bottomSheetBehavior: BottomSheetBehavior<*>,
     activity: Activity,

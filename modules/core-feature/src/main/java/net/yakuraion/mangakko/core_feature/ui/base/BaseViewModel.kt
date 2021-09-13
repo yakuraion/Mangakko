@@ -11,6 +11,9 @@ import net.yakuraion.mangakko.core_feature.ui.livedata.SingleLiveEvent
 import timber.log.Timber
 import kotlin.coroutines.CoroutineContext
 
+/**
+ * Базовая [ViewModel], от которой должны наследоваться все [ViewModel] в приложении
+ */
 open class BaseViewModel : ViewModel(), CoroutineScope {
 
     private val scopeJob: Job = SupervisorJob()

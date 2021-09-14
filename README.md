@@ -8,7 +8,7 @@
 - **modules/core-network** - Сетевой слой (Retrofit).
 - **modules/core-persistence** - Код, взаимодействующий с постоянной памятью (базы данных, SharedPreferences).
 - **modules/core-repositories** - Repositories из Clean Architecture.
-- **module/core-testutils** - Утилиты для тестирования.
+- **modules/core-testutils** - Утилиты для тестирования.
 - **modules/core-uikit** - Общие UI элементы для всех модулей.
 - **modules/core-utils** - Утилиты для удобной работы с Kotlin.
 - **modules/features/main** - Корневой фрагмент, который живет на протяжении жизни Activity.
@@ -29,9 +29,9 @@
 
 Имеются свои модели для разных слоев:
 
-* доменный слой (core-entity): **Xxx**;
-* сетевой слой (core-network): **XxxResponse** / **XxxRequest**;
-* локальное хранилище (core-persistence): **XxxEntity**.
+* доменный слой (core-entity): `Xxx`;
+* сетевой слой (core-network): `XxxResponse` / `XxxRequest`;
+* локальное хранилище (core-persistence): `XxxEntity`.
 
 В feature-модулях используются модели из доменного слоя.
 

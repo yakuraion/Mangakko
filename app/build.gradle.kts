@@ -52,9 +52,12 @@ android {
 
         getByName("release") {
             signingConfig = signingConfigs.getByName("releaseConfig")
-            // todo fix
-            isShrinkResources = false
-            isMinifyEnabled = false
+            isShrinkResources = true
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 

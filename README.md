@@ -4,11 +4,13 @@
 - **buildSrc** - Специфичный модуль со списком зависимостей ([документация](https://docs.gradle.org/current/userguide/organizing_gradle_projects.html#sec:build_sources)).
 - **modules/core-di** - Интерфейсы для компонентов Dagger.
 - **modules/core-entity** - Entity из Clean Architecture.
-- **modules/core-feature** - Общий код для фич модулей (в основном работа с MVVM, Dagger). Общие Views при этом идут в **modules/core-ui**.
+- **modules/core-feature** - Общий код для фич модулей (в основном работа с MVVM, Dagger). Общие Views при этом идут в **modules/core-uikit**.
 - **modules/core-network** - Сетевой слой (Retrofit).
 - **modules/core-persistence** - Код, взаимодействующий с постоянной памятью (базы данных, SharedPreferences).
 - **modules/core-repositories** - Repositories из Clean Architecture.
-- **modules/core-ui** - Общие UI элементы для всех модулей.
+- **module/core-testutils** - Утилиты для тестирования.
+- **modules/core-uikit** - Общие UI элементы для всех модулей.
+- **modules/core-utils** - Утилиты для удобной работы с Kotlin.
 - **modules/features/main** - Корневой фрагмент, который живет на протяжении жизни Activity.
 
 Также присутствуют модули с постфиксом `-impl` - про них расписано в секции "Разрешение цикличных зависимостей".
@@ -17,11 +19,21 @@
 
 В основе архитектуры используется **Clean Architecture**. 
 
+Для слоя представления используется подход **MVVM** (Model-View-ViewModel).
+
 Вместо **UseCase** используется **Interactor** (объединение UseCase).
 
-С целью упрощения архитектуры, разрешены обращения непоследственно в **Repository**, минуя **Interactor**. В случае необходимости **Interactor** создается внутри фичи, наиболее близко подходящей по значению.
+С целью упрощения архитектуры, разрешены обращения непосредственно в **Repository**, минуя **Interactor**. В случае необходимости **Interactor** создается внутри фичи, наиболее близко подходящей по значению.
 
-Присутствуют отдельные модели для **Network** слоя (`xxxResponse`) и для слоя **Entity** (`xxx`), например `ProgramResponse` и `Response`, соответственно. В фича модулях используются модели из слоя **Entity**.
+### Модели
+
+Имеются свои модели для разных слоев:
+
+* доменный слой (core-entity): **Xxx**;
+* сетевой слой (core-network): **XxxResponse** / **XxxRequest**;
+* локальное хранилище (core-persistence): **XxxEntity**.
+
+В feature-модулях используются модели из доменного слоя.
 
 ## Разрешение цикличных зависимостей
 
